@@ -10,7 +10,7 @@
 	<ul>
 		<li><a href="bookList.do">책 목록</a></li>
 		<li><a href="/city/cityList.jsp">도시 목록</a></li>
-		<li><a href="/company/companyList.jsp">회사 목록</a></li>
+		<li><a href="/company/companyList.do">회사 목록</a></li>
 		<li><a href="/country/countryList.jsp">도시 목록</a></li>
 		<li><a href="/idol/idolList.jsp">아이돌 목록</a></li>
 		<li><a href="/movie/movieList.jsp">영화 목록</a></li>
