@@ -8,7 +8,7 @@
 </head>
 <body>
 	<ul>
-		<li><a href="/book/bookList.jsp">책 목록</a></li>
+		<li><a href="bookList.do">책 목록</a></li>
 		<li><a href="/city/cityList.jsp">도시 목록</a></li>
 		<li><a href="/company/companyList.jsp">회사 목록</a></li>
 		<li><a href="/country/countryList.jsp">도시 목록</a></li>
