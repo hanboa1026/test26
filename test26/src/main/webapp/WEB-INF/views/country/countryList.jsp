@@ -11,7 +11,7 @@
 <h2>Country List</h2>
 <table border=1>
 	<tr>
-		<th>No</th>
+		<th>No.</th>
 		<th>NAME</th>
 	</tr>
 	<c:forEach var="country" items="${list}">
