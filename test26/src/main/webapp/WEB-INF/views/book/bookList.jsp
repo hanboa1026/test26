@@ -4,22 +4,28 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link href="<c:url value="/resources/css/bootstrap.min.css" />" rel="stylesheet">
 <title>book List</title>
 </head>
 <body>
-	<h2>book List</h2>
-	<table border=1>
-		<tr>
-			<th>넘버</th>
-			<th>제목</th>
-		</tr>
-		<c:forEach var="book" items="${list}">
-		<tr>
-			<td>${book.bookId}</td>
-			<td>${book.bookName}</td>
-		</tr>
-		</c:forEach>
-	</table>
-	
+	<div class="container">
+		<h2>book List</h2>
+		<table class="table table-bordered">
+			<thead>
+				<tr>
+					<th>넘버</th>
+					<th>제목</th>
+				</tr>
+			</thead>
+			<c:forEach var="book" items="${list}">
+			<tbody>
+				<tr>
+					<td>${book.bookId}</td>
+					<td>${book.bookName}</td>
+				</tr>
+			</tbody>
+			</c:forEach>
+		</table>
+	</div>
 </body>
 </html>
