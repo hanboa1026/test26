@@ -14,10 +14,10 @@
 			<th>No.</th>
 			<th>Sub</th>
 		</tr>
-		<c:forEach var="company" items="${company}">
+		<c:forEach var="company" items="${list}">
 		<tr>
-			<td></td>
-			<td></td>
+			<td>${company.companyId}</td>
+			<td>${company.companyName}</td>
 		</tr>
 		</c:forEach>
 	</table>
