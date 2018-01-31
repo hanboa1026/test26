@@ -29,12 +29,12 @@
   </filter-mapping>
   <servlet>
     <description></description>
-    <display-name>IdolController</display-name>
-    <servlet-name>IdolController</servlet-name>
-    <servlet-class>ksmart.project.test26.IdolController</servlet-class>
+    <display-name>MovieController</display-name>
+    <servlet-name>MovieController</servlet-name>
+    <servlet-class>ksmart.project.test26.MovieController</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>IdolController</servlet-name>
-    <url-pattern>/IdolController</url-pattern>
+    <servlet-name>MovieController</servlet-name>
+    <url-pattern>/MovieController</url-pattern>
   </servlet-mapping>
 </web-app>

@@ -11,8 +11,7 @@ public class IdolDao {
 	@Autowired
 	private SqlSessionTemplate sst;
 	public List<Idol> selectIdolList(){
-		return sst.selectList("ksmart.project.test26.service.idolMapper.selectIdol");
-		
+		return sst.selectList("ksmart.project.test26.service.idolMapper.selectIdolList");
 	}
 
 }
