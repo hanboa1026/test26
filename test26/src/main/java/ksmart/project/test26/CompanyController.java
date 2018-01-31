@@ -17,7 +17,7 @@ public class CompanyController {
 	@Autowired
 	private CompanyDao companyDao;
 	
-	@RequestMapping(value="/companyList.do", method = RequestMethod.GET)
+	@RequestMapping(value="/company/companyList.do", method = RequestMethod.GET)
 	public String movie(Model model) {
 			List<Company> list = companyDao.selectCompanyList();
 			model.addAttribute("list",list);
