@@ -10,7 +10,7 @@
 </head>
 <body>
 <h2>Company List</h2>
-	<table class="table tableborded">
+	<table class="table tableborded" >
 		<tr>
 			<th>No.</th>
 			<th>Sub</th>
