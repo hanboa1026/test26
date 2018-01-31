@@ -8,17 +8,17 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import ksmart.project.test26.service.Book;
-import ksmart.project.test26.service.BookDao;
+import ksmart.project.test26.service.City;
+import ksmart.project.test26.service.CityDao;
 
 @Controller
-public class BookController {
+public class CityController {
 	@Autowired
-	private BookDao bookDao;
-	@RequestMapping(value="/book/bookList", method=RequestMethod.GET)
-	public String bookList(Model model) {
-		List<Book> list = bookDao.selectBookList();
+	private CityDao cityDao;
+	@RequestMapping(value="/city/cityList", method=RequestMethod.GET)
+	public String cityList(Model model) {
+		List<City> list = cityDao.selectCityList();
 		model.addAttribute("list", list);
-		return "book/bookList";
+		return "city/cityList";
 	}
 }
