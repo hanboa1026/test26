@@ -22,5 +22,7 @@
 		</tr>
 		</c:forEach>
 	</table>
-</body>
+	<a href="${pageContext.request.contextPath}/company/companyAdd"><button type="submit">회사 추가</button></a>
+	<a href="${pageContext.request.contextPath}/"><button type="submit">홈으로</button></a>
+	</body>
 </html>

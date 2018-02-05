@@ -4,7 +4,36 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  
 <mapper namespace="ksmart.project.test26.service.companyMapper">
+	
+	<!-- select -->
 	<select id="selectCompany" resultType="ksmart.project.test26.service.Company">
 		SELECT company_id as companyId, company_name as companyName FROM company;
 	</select>
+	<!-- /select -->
+	
+	<!-- select -->
+	<select id="selectCompanyOne" resultType="ksmart.project.test26.service.Company">
+		SELECT company_id as companyId FROM company;
+	</select>
+	<!-- /select -->
+	
+	<!-- insert -->
+		<insert id="insertCompany" parameterType="ksmart.project.test26.service.Company">
+			INSERT INTO company (company_name) VALUES(#{companyName}) 
+		</insert>
+	<!-- /insert -->
+	
+	<!-- delete -->
+		<delete id="deleteCompany" parameterType="ksmart.project.test26.service.Company">
+		 	DELETE FROM company WHERE company_id = #{companyId}
+		</delete>
+	<!-- /delete -->
+	
+	<!-- update -->
+		<update id="updateCompany" parameterType="ksmart.project.test26.service.Company">
+			UPDATE company SET company_name WHERE = company_id = ?
+		</update>
+	<!-- /update -->
+	
+	
 </mapper>
