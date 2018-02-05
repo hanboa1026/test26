@@ -10,11 +10,14 @@
 <body>
 	<div class="container">
 		<h2>book List</h2>
+		<a href="${pageContext.request.contextPath}/book/bookInsert" class="btn btn-danger">추가하기</a><br>
 		<table class="table table-bordered">
 			<thead>
 				<tr>
 					<th>넘버</th>
 					<th>제목</th>
+					<th>수정</th>
+					<th>삭제</th>
 				</tr>
 			</thead>
 			<c:forEach var="book" items="${list}">
@@ -22,6 +25,8 @@
 				<tr>
 					<td>${book.bookId}</td>
 					<td>${book.bookName}</td>
+					<td><a href="${pageContext.request.contextPath}/book/bookUpdate?bookId=${book.bookId}">수정</a></td>
+					<td><a href="${pageContext.request.contextPath}/book/bookDelete?bookId=${book.bookId}">삭제</a></td>
 				</tr>
 			</tbody>
 			</c:forEach>

@@ -10,4 +10,24 @@
 			,book_name as bookName
 		FROM book;
 	</select>
+	<select id="getBook" parameterType="int" resultType="ksmart.project.test26.service.Book">
+		SELECT
+			book_id as bookId
+			,book_name as bookName
+		FROM book
+		WHERE book_id = #{bookId}
+	</select>
+	<update id="updateBook" parameterType="ksmart.project.test26.service.Book">
+		UPDATE book SET
+			book_name = #{bookName}
+		WHERE book_id = #{bookId}
+	</update>
+	<delete id="deleteBook" parameterType="ksmart.project.test26.service.Book">
+		DELETE FROM book
+		WHERE book_id = #{bookId}
+	</delete>
+	<insert id="insertBook" parameterType="ksmart.project.test26.service.Book">
+		INSERT INTO book(book_name)
+		VALUES (#{bookName})
+	</insert>
 </mapper>

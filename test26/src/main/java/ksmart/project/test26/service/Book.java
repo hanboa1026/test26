@@ -1,18 +1,18 @@
 package ksmart.project.test26.service;
 
 public class Book {
-	private int BookId;
-	private String BookName;
+	private int bookId;
+	private String bookName;
 	public int getBookId() {
-		return BookId;
+		return bookId;
 	}
 	public void setBookId(int bookId) {
-		BookId = bookId;
+		this.bookId = bookId;
 	}
 	public String getBookName() {
-		return BookName;
+		return bookName;
 	}
 	public void setBookName(String bookName) {
-		BookName = bookName;
+		this.bookName = bookName;
 	}
 }
