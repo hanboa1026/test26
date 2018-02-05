@@ -8,9 +8,16 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public class CountryDao {
+	private String str = "ksmart.project.test26.service.countryMapper.";
+	
 	@Autowired
-	private SqlSessionTemplate sst;
-	public List<Country> selectCountryList(){
-		return sst.selectList("ksmart.project.test26.service.countryMapper.selectCountryList");
+	private SqlSessionTemplate sqlSessionTemplate;
+
+	public List<Country> selectCountryList() {
+		return sqlSessionTemplate.selectList(str+"selectCountryList");
+	}
+	
+	public int insertCountry(Country country) {
+		return sqlSessionTemplate.insert(str+"insertCountry",country);
 	}
 }

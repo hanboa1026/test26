@@ -16,6 +16,8 @@
 	<tr class="danger">
 		<th>No.</th>
 		<th>NAME</th>
+		<th>UPDATE</th>
+		<th>DELETE</th>
 	</tr>
 	</thead>
 	<c:forEach var="country" items="${list}">
@@ -23,10 +25,13 @@
 	<tr>
 		<td>${country.countryId}</td>
 		<td>${country.countryName }</td>
+		<td><a href="">수정</a></td>
+		<td><a href="">삭제</a></td>
 	</tr>
 	</tbody>
 	</c:forEach>
 </table>
+	<a href="${pageContext.request.contextPath}/country/countryInsertForm">Country Add</a>
 </div>
 </body>
 </html>
