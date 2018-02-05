@@ -1,15 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link href="<c:url value="/resources/css/bootstrap.min.css" />" rel="stylesheet">
+<link href="<c:url value="/resources/css/bootstrap.min.css" />"
+	rel="stylesheet">
 <title>Insert title here</title>
 </head>
 <body>
 	<div class="container">
-		<h2>Country Update Form</h2>
+		<div class="row">
+			<h2 class="col-lg-2">Country Update</h2>
+			<a class="col-lg-10 homeicon"
+				href="${pageContext.request.contextPath}/"><img alt="home"
+				src="${pageContext.request.contextPath}/resources/img/home.png"></a>
+		</div>
 		<form id="modifyCountry" method="post"
 			action="${pageContext.request.contextPath}/countryModify">
 			<table>
@@ -19,12 +25,14 @@
 						<th>NAME</th>
 					</tr>
 				</thead>
-					<tbody>
-						<tr>
-							<td><input name="countryId" type="hidden" value="${country.countryId}" ></td>
-							<td><input name="countryName" type="text" value="${country.countryName}"></td>
-						</tr>
-					</tbody>
+				<tbody>
+					<tr>
+						<td><input name="countryId" type="hidden"
+							value="${country.countryId}"></td>
+						<td><input name="countryName" type="text"
+							value="${country.countryName}"></td>
+					</tr>
+				</tbody>
 
 			</table>
 			<button type="submit">MODIFY</button>
