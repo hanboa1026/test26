@@ -42,4 +42,15 @@ public class BookController {
 		bookDao.deleteBook(bookId);
 		return "redirect:/book/bookList";
 	}
+	// 입력페이지 요청
+	@RequestMapping(value="/book/bookInsert", method=RequestMethod.GET)
+	public String bookInsert() {
+		return "book/bookInsert";
+	}
+	// 입력 처리
+	@RequestMapping(value="/book/bookInsert", method=RequestMethod.POST)
+	public String bookInsert(Book book) {
+		bookDao.insertBook(book);
+		return "redirect:/book/bookList";
+	}
 }
