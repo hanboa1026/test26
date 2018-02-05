@@ -12,12 +12,28 @@ public class CountryDao {
 	
 	@Autowired
 	private SqlSessionTemplate sqlSessionTemplate;
-
+	
+	//나라 전체조회하는 매서드
 	public List<Country> selectCountryList() {
 		return sqlSessionTemplate.selectList(str+"selectCountryList");
 	}
 	
+	//나라 하나 조회하는 매서드
+	public Country selectCountryById(int countryId) {
+		return sqlSessionTemplate.selectOne(str+"selectCountryById",countryId);
+	}
+	
+	//나라 추가하는 매서드
 	public int insertCountry(Country country) {
 		return sqlSessionTemplate.insert(str+"insertCountry",country);
+	}
+	
+	//나라 수정하는 매서드
+	public int updateCountry(Country country) {
+		return sqlSessionTemplate.update(str+"updateCountry",country);
+	}
+	
+	public int deleteCountry(int countryId) {
+		return sqlSessionTemplate.delete(str+"deleteCountry",countryId);
 	}
 }

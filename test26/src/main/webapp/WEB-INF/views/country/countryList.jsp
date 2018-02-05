@@ -24,14 +24,14 @@
 	<tbody>
 	<tr>
 		<td>${country.countryId}</td>
-		<td>${country.countryName }</td>
-		<td><a href="">수정</a></td>
-		<td><a href="">삭제</a></td>
+		<td>${country.countryName}</td>
+		<td><a href="${pageContext.request.contextPath}/countryModify?countryId=${country.countryId}">수정</a></td>
+		<td><a href="${pageContext.request.contextPath}/countryRemove?countryId=${country.countryId}">삭제</a></td>
 	</tr>
 	</tbody>
 	</c:forEach>
 </table>
-	<a href="${pageContext.request.contextPath}/country/countryInsertForm">Country Add</a>
+	<a href="${pageContext.request.contextPath}/countryAdd">Country Add</a>
 </div>
 </body>
 </html>
