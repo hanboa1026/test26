@@ -4,6 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link href="<c:url value="/resources/css/bootstrap.min.css" />" rel="stylesheet">
 <title>Book Insert</title>
 </head>
 <body>
@@ -14,8 +15,8 @@
 				<div>제목을 입력해주세요.</div>
 				<input type="text" name="bookName">
 			</div>
-				<button class="btn btn-danger" type="submit">입력</button>
-				<button class="btn btn-danger" type="reset">초기화</button>
+			<button class="btn btn-danger" type="submit">입력</button>
+			<button class="btn btn-danger" type="reset">초기화</button>
 		</form>
 	</div>
 </body>

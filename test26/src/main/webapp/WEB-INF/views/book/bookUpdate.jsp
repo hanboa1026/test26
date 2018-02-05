@@ -16,8 +16,8 @@
 				<div>제목을 수정해주세요.</div>
 				<input type="text" value="${book.bookName}" name="bookName">
 			</div>
-				<button class="btn btn-danger" type="submit">수정</button>
-				<button class="btn btn-danger" type="reset">초기화</button>
+			<button class="btn btn-danger" type="submit">수정</button>
+			<button class="btn btn-danger" type="reset">초기화</button>
 		</form>
 	</div>
 </body>
