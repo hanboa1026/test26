@@ -16,8 +16,8 @@ public class IdolDao {
 	}
 	
 	//delete
-	public int idolDelete(int idolId) {
-			return sqlSessionTemplate.delete(str+"",idolId);
+	public int deleteIdol(int idolId) {
+			return sqlSessionTemplate.delete(str+"deleteIdol",idolId);
 	}
 
 	//insert

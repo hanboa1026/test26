@@ -26,10 +26,10 @@ import ksmart.project.test26.service.IdolDao;
 		return "idol/idolList";		
 	}
 	//Idol delete
-	@RequestMapping(value="/idol/idolDelete" ,method=RequestMethod.POST)
+	@RequestMapping(value="/idol/idolDelete" ,method=RequestMethod.GET)
 	public String idolDelete(@RequestParam(value="idolId", required=true) int idolId) {
-			idolDao.idolDelete(idolId);
-			return "redirect:/idolList";
+			idolDao.deleteIdol(idolId);
+			return "redirect:/idol/idolList";
 	}
     //입력(액션) 요청
 	@RequestMapping(value="/idol/idolInsert", method=RequestMethod.POST)
