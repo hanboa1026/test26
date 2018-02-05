@@ -46,19 +46,18 @@ public class CompanyController {
     }
     
  // 회사 수정 폼 요청
-    @RequestMapping(value="/company/companyModify", method = RequestMethod.GET)
-    public String companyModify(Model model
-                            , @RequestParam(value="companyNo", required=true) int companyId){
+    @RequestMapping(value="/company/companyUpdate", method = RequestMethod.GET)
+    public String companyUpdate(Model model, @RequestParam(value="companyId", required=true) int companyId){
         Company company= companyDao.getCompany(companyId);
         model.addAttribute("company", company);
-        return "company/companyModify";
+        return "company/companyUpdate";
     }
     
     // 회사 수정 요청
-    @RequestMapping(value="/company/companyModify", method = RequestMethod.POST)
-    public String companyModify(Company company){
+    @RequestMapping(value="/company/companyUpdate", method = RequestMethod.POST)
+    public String companyUpdate(Company company){
         companyDao.updateCompany(company);
-        return "redirect:/boardView?boardNo="+company.getCompanyId();
+        return "redirect:/company/companyList";
     }
 
 }

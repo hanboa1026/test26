@@ -11,29 +11,30 @@ public class CompanyDao {
 	
 	@Autowired
 	private SqlSessionTemplate sqlSessionTemplate;
+	String localName = "ksmart.project.test26.service.companyMapper.";
 	public List<Company> selectCompanyList() {
-		return sqlSessionTemplate.selectList("ksmart.project.test26.service.companyMapper.selectCompany");
+		return sqlSessionTemplate.selectList(localName + "selectCompany");
 	}
 	
 	// insert company
 	public int insertCompany(Company company) {
-		return sqlSessionTemplate.insert("ksmart.project.test26.service.companyMapper.insertCompany", company);
+		return sqlSessionTemplate.insert(localName + "insertCompany", company);
 	}
 	
 	// delete company
 	public int deleteCompany (int companyId) {
 		Company company = new Company();
 		company.setCompanyId(companyId);
-		return sqlSessionTemplate.delete("ksmart.project.test26.service.companyMapper.deleteCompany", company);
+		return sqlSessionTemplate.delete(localName + "deleteCompany", company);
 	}
 	
 	// getCompnay 
 	public Company getCompany(int companyId) {
-		return sqlSessionTemplate.selectOne("ksmart.project.test26.service.companyMapper.selectCompanyOne");
+		return sqlSessionTemplate.selectOne(localName + "selectCompanyOne", companyId);
 	}
 	
 	// update company
 	public int updateCompany (Company company) {
-		return sqlSessionTemplate.update("ksmart.project.test26.service.companyMapper.updateCompany", company);
+		return sqlSessionTemplate.update(localName + "updateCompany", company);
 	}
 }

@@ -13,7 +13,7 @@
 	
 	<!-- select -->
 	<select id="selectCompanyOne" resultType="ksmart.project.test26.service.Company">
-		SELECT company_id as companyId FROM company;
+		SELECT company_id as companyId, company_name as companyName FROM company WHERE company_id = #{companyId};
 	</select>
 	<!-- /select -->
 	
@@ -31,7 +31,7 @@
 	
 	<!-- update -->
 		<update id="updateCompany" parameterType="ksmart.project.test26.service.Company">
-			UPDATE company SET company_name WHERE = company_id = ?
+			UPDATE company SET company_name = #{companyName} WHERE company_id = #{companyId}
 		</update>
 	<!-- /update -->
 	
