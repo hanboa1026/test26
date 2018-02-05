@@ -34,6 +34,11 @@ public class BookController {
 	@RequestMapping(value="/book/bookUpdate", method=RequestMethod.POST)
 	public String bookUpdate(Book book) {
 		bookDao.updateBook(book);		
-		return "redirect:book/bookList";
+		return "redirect:/book/bookList";
+	}
+	// 삭제
+	public String bookDelete(@RequestParam(value="bookId", required=true) int bookId) {
+		bookDao.deleteBook(bookId);
+		return "redirect:/book/bookList";
 	}
 }

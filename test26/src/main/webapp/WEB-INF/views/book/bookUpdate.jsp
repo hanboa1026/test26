@@ -12,19 +12,11 @@
 		<h2>Book Update Form</h2>
 		<form id="bookUpdateForm" action="${pageContext.request.contextPath}/book/bookUpdate" method="post">
 			<input type="hidden" value="${book.bookId}" name="BookId">
-			<table class="table table-bordered">
-				<thead>
-					<tr>
-						<th>제목</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td><input type="text" value="${book.bookName}" name="BookName"></td>
-					</tr>
-				</tbody>
-			</table>
-				<button class="btn btn-danger" type="button">수정</button>
+			<div>
+				<div>제목을 수정해주세요.</div>
+				<input type="text" value="${book.bookName}" name="BookName">
+			</div>
+				<button class="btn btn-danger" type="submit">수정</button>
 				<button class="btn btn-danger" type="reset">초기화</button>
 		</form>
 	</div>
