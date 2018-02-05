@@ -37,6 +37,7 @@ public class BookController {
 		return "redirect:/book/bookList";
 	}
 	// 삭제
+	@RequestMapping(value="/book/bookDelete", method=RequestMethod.GET)
 	public String bookDelete(@RequestParam(value="bookId", required=true) int bookId) {
 		bookDao.deleteBook(bookId);
 		return "redirect:/book/bookList";
