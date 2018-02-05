@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import ksmart.project.test26.service.Country;
 import ksmart.project.test26.service.CountryDao;
@@ -36,16 +37,41 @@ public class CountryController {
 	}
 	
 	//나라 추가 폼 요청
-	@RequestMapping(value="/country/countryInsertForm", method=RequestMethod.GET)
-	public String CountryInsert() {
-		
+	@RequestMapping(value="/countryAdd", method=RequestMethod.GET)
+	public String CountryInsert() {		
 		return "country/countryInsertForm";
 	}
 	
 	//나라 추가 액션 요청
 	@RequestMapping(value="/countryAdd", method=RequestMethod.POST)
-	public  String CountryInsert(Country country) {
+	public String CountryInsert(Country country) {
 		countryDao.insertCountry(country);
 		return "redirect:/country/countryList";
 	}
+	
+	//나라 수정 폼 요청
+	@RequestMapping(value="/countryModify", method=RequestMethod.GET)
+	public String CountryUpdate(Model model,
+								@RequestParam(value="countryId", required=true)
+								int countryId) {
+		Country country = countryDao.selectCountryById(countryId);
+		model.addAttribute("country",country);
+		return "country/countryUpdateForm";
+	}
+	
+	//나라 수정 액션 요청
+	@RequestMapping(value="/countryModify", method=RequestMethod.POST)
+	public String CountryUpdate(Country country) {
+		countryDao.updateCountry(country);
+		return "redirect:/country/countryList";
+	}
+	
+	//나라 삭제 요청
+	@RequestMapping(value="/countryRemove", method=RequestMethod.GET)
+	public String CountryDelete(@RequestParam(value="countryId", required=true)
+								int countryId) {
+		countryDao.deleteCountry(countryId);
+		return "redirect:/country/countryList";
+	}
+	
 }
