@@ -22,17 +22,17 @@ public class CompanyController {
 	public String movie(Model model) {
 			List<Company> list = companyDao.selectCompanyList();
 			model.addAttribute("list",list);
-		return "company/CompanyList";	
+		return "company/companyList";	
 	}
 	
 	// 회사추가 요청
-    @RequestMapping(value="/company/companyAdd", method = RequestMethod.POST)
+    @RequestMapping(value="/companyAdd", method = RequestMethod.POST)
     public String companyAdd(Company company) {
         companyDao.insertCompany(company);
-        return "redirect:/company/CompanyList"; 
+        return "redirect:/company/companyList"; 
     }
     // 회사추가 폼
-    @RequestMapping(value="/company/companyAdd", method = RequestMethod.GET)
+    @RequestMapping(value="/company/companyInsertForm", method = RequestMethod.GET)
     public String companyAdd() {
         System.out.println("companyAdd 메소드 실행");
         return "company/companyInsertForm";
@@ -42,7 +42,7 @@ public class CompanyController {
     @RequestMapping(value="/company/companyRemove", method = RequestMethod.POST)
     public String companyRemove(@RequestParam(value="companyNo", required=true) int company_no) {
         companyDao.deleteCompany(company_no);
-        return "redirect:/company/CompanyList";
+        return "redirect:/company/companyList";
     }
     
  // 회사 수정 폼 요청
