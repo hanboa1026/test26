@@ -10,4 +10,24 @@
 			,city_name as cityName
 		FROM city;
 	</select>
+	<select id="getCity" parameterType="int" resultType="ksmart.project.test26.service.City">
+		SELECT
+			city_id as cityId
+			,city_name as cityName
+		FROM city
+		WHERE city_id = #{cityId}
+	</select>
+	<update id="updateCity" parameterType="ksmart.project.test26.service.City">
+		UPDATE city SET
+			city_name = #{cityName}
+		WHERE city_id = #{cityId}
+	</update>
+	<delete id="deleteCity" parameterType="ksmart.project.test26.service.City">
+		DELETE FROM city
+		WHERE city_id = #{cityId}
+	</delete>
+	<insert id="insertCity" parameterType="ksmart.project.test26.service.City">
+		INSERT INTO city(city_name)
+		VALUES (#{cityName})
+	</insert>
 </mapper>

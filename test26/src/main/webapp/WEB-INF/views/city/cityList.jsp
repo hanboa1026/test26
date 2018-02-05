@@ -18,11 +18,14 @@
 			<h2 class="col-lg-2">city List</h2>
 			<a class="col-lg-10 homeicon" href="${pageContext.request.contextPath}/"><img alt="home" src="${pageContext.request.contextPath}/resources/img/home.png"></a>
 		</div>
+		<a href="${pageContext.request.contextPath}/city/cityInsert" class="btn btn-primary">추가하기</a><br>
 		<table class="table table-bordered">
 			<thead>
 				<tr>
 					<th>넘버</th>
-					<th>나라명</th>
+					<th>도시명</th>
+					<th>수정</th>
+					<th>삭제</th>
 				</tr>
 			</thead>
 			<c:forEach var="city" items="${list}">
@@ -30,6 +33,8 @@
 				<tr>
 					<td>${city.cityId}</td>
 					<td>${city.cityName}</td>
+					<td><a href="${pageContext.request.contextPath}/city/cityUpdate?cityId=${city.cityId}">수정</a></td>
+					<td><a href="${pageContext.request.contextPath}/city/cityDelete?cityId=${city.cityId}">삭제</a></td>
 				</tr>
 			</tbody>
 			</c:forEach>
