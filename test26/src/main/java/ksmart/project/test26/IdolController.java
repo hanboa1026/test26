@@ -45,7 +45,18 @@ import ksmart.project.test26.service.IdolDao;
 		 return "idol/idolInsert";
 	}
 	
-	
-	
+	//수정폼 요청 
+	@RequestMapping(value="/idol/idolUpdate", method=RequestMethod.GET)
+	public String idolUpdate(Model model, @RequestParam(value="idolId", required=true) int idolId) {
+		Idol idol = idolDao.updateGetIdol(idolId);
+		model.addAttribute("idol", idol);
+		return "idol/idolUpdate";
+	}
+	//수정요청
+	@RequestMapping(value="/idol/idolUpdate", method=RequestMethod.POST)
+	public String idolUpdate(Idol idol) {
+		idolDao.updateIdol(idol);
+		return "redirect:/idol/idolList";
+	}
     }
  

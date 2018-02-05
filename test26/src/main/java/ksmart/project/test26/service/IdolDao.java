@@ -11,6 +11,7 @@ public class IdolDao {
 	private String str = "ksmart.project.test26.service.idolMapper.";
 	@Autowired
 	private SqlSessionTemplate sqlSessionTemplate;
+	
 	public List<Idol> selectIdolList(){
 		return sqlSessionTemplate.selectList(str+"selectIdolList");
 	}
@@ -23,6 +24,14 @@ public class IdolDao {
 	//insert
 	public int insertIdol(Idol idol) {
 		return sqlSessionTemplate.insert(str+"insertIdol",idol);
-		
+	}
+	
+	//
+	public Idol updateGetIdol(int idolId) {
+		return sqlSessionTemplate.selectOne(str+"getIdol", idolId);
+	}
+	//수정요청
+	public int updateIdol(Idol idol) {
+		return sqlSessionTemplate.update(str+"updateIdol", idol);
 	}
 }
