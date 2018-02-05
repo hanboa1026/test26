@@ -5,11 +5,19 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link href="<c:url value="/resources/css/bootstrap.min.css" />" rel="stylesheet">
+<style type="text/css">
+	.homeicon {
+		padding-top: 12px;
+	}
+</style>
 <title>book List</title>
 </head>
 <body>
 	<div class="container">
-		<h2>book List</h2>
+		<div class="row">
+			<h2 class="col-lg-2">book List</h2>
+			<a class="col-lg-10 homeicon" href="${pageContext.request.contextPath}/"><img alt="home" src="${pageContext.request.contextPath}/resources/img/home.png"></a>
+		</div>
 		<a href="${pageContext.request.contextPath}/book/bookInsert" class="btn btn-danger">추가하기</a><br>
 		<table class="table table-bordered">
 			<thead>
