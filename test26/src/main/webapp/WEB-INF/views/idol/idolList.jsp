@@ -15,6 +15,8 @@
 		<tr>
 			<th>아이디</th>
 			<th>이름</th>
+			<th>수정</th>
+			<th>삭제</th>
 		</tr>
 	</thead>
 		<c:forEach var="idol" items="${list}">
@@ -22,11 +24,14 @@
 		<tr>
 			<td>${idol.idolId}</td>
 			<td>${idol.idolName}</td>
+			<td><a href="">수정</a></td>
+			<td><a href="${pageContext.request.contextPath}/idol/idolDelete?idolId=${idol.idolId}">삭제</a></td>
 		</tr>
 	</tbody>	
 		</c:forEach>
 			
 	</table>
+		<a href="${pageContext.request.contextPath}/idol/idolInsert">Idol 등록</a>
 
 	</div>
 </body>

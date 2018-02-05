@@ -8,10 +8,21 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public class IdolDao {
+	private String str = "ksmart.project.test26.service.idolMapper.";
 	@Autowired
-	private SqlSessionTemplate sst;
+	private SqlSessionTemplate sqlSessionTemplate;
 	public List<Idol> selectIdolList(){
-		return sst.selectList("ksmart.project.test26.service.idolMapper.selectIdolList");
+		return sqlSessionTemplate.selectList(str+"selectIdolList");
+	}
+	
+	//delete
+	public int idolDelete(int idolId) {
+			return sqlSessionTemplate.delete(str+"",idolId);
 	}
 
+	//insert
+	public int insertIdol(Idol idol) {
+		return sqlSessionTemplate.insert(str+"insertIdol",idol);
+		
+	}
 }

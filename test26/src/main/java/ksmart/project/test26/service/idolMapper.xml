@@ -2,13 +2,30 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
- 
+
+<!-- select --> 
 <mapper namespace="ksmart.project.test26.service.idolMapper">
-	<select id="selectIdolList" 
-			resultType="ksmart.project.test26.service.Idol">
-		SELECT 
-			idol_id as idolId
-			,idol_name as idolName 
-		FROM idol;
+	<select id="selectIdolList" resultType="ksmart.project.test26.service.Idol">
+		SELECT idol_id as idolId, idol_name as idolName FROM idol
 	</select>
+	<!-- /select -->
+	<!-- delete -->
+	<delete id="deleteIdol" parameterType="ksmart.project.test26.service.Idol">
+		DELETE FROM idol WHERE idol_id = #{idolId}
+	</delete>
+<!-- /delete -->
+
+<!-- insert -->
+	<insert id="insertIdol" parameterType="ksmart.project.test26.service.Idol">
+		INSERT INTO idol(idol_name)VALUES(#{idolName})
+	</insert>
+<!-- /insert -->
+
+<!-- update -->
+	<update id="updateIdol">
+	</update>
+<!-- /update -->
+	
 </mapper>
+
+
