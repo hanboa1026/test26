@@ -39,9 +39,9 @@ public class CompanyController {
     }
     
  // 회사 삭제
-    @RequestMapping(value="/company/companyRemove", method = RequestMethod.POST)
-    public String companyRemove(@RequestParam(value="companyNo", required=true) int company_no) {
-        companyDao.deleteCompany(company_no);
+    @RequestMapping(value="/company/companyDelete", method = RequestMethod.GET)
+    public String companyRemove(@RequestParam(value="companyId", required=true) int companyId) {
+        companyDao.deleteCompany(companyId);
         return "redirect:/company/companyList";
     }
     

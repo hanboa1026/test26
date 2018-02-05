@@ -14,11 +14,15 @@
 		<tr>
 			<th>No.</th>
 			<th>Sub</th>
+			<th>Edit</th>
+			<th>remove</th>
 		</tr>
 		<c:forEach var="company" items="${list}">
 		<tr>
 			<td>${company.companyId}</td>
 			<td>${company.companyName}</td>
+			<td><a href="${pageContext.request.contextPath}/company/companyUpdate?companyId=${company.companyId}">Edit</a></td>
+			<td><a href="${pageContext.request.contextPath}/company/companyDelete?companyId=${company.companyId}">Remove</a></td>
 		</tr>
 		</c:forEach>
 	</table>
