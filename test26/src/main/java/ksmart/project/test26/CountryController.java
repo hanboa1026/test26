@@ -2,6 +2,8 @@ package ksmart.project.test26;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -29,7 +31,10 @@ public class CountryController {
  * 	URL을 컨트롤러의 매서드와 매핑할 때 사용하는 스프링 프레임워크의 어노테이션이다.
  * 	매서든 내에서 viewName을 별도로 설정하지 않으면 @RequestMapping의 path로
  * 	설정한 URL이 그대로 viewName으로 설정된다.*/
-	public String CountryList(Model model) {
+	public String CountryList(Model model, HttpSession session) {
+		if(session.getAttribute("loginMember") == null ) {
+			return "redirect:/log/login"; 
+		}
 		List<Country> list = countryDao.selectCountryList();
 		model.addAttribute("list",list);
 		return "country/countryList";
@@ -37,20 +42,29 @@ public class CountryController {
 	
 	// 입력페이지 요청
 	@RequestMapping(value="/countryAdd", method=RequestMethod.GET)
-	public String CountryInsert() {		
+	public String CountryInsert(HttpSession session) {
+		if(session.getAttribute("loginMember") == null ) {
+			return "redirect:/log/login"; 
+		}
 		return "country/countryInsert";
 	}
 	   
 	// 입력처리 요청
 	@RequestMapping(value="/countryAdd", method=RequestMethod.POST)
-	public String CountryInsert(Country country) {
+	public String CountryInsert(Country country, HttpSession session) {
+		if(session.getAttribute("loginMember") == null ) {
+			return "redirect:/log/login"; 
+		}
 		countryDao.insertCountry(country);
 		return "redirect:/country/countryList";
 	}
 	
 	// 업데이트 정보요청
 	@RequestMapping(value="/countryModify", method=RequestMethod.GET)
-	public String CountryUpdate(Model model,@RequestParam(value="countryId", required=true)int countryId) {
+	public String CountryUpdate(HttpSession session, Model model,@RequestParam(value="countryId", required=true)int countryId) {
+		if(session.getAttribute("loginMember") == null ) {
+			return "redirect:/log/login"; 
+		}
 		Country country = countryDao.selectCountryById(countryId);
 		model.addAttribute("country",country);
 		return "country/countryUpdate";
@@ -58,14 +72,20 @@ public class CountryController {
 	
 	// 업데이트 처리요청
 	@RequestMapping(value="/countryModify", method=RequestMethod.POST)
-	public String CountryUpdate(Country country) {
+	public String CountryUpdate(Country country, HttpSession session) {
+		if(session.getAttribute("loginMember") == null ) {
+			return "redirect:/log/login"; 
+		}
 		countryDao.updateCountry(country);
 		return "redirect:/country/countryList";
 	}
 
 	// 삭제
 	@RequestMapping(value="/countryRemove", method=RequestMethod.GET)
-	public String CountryDelete(@RequestParam(value="countryId", required=true)int countryId) {
+	public String CountryDelete(HttpSession session, @RequestParam(value="countryId", required=true)int countryId) {
+		if(session.getAttribute("loginMember") == null ) {
+			return "redirect:/log/login"; 
+		}
 		countryDao.deleteCountry(countryId);
 		return "redirect:/country/countryList";
 	}	
