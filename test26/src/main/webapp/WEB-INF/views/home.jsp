@@ -5,22 +5,7 @@
 <html>
 <head>
 <link href="<c:url value="/resources/css/bootstrap.min.css" />" rel="stylesheet">
-<style type="text/css">
-	h1 {
-		width: 100px;
-		height: 40px;
-		margin: 0 auto;
-	}
-	.animalImg {
-		width: 700px;
-		height: 150px;
-		margin: 0 auto;
-	}
-	.homeimg {
-		width : 150px;
-		height: 150px;
-	}
-</style>
+<link href="<c:url value="/resources/min_css/min_css.css" />" rel="stylesheet">
 	<title>HOME</title>
 </head>
 <body>
