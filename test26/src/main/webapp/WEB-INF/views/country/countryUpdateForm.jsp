@@ -6,6 +6,24 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link href="<c:url value="/resources/css/bootstrap.min.css" />"
 	rel="stylesheet">
+<script type="text/javascript" src="<c:url value="/resources/jquery-3.3.1.min.js"/>"></script>
+<script>
+		//    alert('jquery test');
+	    /* 입력폼 유효성 관련 요구사항
+	        1. 모든 폼은 공백 또는 "" 문자는 입력되면 안된다.
+	        2. 내용은 1자이상 입력하여야 한다.
+	    */
+	$(document).ready(function(){
+		$('#modiButton').click(function(){
+			if($('#countryName').val().length <1){
+			alert('한글자 이상 입력해주세요.');
+			$('#countryName').focus();
+			}else{
+				$('#modifyCountryForm').submit();
+			}
+		})
+		})
+</script>
 <title>Insert title here</title>
 </head>
 <body>
@@ -16,7 +34,7 @@
 				href="${pageContext.request.contextPath}/"><img alt="home"
 				src="${pageContext.request.contextPath}/resources/img/home.png"></a>
 		</div>
-		<form id="modifyCountry" method="post"
+		<form id="modifyCountryForm" method="post"
 			action="${pageContext.request.contextPath}/countryModify">
 			<table>
 				<thead>
@@ -29,13 +47,13 @@
 					<tr>
 						<td><input name="countryId" type="hidden"
 							value="${country.countryId}"></td>
-						<td><input name="countryName" type="text"
+						<td><input id="countryName" name="countryName" type="text"
 							value="${country.countryName}"></td>
 					</tr>
 				</tbody>
 
 			</table>
-			<button type="submit">MODIFY</button>
+			<button id="modiButton" type="button">MODIFY</button>
 		</form>
 	</div>
 </body>
