@@ -29,7 +29,7 @@
 
 <!-- select -->	
 	<select id="getIdol" resultType="ksmart.project.test26.service.Idol">
-		SELECT idol_id as idol_id, idol_name as idol_name FROM idol WHERE idol_id = #{idolId}
+		SELECT idol_id as idolId, idol_name as idolName FROM idol WHERE idol_id = #{idolId}
 	</select>
 <!-- /select -->
 
