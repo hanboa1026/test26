@@ -5,6 +5,19 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link href="<c:url value="/resources/css/bootstrap.min.css" />" rel="stylesheet">
+<script src="<c:url value="/resources/jquery-3.3.1.min.js" />"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('#updateButton').click(function(){
+			if($('#bookName').val().length < 1) {
+				alert('한글자 이상 입력해주세요.');
+				$('bookName').focus();
+			} else {
+				$('#bookUpdateForm').submit();
+			}
+		})
+	})
+</script>
 <title>book Update</title>
 </head>
 <body>
@@ -14,9 +27,9 @@
 			<input type="hidden" value="${book.bookId}" name="bookId">
 			<div>
 				<div>제목을 수정해주세요.</div>
-				<input type="text" value="${book.bookName}" name="bookName">
+				<input type="text" value="${book.bookName}" id="bookName" name="bookName">
 			</div>
-			<button class="btn btn-danger" type="submit">수정</button>
+			<button id="updateButton" class="btn btn-danger" type="button">수정</button>
 			<button class="btn btn-danger" type="reset">초기화</button>
 		</form>
 	</div>
