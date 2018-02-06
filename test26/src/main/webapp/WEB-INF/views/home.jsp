@@ -11,6 +11,7 @@
 <body>
 	<div class="container">
 		<h1>HOME</h1>
+		<a href="${pageContext.request.contextPath}/log/login">로그인</a>
 		<div class="animalImg">
 			<img alt="pig" class="homeimg" src="${pageContext.request.contextPath}/resources/img/pig.png">
 			<img alt="monkey" class="homeimg" src="${pageContext.request.contextPath}/resources/img/monkey.png">
