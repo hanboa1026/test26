@@ -3,8 +3,18 @@
 
 <mapper namespace="ksmart.project.test26.service.memberMapper">
 
-
-	<!-- 회원 한명 선택 -->
+	<!-- select list-->
+	<select id="selectMemberList"
+			resultType="ksmart.project.test26.service.Member">
+		SELECT
+			member_no as memberNo
+			,member_id as memberId
+			,member_pw as memberPw
+			,member_level as memberLevel 
+		FROM member
+	</select>
+	
+	<!-- select -->
 	<select id="selectMemberone" 
 			resultType="ksmart.project.test26.service.Member">
 		SELECT
@@ -12,13 +22,40 @@
 			,member_id as memberId
 			,member_pw as memberPw
 			,member_level as memberLevel 
-			FROM member WHERE member_id = #{memberId} AND member_pw = #{memberPw}
+		FROM member
+		WHERE member_id = #{memberId} AND member_pw = #{memberPw}
 	</select>
 	
-	<!-- 회원 가입  -->
-	<insert id="insertMember" >
-
+	<!-- insert -->	
+	<insert id="insertMember"
+			parameterType="ksmart.project.test26.service.Member">
+		INSERT INTO member(
+			member_id
+			,member_pw
+			,member_level)
+		VALUES (
+			#{memberId}
+			,#{memberPw}
+			,#{memberLevel}
+		)
 	</insert>
-
+	
+	<!-- update -->
+	<update id="updateMember"
+			parameterType="ksmart.project.test26.service.Member">
+		UPDATE member
+			SET member_id = #{memberId}
+			,member_pw = #{memberPw}
+			,member_level = #{memberLevel}
+		WHERE member_no = #{memberNo}		
+	</update>
+	
+	<!-- delete -->
+	<delete id="deleteMember"
+			parameterType="ksmart.project.test26.service.Member">
+		DELETE
+		FROM member
+		WHERE member_no = #{memberNo}
+	</delete>
 </mapper>
 

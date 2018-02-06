@@ -23,12 +23,21 @@ public class MemberController {
 	@Autowired
 	private MemberDao memberDao;
 
+	// 입력페이지 요청
+	@RequestMapping(value="/member/memberAdd", method=RequestMethod.GET)
+	public String memberAdd() {
+		return "member/memberInsert";
+	}
 	
-	// 로그인 폼 요청
+//	// 입력처리 요청
+//	public String memberAdd(Member member) {
+//
+//	}
+//	
+	// 로그인 화면 요청
 	@RequestMapping(value="/log/login", method=RequestMethod.GET)
-	public String Login(Model model) {	
-		 
-		return "log/login";
+	public String Login() {	
+		 return "log/login";
 	}
 	
 	// 로그인 요청
@@ -62,5 +71,7 @@ public class MemberController {
 		return "home";
 		
 	}
+	
+
 	
 }
