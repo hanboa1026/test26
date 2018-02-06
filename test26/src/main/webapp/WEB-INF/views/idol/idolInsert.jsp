@@ -34,6 +34,7 @@
 				<button class="btn btn-info" type="reset">초기화</button>
 			</div>		
 		</form>
+		<jsp:include page="/WEB-INF/views/inc/footer.jsp"></jsp:include>
 	</div>
 </body>
 </html>
