@@ -29,8 +29,8 @@
 <body>
 	<div class="container">
 		<div class="row">
-		<h2 class="col-lg-3 col-sm-4">Country Insert Form</h2>
-		<a class="col-lg-9 col-sm-8 homeicon" href="${pageContext.request.contextPath}/"><img alt="home" src="${pageContext.request.contextPath}/resources/img/home.png"></a>
+		<h2 class="col-lg-4 col-sm-4">Country Insert Form</h2>
+		<a class="col-lg-8 col-sm-8 homeicon" href="${pageContext.request.contextPath}/"><img alt="home" src="${pageContext.request.contextPath}/resources/img/home.png"></a>
 		</div>
 		<form id="addCountryForm" method="post" action="${pageContext.request.contextPath}/countryAdd">
 			<div class="alert alert-success">
@@ -40,6 +40,7 @@
 				<button class="btn btn-success" type="reset">초기화</button>
 			</div>
 		</form>
+		<jsp:include page="/WEB-INF/views/inc/footer.jsp"></jsp:include>
 	</div>
 </body>
 </html>

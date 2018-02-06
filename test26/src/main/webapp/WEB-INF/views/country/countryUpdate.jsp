@@ -28,8 +28,8 @@
 <body>
 	<div class="container">
 		<div class="row">
-		<h2 class="col-lg-3 col-sm-4">Country Update Form</h2>
-		<a class="col-lg-9 col-sm-8 homeicon" href="${pageContext.request.contextPath}/"><img alt="home" src="${pageContext.request.contextPath}/resources/img/home.png"></a>
+		<h2 class="col-lg-4 col-sm-4">Country Update Form</h2>
+		<a class="col-lg-8 col-sm-8 homeicon" href="${pageContext.request.contextPath}/"><img alt="home" src="${pageContext.request.contextPath}/resources/img/home.png"></a>
 		</div>
 		<form id="modifyCountryForm" method="post" action="${pageContext.request.contextPath}/countryModify">
 			<input type="hidden" value="${country.countryId}" name="countryId">
@@ -40,6 +40,7 @@
 			<button id="modiButton" type="button"  class="btn btn-success">수정</button>
 			<button type="reset"  class="btn btn-success">초기화</button>
 		</form>
+		<jsp:include page="/WEB-INF/views/inc/footer.jsp"></jsp:include>
 	</div>
 </body>
 </html>
