@@ -6,7 +6,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h2>로그인화면<h2>
+	<h2>로그인화면</h2>
 	<form action="${pageContext.request.contextPath}/log/loginAction" method="POST">
 		<input name="memberId" type="text" placeholder="ID"> <br />
 		<input name="memberPw" type="password" placeholder="Password">
