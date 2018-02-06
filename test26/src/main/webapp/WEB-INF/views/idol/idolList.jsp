@@ -3,36 +3,38 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<link href="<c:url value="/resources/css/bootstrap.min.css" />" rel="stylesheet">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link href="<c:url value="/resources/css/bootstrap.min.css" />" rel="stylesheet">
+<link href="<c:url value="/resources/min_css/min_css.css" />" rel="stylesheet">
 <title>Idol List</title>
 </head>
 <body>
 	<div class="container">
-	<h2>Idol List</h2>
-	<table class= "table tableborded">
-	<thead>
-		<tr>
-			<th>아이디</th>
-			<th>이름</th>
-			<th>수정</th>
-			<th>삭제</th>
-		</tr>
-	</thead>
+		<div class="row">
+			<h2 class="col-lg-2 col-sm-3">Idol List</h2>
+			<a class="col-lg-10 col-sm-9 homeicon" href="${pageContext.request.contextPath}/"><img alt="home" src="${pageContext.request.contextPath}/resources/img/home.png"></a>
+		</div>
+		<a href="${pageContext.request.contextPath}/idol/idolInsert" class="btn btn-info">ADD</a>
+		<table class= "table table-striped table-hover">
+		<thead>
+			<tr class="info">
+				<th>No.</th>
+				<th>NAME</th>
+				<th>UPDATE</th>
+				<th>DELETE</th>
+			</tr>
+		</thead>
 		<c:forEach var="idol" items="${list}">
-	<tbody>
-		<tr>
-			<td>${idol.idolId}</td>
-			<td>${idol.idolName}</td>
-			<td><a href="${pageContext.request.contextPath}/idol/idolUpdate?idolId=${idol.idolId}">수정</a></td>
-			<td><a href="${pageContext.request.contextPath}/idol/idolDelete?idolId=${idol.idolId}">삭제</a></td>
-		</tr>
-	</tbody>	
+			<tbody>
+				<tr>
+					<td>${idol.idolId}</td>
+					<td>${idol.idolName}</td>
+					<td><a href="${pageContext.request.contextPath}/idol/idolUpdate?idolId=${idol.idolId}">수정</a></td>
+					<td><a href="${pageContext.request.contextPath}/idol/idolDelete?idolId=${idol.idolId}">삭제</a></td>
+				</tr>
+			</tbody>	
 		</c:forEach>
-			
-	</table>
-		<a href="${pageContext.request.contextPath}/idol/idolInsert">Idol 등록</a>
-
+		</table>
 	</div>
 </body>
 </html>
