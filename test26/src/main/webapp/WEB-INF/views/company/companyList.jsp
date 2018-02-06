@@ -14,7 +14,7 @@
 			<h2 class="col-lg-3 col-sm-3">Company List</h2>
 			<a class="col-lg-9 col-sm-9 homeicon" href="${pageContext.request.contextPath}/"><img alt="home" src="${pageContext.request.contextPath}/resources/img/home.png"></a>
 		</div>
-		<a href="${pageContext.request.contextPath}/company/companyInsertForm" class="btn btn-warning">ADD</a>
+		<a href="${pageContext.request.contextPath}/company/companyInsert" class="btn btn-warning">ADD</a>
 		<table class="table table-striped table-hover">
 			<tr class="warning">
 				<th>No.</th>

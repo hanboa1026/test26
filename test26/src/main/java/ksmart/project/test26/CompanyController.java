@@ -32,10 +32,10 @@ public class CompanyController {
         return "redirect:/company/companyList"; 
     }
     // 회사 추가 폼
-    @RequestMapping(value="/company/companyInsertForm", method = RequestMethod.GET)
+    @RequestMapping(value="/company/companyInsert", method = RequestMethod.GET)
     public String companyAdd() {
         System.out.println("companyAdd 메소드 출력");
-        return "company/companyInsertForm";
+        return "company/companyInsert";
     }
     
  // 회사 삭제
