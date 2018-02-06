@@ -1,33 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper
-  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
- 
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
 <mapper namespace="ksmart.project.test26.service.bookMapper">
-	<select id="selectBookList" resultType="ksmart.project.test26.service.Book">
+
+	<!-- select list-->
+	<select id="selectBookList"
+			resultType="ksmart.project.test26.service.Book">
 		SELECT
-			book_id as bookId
-			,book_name as bookName
+		book_id as bookId
+		,book_name as bookName
 		FROM book;
 	</select>
-	<select id="getBook" parameterType="int" resultType="ksmart.project.test26.service.Book">
+	
+	<!-- select -->
+	<select id="getBook"
+			parameterType="int"
+			resultType="ksmart.project.test26.service.Book">
 		SELECT
-			book_id as bookId
-			,book_name as bookName
+		book_id as bookId
+		,book_name as bookName
 		FROM book
 		WHERE book_id = #{bookId}
 	</select>
-	<update id="updateBook" parameterType="ksmart.project.test26.service.Book">
-		UPDATE book SET
-			book_name = #{bookName}
-		WHERE book_id = #{bookId}
-	</update>
-	<delete id="deleteBook" parameterType="ksmart.project.test26.service.Book">
-		DELETE FROM book
-		WHERE book_id = #{bookId}
-	</delete>
-	<insert id="insertBook" parameterType="ksmart.project.test26.service.Book">
-		INSERT INTO book(book_name)
+
+	<!-- insert -->	
+	<insert id="insertBook"
+			parameterType="ksmart.project.test26.service.Book">
+		INSERT
+		INTO book(book_name)
 		VALUES (#{bookName})
 	</insert>
+
+	<!-- update -->	
+	<update id="updateBook"
+			parameterType="ksmart.project.test26.service.Book">
+		UPDATE book
+		SET book_name = #{bookName}
+		WHERE book_id = #{bookId}
+	</update>
+	
+	<!-- delete -->
+	<delete id="deleteBook"
+			parameterType="ksmart.project.test26.service.Book">
+		DELETE
+		FROM book
+		WHERE book_id = #{bookId}
+	</delete>
+	
 </mapper>

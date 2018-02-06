@@ -1,33 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper
-  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
- 
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
 <mapper namespace="ksmart.project.test26.service.cityMapper">
-	<select id="selectCityList" resultType="ksmart.project.test26.service.City">
+	
+	<!-- select list-->
+	<select id="selectCityList"
+			resultType="ksmart.project.test26.service.City">
 		SELECT
-			city_id as cityId
-			,city_name as cityName
+		city_id as cityId
+		,city_name as cityName
 		FROM city;
 	</select>
-	<select id="getCity" parameterType="int" resultType="ksmart.project.test26.service.City">
+	
+	<!-- select -->
+	<select id="getCity"
+			parameterType="int"
+			resultType="ksmart.project.test26.service.City">
 		SELECT
-			city_id as cityId
-			,city_name as cityName
+		city_id as cityId
+		,city_name as cityName
 		FROM city
 		WHERE city_id = #{cityId}
 	</select>
-	<update id="updateCity" parameterType="ksmart.project.test26.service.City">
-		UPDATE city SET
-			city_name = #{cityName}
-		WHERE city_id = #{cityId}
-	</update>
-	<delete id="deleteCity" parameterType="ksmart.project.test26.service.City">
-		DELETE FROM city
-		WHERE city_id = #{cityId}
-	</delete>
-	<insert id="insertCity" parameterType="ksmart.project.test26.service.City">
-		INSERT INTO city(city_name)
+	
+	<!-- insert -->
+	<insert id="insertCity"
+			parameterType="ksmart.project.test26.service.City">
+		INSERT
+		INTO city(city_name)
 		VALUES (#{cityName})
 	</insert>
+	
+	<!-- update -->
+	<update id="updateCity"
+			parameterType="ksmart.project.test26.service.City">
+		UPDATE city
+		SET city_name = #{cityName}
+		WHERE city_id = #{cityId}
+	</update>
+
+	<!-- delete -->
+	<delete id="deleteCity"
+			parameterType="ksmart.project.test26.service.City">
+		DELETE
+		FROM city
+		WHERE city_id = #{cityId}
+	</delete>	
+	
 </mapper>
