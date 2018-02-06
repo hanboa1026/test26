@@ -39,7 +39,7 @@ public class CountryController {
 	//나라 추가 폼 요청
 	@RequestMapping(value="/countryAdd", method=RequestMethod.GET)
 	public String CountryInsert() {		
-		return "country/countryInsertForm";
+		return "country/countryInsert";
 	}
 	
 	//나라 추가 액션 요청
@@ -56,7 +56,7 @@ public class CountryController {
 								int countryId) {
 		Country country = countryDao.selectCountryById(countryId);
 		model.addAttribute("country",country);
-		return "country/countryUpdateForm";
+		return "country/countryUpdate";
 	}
 	
 	//나라 수정 액션 요청
