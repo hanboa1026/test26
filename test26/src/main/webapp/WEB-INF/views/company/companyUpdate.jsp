@@ -29,15 +29,18 @@
 </head>
 <body>
 	<div class="container">
-		<h2>Company Update Form</h2>
+		<div class="row">
+		<h2 class="col-lg-3 col-sm-4">Company Update Form</h2>
+		<a class="col-lg-9 col-sm-8 homeicon" href="${pageContext.request.contextPath}/"><img alt="home" src="${pageContext.request.contextPath}/resources/img/home.png"></a>
+		</div>
 		<form id="companyUpdateForm" action="${pageContext.request.contextPath}/company/companyUpdate" method="post">
-			<input type="hidden" value="${company.companyId}" name="companyId">
-			<div>
-				<div>이름을 수정해주세요.</div>
-				<input type="text" value="${company.companyName}" id="companyName" name="companyName">
-			</div>
+				<input type="hidden" value="${company.companyId}" name="companyId">
+				<div class="alert alert-warning">
+					<div>이름을 수정해주세요.</div>			
+					<input type="text" value="${company.companyName}" id="companyName" name="companyName">
 				<button class="btn btn-warning" type="submit" id="addButton">수정</button>
 				<button class="btn btn-warning" type="reset">초기화</button>
+				</div>
 		</form>
 	</div>
 </body>

@@ -29,14 +29,18 @@
 </head>
 <body>
 	<div class="container">
-		<h2>회사 입력 화면</h2>
+		<div class="row">
+		<h2 class="col-lg-3 col-sm-4">Company Insert Form</h2>
+		<a class="col-lg-9 col-sm-8 homeicon" href="${pageContext.request.contextPath}/"><img alt="home" src="${pageContext.request.contextPath}/resources/img/home.png"></a>
+		</div>
+		
 	 	<form action="${pageContext.request.contextPath}/companyAdd" method="post" id="addForm">
-	 		<div>
+	 		<div class="alert alert-warning">
 	 			<div>회사이름 이름 </div>
 	 			<input type="text" id="companyName" name="companyName">
-	 		</div>
 	 			<button id="addButton" class="btn btn-warning" type="button">추가</button>
 	 			<button class="btn btn-warning" type="reset">초기화</button>
+ 			</div>
  		</form>
  	</div>
 </body>
