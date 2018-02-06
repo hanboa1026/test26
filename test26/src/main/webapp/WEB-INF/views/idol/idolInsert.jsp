@@ -22,14 +22,17 @@
 
 <body>
 	<div class="container">
-		<h2>Idol 입력화면</h2>
+		<div class="row">
+		<h2 class="col-lg-3 col-sm-4">Idol 입력화면</h2>
+		<a class="col-lg-9 col-sm-8 homeicon" href="${pageContext.request.contextPath}/"><img alt="home" src="${pageContext.request.contextPath}/resources/img/home.png"></a>
+		</div>
 		<form id="insertIdol" method="post" action="${pageContext.request.contextPath }/idol/idolInsert">
-			<div>
+			<div class="alert alert-info">
 				<div>IdolName</div>
 				<input type="text" name="IdolName" id="idolName">
-			</div>
-		<button id="addButton" class="btn btn-info" type="button">등록</button>
-		<button class="btn btn-info" type="reset">초기화</button>
+				<button id="addButton" class="btn btn-info" type="button">등록</button>
+				<button class="btn btn-info" type="reset">초기화</button>
+			</div>		
 		</form>
 	</div>
 </body>

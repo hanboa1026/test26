@@ -22,15 +22,18 @@
 </head>
 <body>
 	<div class="container">
-		<h2>Idol Update Form</h2>
+		<div class="row">
+		<h2 class="col-lg-3 col-sm-4">Idol Update Form</h2>
+		<a class="col-lg-9 col-sm-8 homeicon" href="${pageContext.request.contextPath}/"><img alt="home" src="${pageContext.request.contextPath}/resources/img/home.png"></a>
+		</div>
 		<form id="idolUpdateForm" action="${pageContext.request.contextPath}/idol/idolUpdate" method="post">
 			<input type="hidden" value="${idol.idolId}" name="idolId">
-			<div>
+			<div class="alert alert-info">
 				<div>Idol 이름을 수정 해주세요.</div>
 				<input type="text" value="${idol.idolName}" name="idolName" id="idolName">
+				<button id="updateButton" class="btn btn-info" type="button">수정</button>
+				<button class="btn btn-info" type="reset">초기화</button>
 			</div>
-					<button id="updateButton" class="btn btn-info" type="button">수정</button>
-					<button class="btn btn-info" type="reset">초기화</button>
 		</form>
 		
 	</div>
