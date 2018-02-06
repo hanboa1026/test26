@@ -5,13 +5,11 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link href="<c:url value="/resources/css/bootstrap.min.css" />"
-	rel="stylesheet">
-<script type="text/javascript"
-	src="<c:url value="/resources/jquery-3.3.1.min.js"/>"></script>
-<script>
-	//    alert('jquery test');
-	/* 입력폼 유효성 관련 요구사항
+<link href="<c:url value="/resources/css/bootstrap.min.css" />"rel="stylesheet">
+<script type="text/javascript"src="<c:url value="/resources/jquery-3.3.1.min.js"/>"></script>
+<script>    
+	/* 	alert('jquery test');
+		입력폼 유효성 관련 요구사항
 	    1. 모든 폼은 공백 또는 "" 문자는 입력되면 안된다.
 	    2. 내용은 1자이상 입력하여야 한다.
 	 */
@@ -30,19 +28,18 @@
 </head>
 <body>
 	<div class="container">
-		<form id="addCountryForm" method="post"
-			action="${pageContext.request.contextPath}/countryAdd">
-			<div>
+		<div class="row">
+		<h2 class="col-lg-3 col-sm-4">Country Insert Form</h2>
+		<a class="col-lg-9 col-sm-8 homeicon" href="${pageContext.request.contextPath}/"><img alt="home" src="${pageContext.request.contextPath}/resources/img/home.png"></a>
+		</div>
+		<form id="addCountryForm" method="post" action="${pageContext.request.contextPath}/countryAdd">
+			<div class="alert alert-success">
 				<div>이름을 입력해주세요.</div>
-				<input class="form-control" id="countryName" name="countryName"
-					type="text">
+				<input class="form-control" id="countryName" name="countryName" type="text">
+				<button id="addButton" type="button" class="btn btn-success">입력</button>
+				<button class="btn btn-success" type="reset">초기화</button>
 			</div>
-			<button id="addButton" type="button" class="btn btn-success">입력</button>
-			<button type="reset" class="btn btn-success">초기화</button>
-
 		</form>
 	</div>
-
 </body>
-
 </html>
