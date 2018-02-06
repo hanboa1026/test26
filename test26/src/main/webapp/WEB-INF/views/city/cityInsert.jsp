@@ -35,6 +35,7 @@
 		<button id="addButton" class="btn btn-primary" type="button">입력</button>
 		<button class="btn btn-primary" type="reset">초기화</button>
 		</form>
+		<jsp:include page="/WEB-INF/views/inc/footer.jsp"></jsp:include>
 	</div>
 </body>
 </html>

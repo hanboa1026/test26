@@ -36,6 +36,7 @@
 		<button id="updateButton" class="btn btn-primary" type="submit">수정</button>
 		<button class="btn btn-primary" type="reset">초기화</button>
 		</form>
+		<jsp:include page="/WEB-INF/views/inc/footer.jsp"></jsp:include>
 	</div>
 </body>
 </html>
