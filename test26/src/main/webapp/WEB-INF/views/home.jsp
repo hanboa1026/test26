@@ -12,15 +12,14 @@
 <body>
 	<div class="container">
 		<h1>HOME</h1>
-		
-		
-		<c:if test="${empty sessionScope.loginMember}">
-			<a href="${pageContext.request.contextPath}/log/login">로그인</a>
-		</c:if>
-		
-		<c:if test="${not empty sessionScope.loginMember}">
-			<a href="${pageContext.request.contextPath}/log/logOut">로그아웃</a>
-		</c:if>
+		<div class="logInOut">
+			<c:if test="${empty sessionScope.loginMember}">
+				<a class="btn btn-default btn-lg" href="${pageContext.request.contextPath}/log/login">login</a>
+			</c:if>
+			<c:if test="${not empty sessionScope.loginMember}">
+				<a class="btn btn-default btn-lg" href="${pageContext.request.contextPath}/log/logOut">logout</a>
+			</c:if>
+		</div>
 		<div class="animalImg">
 			<img alt="pig" class="homeimg" src="${pageContext.request.contextPath}/resources/img/pig.png">
 			<img alt="monkey" class="homeimg" src="${pageContext.request.contextPath}/resources/img/monkey.png">
@@ -34,6 +33,7 @@
 			<li class="list-group-item"><a class="btn btn-info btn-lg btn-block" href="${pageContext.request.contextPath}/idol/idolList">아이돌 목록</a></li>
 			<li class="list-group-item"><a class="btn btn-primary btn-lg btn-block" href="${pageContext.request.contextPath}/city/cityList">도시 목록</a></li>
 		</ul>
+		<jsp:include page="/WEB-INF/views/inc/footer.jsp"></jsp:include>
 	</div>
 </body>
 </html>

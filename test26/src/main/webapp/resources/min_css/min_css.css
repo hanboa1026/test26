@@ -3,7 +3,7 @@
 h1 {
 	width: 100px;
 	height: 40px;
-	margin: 0 auto;
+	margin: 20px auto;
 	}
 .animalImg {
 	width: 700px;
@@ -14,6 +14,9 @@ h1 {
 	width : 150px;
 	height: 150px;
 	}
+.logInOut {
+	float: right;
+}
 /* 전체파일 */
 .homeicon {
 		padding-top: 14px;
