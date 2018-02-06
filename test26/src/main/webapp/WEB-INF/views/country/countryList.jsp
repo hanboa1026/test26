@@ -4,21 +4,22 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link href="<c:url value="/resources/css/bootstrap.min.css" />"
-	rel="stylesheet">
-<title>Insert title here</title>
+<link href="<c:url value="/resources/css/bootstrap.min.css" />" rel="stylesheet">
+<link href="<c:url value="/resources/min_css/min_css.css" />" rel="stylesheet">
+<title>Country List</title>
 </head>
 <body>
 	<div class="container">
 		<div class="row">
-			<h2 class="col-lg-2">Country List</h2>
-			<a class="col-lg-10 homeicon"
+			<h2 class="col-lg-2 col-sm-3">Country List</h2>
+			<a class="col-lg-10 col-sm-9 homeicon"
 				href="${pageContext.request.contextPath}/"><img alt="home"
 				src="${pageContext.request.contextPath}/resources/img/home.png"></a>
 		</div>
+		<a href="${pageContext.request.contextPath}/countryAdd" class="btn btn-success">ADD</a>
 		<table class="table table-striped table-hover">
 			<thead>
-				<tr class="danger">
+				<tr class="success">
 					<th>No.</th>
 					<th>NAME</th>
 					<th>UPDATE</th>
@@ -38,8 +39,6 @@
 				</tbody>
 			</c:forEach>
 		</table>
-		<a href="${pageContext.request.contextPath}/countryAdd">Country
-			Add</a>
 	</div>
 </body>
 </html>
