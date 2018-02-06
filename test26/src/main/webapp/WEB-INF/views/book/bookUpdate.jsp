@@ -5,6 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link href="<c:url value="/resources/css/bootstrap.min.css" />" rel="stylesheet">
+<link href="<c:url value="/resources/min_css/min_css.css" />" rel="stylesheet">
 <script src="<c:url value="/resources/jquery-3.3.1.min.js" />"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
@@ -22,10 +23,13 @@
 </head>
 <body>
 	<div class="container">
-		<h2>Book Update Form</h2>
+		<div class="row">
+		<h2 class="col-lg-3 col-sm-4">Book Update Form</h2>
+		<a class="col-lg-9 col-sm-8 homeicon" href="${pageContext.request.contextPath}/"><img alt="home" src="${pageContext.request.contextPath}/resources/img/home.png"></a>
+		</div>
 		<form id="bookUpdateForm" action="${pageContext.request.contextPath}/book/bookUpdate" method="post">
 			<input type="hidden" value="${book.bookId}" name="bookId">
-			<div>
+			<div class="alert alert-danger">
 				<div>제목을 수정해주세요.</div>
 				<input type="text" value="${book.bookName}" id="bookName" name="bookName">
 			</div>
