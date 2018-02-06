@@ -27,7 +27,7 @@ public class CityDao {
 	public int deleteCity(int cityId) {
 		return sqlSessionTemplate.delete(localName+"deleteCity", cityId);
 	}
-	// 삽입
+	// 등록
 	public int insertCity(City city) {
 		return sqlSessionTemplate.insert(localName+"insertCity", city);
 	}

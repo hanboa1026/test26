@@ -27,7 +27,7 @@ public class BookDao {
 	public int deleteBook(int bookId) {
 		return sqlSessionTemplate.delete(localName+"deleteBook", bookId);
 	}
-	// 삽입
+	// 등록
 	public int insertBook(Book book) {
 		return sqlSessionTemplate.insert(localName+"insertBook", book);
 	}

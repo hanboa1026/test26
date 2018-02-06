@@ -7,34 +7,30 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class CompanyDao {
-	
+public class CompanyDao {	
 	@Autowired
 	private SqlSessionTemplate sqlSessionTemplate;
 	String localName = "ksmart.project.test26.service.companyMapper.";
+	// 목록조회
 	public List<Company> selectCompanyList() {
 		return sqlSessionTemplate.selectList(localName + "selectCompany");
 	}
-	
-	// insert company
-	public int insertCompany(Company company) {
-		return sqlSessionTemplate.insert(localName + "insertCompany", company);
+	// 업데이트 정보요청
+	public Company getCompany(int companyId) {
+		return sqlSessionTemplate.selectOne(localName + "selectCompanyOne", companyId);
 	}
-	
-	// delete company
+	// 업데이트
+	public int updateCompany (Company company) {
+		return sqlSessionTemplate.update(localName + "updateCompany", company);
+	}
+	// 삭제
 	public int deleteCompany (int companyId) {
 		Company company = new Company();
 		company.setCompanyId(companyId);
 		return sqlSessionTemplate.delete(localName + "deleteCompany", company);
 	}
-	
-	// getCompnay 
-	public Company getCompany(int companyId) {
-		return sqlSessionTemplate.selectOne(localName + "selectCompanyOne", companyId);
-	}
-	
-	// update company
-	public int updateCompany (Company company) {
-		return sqlSessionTemplate.update(localName + "updateCompany", company);
+	// 등록
+	public int insertCompany(Company company) {
+		return sqlSessionTemplate.insert(localName + "insertCompany", company);
 	}
 }
