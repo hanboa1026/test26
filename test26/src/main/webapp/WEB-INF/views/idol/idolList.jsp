@@ -14,7 +14,7 @@
 			<h2 class="col-lg-2 col-sm-3">Idol List</h2>
 			<a class="col-lg-10 col-sm-9 homeicon" href="${pageContext.request.contextPath}/"><img alt="home" src="${pageContext.request.contextPath}/resources/img/home.png"></a>
 		</div>
-		<a href="${pageContext.request.contextPath}/idol/idolInsert" class="btn btn-info">ADD</a>
+		<a href="${pageContext.request.contextPath}/idol/idolInsert" class="btn btn-info">idol ADD</a>
 		<table class= "table table-striped table-hover">
 		<thead>
 			<tr class="info">
