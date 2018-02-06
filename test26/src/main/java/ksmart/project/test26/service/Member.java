@@ -32,5 +32,11 @@ public class Member {
 		this.memberLevel = memberLevel;
 	}
 	
+	@Override
+	   public String toString() {
+	      return "Member [memberNo=" + memberNo + ", memberId=" + memberId + ", memberPw=" + memberPw + ", memberLevel="
+	            + memberLevel + "]";
+	   }
+	
 	
 }

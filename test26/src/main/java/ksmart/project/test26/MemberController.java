@@ -18,7 +18,7 @@ import ksmart.project.test26.service.MemberDao;
 @Controller
 public class MemberController {
 	
-	 private static final Logger logger = (Logger) LoggerFactory.getLogger(MemberController.class);
+	 private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
 
 	@Autowired
 	private MemberDao memberDao;
