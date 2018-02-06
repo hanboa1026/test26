@@ -31,4 +31,6 @@ public class Member {
 	public void setMemberLevel(String memberLevel) {
 		this.memberLevel = memberLevel;
 	}
+	
+	
 }

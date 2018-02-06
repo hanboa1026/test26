@@ -12,7 +12,7 @@
 			,member_id as memberId
 			,member_pw as memberPw
 			,member_level as memberLevel 
-			FROM member WHERE member_id = #{memberId}
+			FROM member WHERE member_id = #{memberId} AND member_pw = #{memberPw}
 	</select>
 	
 	<!-- 회원 가입  -->

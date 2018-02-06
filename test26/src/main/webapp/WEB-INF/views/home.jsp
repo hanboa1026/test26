@@ -1,7 +1,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page session="false" %>
+<%@ page session="true" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
 <html>
 <head>
 <link href="<c:url value="/resources/css/bootstrap.min.css" />" rel="stylesheet">
@@ -11,7 +12,15 @@
 <body>
 	<div class="container">
 		<h1>HOME</h1>
-		<a href="${pageContext.request.contextPath}/log/login">로그인</a>
+		
+		
+		<c:if test="${empty sessionScope.loginMember}">
+			<a href="${pageContext.request.contextPath}/log/login">로그인</a>
+		</c:if>
+		
+		<c:if test="${not empty sessionScope.loginMember}">
+			<a href="${pageContext.request.contextPath}/log/logOut">로그아웃</a>
+		</c:if>
 		<div class="animalImg">
 			<img alt="pig" class="homeimg" src="${pageContext.request.contextPath}/resources/img/pig.png">
 			<img alt="monkey" class="homeimg" src="${pageContext.request.contextPath}/resources/img/monkey.png">
