@@ -17,7 +17,7 @@ public class CompanyController {
 	@Autowired
 	private CompanyDao companyDao;
 	
-	
+	// 회사 리스트
 	@RequestMapping(value="/company/companyList", method = RequestMethod.GET)
 	public String movie(Model model) {
 			List<Company> list = companyDao.selectCompanyList();
@@ -25,16 +25,16 @@ public class CompanyController {
 		return "company/companyList";	
 	}
 	
-	// 회사추가 요청
+	// 회사 추가 요청
     @RequestMapping(value="/companyAdd", method = RequestMethod.POST)
     public String companyAdd(Company company) {
         companyDao.insertCompany(company);
         return "redirect:/company/companyList"; 
     }
-    // 회사추가 폼
+    // 회사 추가 폼
     @RequestMapping(value="/company/companyInsertForm", method = RequestMethod.GET)
     public String companyAdd() {
-        System.out.println("companyAdd 메소드 실행");
+        System.out.println("companyAdd 메소드 출력");
         return "company/companyInsertForm";
     }
     
@@ -53,7 +53,7 @@ public class CompanyController {
         return "company/companyUpdate";
     }
     
-    // 회사 수정 요청
+    //회사 수정 요청
     @RequestMapping(value="/company/companyUpdate", method = RequestMethod.POST)
     public String companyUpdate(Company company){
         companyDao.updateCompany(company);
