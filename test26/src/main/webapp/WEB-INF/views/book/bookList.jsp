@@ -35,6 +35,7 @@
 			</tbody>
 			</c:forEach>
 		</table>
+		<jsp:include page="/WEB-INF/views/inc/footer.jsp"></jsp:include>
 	</div>
 </body>
 </html>

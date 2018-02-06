@@ -24,8 +24,8 @@
 <body>
 	<div class="container">
 		<div class="row">
-		<h2 class="col-lg-3 col-sm-4">Book Update Form</h2>
-		<a class="col-lg-9 col-sm-8 homeicon" href="${pageContext.request.contextPath}/"><img alt="home" src="${pageContext.request.contextPath}/resources/img/home.png"></a>
+			<h2 class="col-lg-3 col-sm-4">Book Update Form</h2>
+			<a class="col-lg-9 col-sm-8 homeicon" href="${pageContext.request.contextPath}/"><img alt="home" src="${pageContext.request.contextPath}/resources/img/home.png"></a>
 		</div>
 		<form id="bookUpdateForm" action="${pageContext.request.contextPath}/book/bookUpdate" method="post">
 			<input type="hidden" value="${book.bookId}" name="bookId">
@@ -36,6 +36,7 @@
 			<button id="updateButton" class="btn btn-danger" type="button">수정</button>
 			<button class="btn btn-danger" type="reset">초기화</button>
 		</form>
+		<jsp:include page="/WEB-INF/views/inc/footer.jsp"></jsp:include>
 	</div>
 </body>
 </html>

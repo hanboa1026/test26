@@ -24,8 +24,8 @@
 <body>
 	<div class="container">
 		<div class="row">
-		<h2 class="col-lg-3 col-sm-4">Book ADD Form</h2>
-		<a class="col-lg-9 col-sm-8 homeicon" href="${pageContext.request.contextPath}/"><img alt="home" src="${pageContext.request.contextPath}/resources/img/home.png"></a>
+			<h2 class="col-lg-3 col-sm-4">Book ADD Form</h2>
+			<a class="col-lg-9 col-sm-8 homeicon" href="${pageContext.request.contextPath}/"><img alt="home" src="${pageContext.request.contextPath}/resources/img/home.png"></a>
 		</div>
 		<form id="bookInsertForm" action="${pageContext.request.contextPath}/book/bookInsert" method="post">
 			<div class="alert alert-danger">
@@ -35,6 +35,7 @@
 				<button class="btn btn-danger" type="reset">초기화</button>
 			</div>
 		</form>
+		<jsp:include page="/WEB-INF/views/inc/footer.jsp"></jsp:include>
 	</div>
 </body>
 </html>
