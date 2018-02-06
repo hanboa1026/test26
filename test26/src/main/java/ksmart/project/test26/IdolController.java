@@ -13,51 +13,51 @@ import ksmart.project.test26.service.Idol;
 import ksmart.project.test26.service.IdolDao;
 
 @Controller
-    public class IdolController{
+public class IdolController{
 	@Autowired
 	private IdolDao idolDao;
 	
-	
-	//List
+	// ëª©ë¡ì¡°íšŒ
 	@RequestMapping(value="/idol/idolList",method=RequestMethod.GET)
 	public String IdolList(Model model) {
 		List<Idol> list = idolDao.selectIdolList();
 		model.addAttribute("list",list);
 		return "idol/idolList";		
 	}
-	//Idol delete
-	@RequestMapping(value="/idol/idolDelete" ,method=RequestMethod.GET)
-	public String idolDelete(@RequestParam(value="idolId", required=true) int idolId) {
-			idolDao.deleteIdol(idolId);
-			return "redirect:/idol/idolList";
-	}
-    //ÀÔ·Â(¾×¼Ç) ¿äÃ»
+	  
+	// ì…ë ¥í˜ì´ì§€ ìš”ì²­
 	@RequestMapping(value="/idol/idolInsert", method=RequestMethod.POST)
 	public String idolInsert(Idol idol) {
 		idolDao.insertIdol(idol);
 		return "redirect:/idol/idolList";
 	}
 	
-	//ÀÔ·ÂÆäÀÌÁö ¿äÃ»
+	// ì…ë ¥ ì²˜ë¦¬ìš”ì²­
 	@RequestMapping(value="/idol/idolInsert", method=RequestMethod.GET)
 	public String idolInsert() {
-		System.out.println("insert form ¿äÃ»ÀÏ±î?? ¸ô¶ó");
-		 return "idol/idolInsert";
-	}
+		return "idol/idolInsert";
+	}	
 	
-	
-	//¼öÁ¤Æû ¿äÃ» 
+	// ì—…ë°ì´íŠ¸ ì •ë³´ìš”ì²­
 	@RequestMapping(value="/idol/idolUpdate", method=RequestMethod.GET)
 	public String idolUpdate(Model model, @RequestParam(value="idolId", required=true) int idolId) {
 		Idol idol = idolDao.updateGetIdol(idolId);
 		model.addAttribute("idol", idol);
 		return "idol/idolUpdate";
 	}
-	//¼öÁ¤¿äÃ»
+	
+	// ì—…ë°ì´íŠ¸ ì²˜ë¦¬ìš”ì²­
 	@RequestMapping(value="/idol/idolUpdate", method=RequestMethod.POST)
 	public String idolUpdate(Idol idol) {
 		idolDao.updateIdol(idol);
 		return "redirect:/idol/idolList";
 	}
-    }
+	
+	// ì‚­ì œ
+	@RequestMapping(value="/idol/idolDelete" ,method=RequestMethod.GET)
+	public String idolDelete(@RequestParam(value="idolId", required=true) int idolId) {
+		idolDao.deleteIdol(idolId);
+		return "redirect:/idol/idolList";
+	}
+}
  

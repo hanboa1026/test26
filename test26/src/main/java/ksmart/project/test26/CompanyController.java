@@ -17,47 +17,47 @@ public class CompanyController {
 	@Autowired
 	private CompanyDao companyDao;
 	
-	// 회사 리스트
+	// 목록조회
 	@RequestMapping(value="/company/companyList", method = RequestMethod.GET)
 	public String movie(Model model) {
-			List<Company> list = companyDao.selectCompanyList();
-			model.addAttribute("list",list);
+		List<Company> list = companyDao.selectCompanyList();
+		model.addAttribute("list",list);
 		return "company/companyList";	
 	}
-	
-	// 회사 추가 요청
+    
+	// 입력페이지 요청
+	@RequestMapping(value="/company/companyInsert", method = RequestMethod.GET)
+	public String companyAdd() {
+       System.out.println("companyAdd 메소드 출력");
+       return "company/companyInsert";
+	}
+   
+	// 입력처리 요청
     @RequestMapping(value="/companyAdd", method = RequestMethod.POST)
-    public String companyAdd(Company company) {
+	public String companyAdd(Company company) {
         companyDao.insertCompany(company);
         return "redirect:/company/companyList"; 
-    }
-    // 회사 추가 폼
-    @RequestMapping(value="/company/companyInsert", method = RequestMethod.GET)
-    public String companyAdd() {
-        System.out.println("companyAdd 메소드 출력");
-        return "company/companyInsert";
-    }
+	}
     
- // 회사 삭제
-    @RequestMapping(value="/company/companyDelete", method = RequestMethod.GET)
-    public String companyRemove(@RequestParam(value="companyId", required=true) int companyId) {
-        companyDao.deleteCompany(companyId);
-        return "redirect:/company/companyList";
-    }
-    
- // 회사 수정 폼 요청
-    @RequestMapping(value="/company/companyUpdate", method = RequestMethod.GET)
-    public String companyUpdate(Model model, @RequestParam(value="companyId", required=true) int companyId){
-        Company company= companyDao.getCompany(companyId);
-        model.addAttribute("company", company);
-        return "company/companyUpdate";
-    }
-    
-    //회사 수정 요청
+	// 업데이트 처리요청
     @RequestMapping(value="/company/companyUpdate", method = RequestMethod.POST)
     public String companyUpdate(Company company){
-        companyDao.updateCompany(company);
-        return "redirect:/company/companyList";
-    }
+    	companyDao.updateCompany(company);
+    	return "redirect:/company/companyList";
+	}
+    
+ 	// 업데이트 정보요청
+    @RequestMapping(value="/company/companyUpdate", method = RequestMethod.GET)
+	public String companyUpdate(Model model, @RequestParam(value="companyId", required=true) int companyId){
+    	Company company= companyDao.getCompany(companyId);
+    	model.addAttribute("company", company);
+    	return "company/companyUpdate";
+	}
 
+    // 삭제
+	@RequestMapping(value="/company/companyDelete", method = RequestMethod.GET)
+	public String companyRemove(@RequestParam(value="companyId", required=true) int companyId) {
+        companyDao.deleteCompany(companyId);
+        return "redirect:/company/companyList";
+    } 
 }

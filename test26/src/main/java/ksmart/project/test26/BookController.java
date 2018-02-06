@@ -16,6 +16,7 @@ import ksmart.project.test26.service.BookDao;
 public class BookController {
 	@Autowired
 	private BookDao bookDao;
+	
 	// 목록조회
 	@RequestMapping(value="/book/bookList", method=RequestMethod.GET)
 	public String bookList(Model model) {
@@ -23,6 +24,20 @@ public class BookController {
 		model.addAttribute("list", list);
 		return "book/bookList";
 	}
+	
+	// 입력페이지 요청
+	@RequestMapping(value="/book/bookInsert", method=RequestMethod.GET)
+	public String bookInsert() {
+		return "book/bookInsert";
+	}
+	
+	// 입력 처리요청
+	@RequestMapping(value="/book/bookInsert", method=RequestMethod.POST)
+	public String bookInsert(Book book) {
+		bookDao.insertBook(book);
+		return "redirect:/book/bookList";
+	}
+	
 	// 업데이트 정보요청
 	@RequestMapping(value="/book/bookUpdate", method=RequestMethod.GET)
 	public String bookUpdate(Model model, @RequestParam(value="bookId", required=true) int bookId) {
@@ -30,27 +45,18 @@ public class BookController {
 		model.addAttribute("book", book);
 		return "book/bookUpdate";
 	}
-	// 업데이트
+	
+	// 업데이트 처리요청
 	@RequestMapping(value="/book/bookUpdate", method=RequestMethod.POST)
 	public String bookUpdate(Book book) {
 		bookDao.updateBook(book);		
 		return "redirect:/book/bookList";
 	}
+
 	// 삭제
 	@RequestMapping(value="/book/bookDelete", method=RequestMethod.GET)
 	public String bookDelete(@RequestParam(value="bookId", required=true) int bookId) {
 		bookDao.deleteBook(bookId);
 		return "redirect:/book/bookList";
-	}
-	// 입력페이지 요청
-	@RequestMapping(value="/book/bookInsert", method=RequestMethod.GET)
-	public String bookInsert() {
-		return "book/bookInsert";
-	}
-	// 입력 처리
-	@RequestMapping(value="/book/bookInsert", method=RequestMethod.POST)
-	public String bookInsert(Book book) {
-		bookDao.insertBook(book);
-		return "redirect:/book/bookList";
-	}
+	}	
 }
