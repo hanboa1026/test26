@@ -28,8 +28,8 @@
 				<div>IdolName</div>
 				<input type="text" name="IdolName" id="idolName">
 			</div>
-		<button id="addButton" class="btn btn-danger" type="button">등록</button>
-		<button class="btn btn-danger" type="reset">초기화</button>
+		<button id="addButton" class="btn btn-info" type="button">등록</button>
+		<button class="btn btn-info" type="reset">초기화</button>
 		</form>
 	</div>
 </body>

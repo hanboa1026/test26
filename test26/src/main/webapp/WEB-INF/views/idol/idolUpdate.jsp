@@ -29,8 +29,8 @@
 				<div>Idol 이름을 수정 해주세요.</div>
 				<input type="text" value="${idol.idolName}" name="idolName" id="idolName">
 			</div>
-					<button id="updateButton" class="btn btn-danger" type="button">수정</button>
-					<button class="btn btn-danger" type="reset">초기화</button>
+					<button id="updateButton" class="btn btn-info" type="button">수정</button>
+					<button class="btn btn-info" type="reset">초기화</button>
 		</form>
 		
 	</div>

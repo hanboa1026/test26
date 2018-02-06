@@ -28,13 +28,16 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h2>회사 입력 화면</h2>
- 	<form action="${pageContext.request.contextPath}/companyAdd" method="post" id="addForm">
- 		<div>
- 			회사이름 이름 : <input type="text" id="companyName" name="companyName">
- 			<button id="addButton" type="button">추가</button>
- 		</div>
- 	
- 	</form>
+	<div class="container">
+		<h2>회사 입력 화면</h2>
+	 	<form action="${pageContext.request.contextPath}/companyAdd" method="post" id="addForm">
+	 		<div>
+	 			<div>회사이름 이름 </div>
+	 			<input type="text" id="companyName" name="companyName">
+	 		</div>
+	 			<button id="addButton" class="btn btn-warning" type="button">추가</button>
+	 			<button class="btn btn-warning" type="reset">초기화</button>
+ 		</form>
+ 	</div>
 </body>
 </html>

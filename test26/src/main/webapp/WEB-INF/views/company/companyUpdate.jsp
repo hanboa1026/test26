@@ -36,8 +36,8 @@
 				<div>이름을 수정해주세요.</div>
 				<input type="text" value="${company.companyName}" id="companyName" name="companyName">
 			</div>
-				<button class="btn btn-danger" type="submit" id="addButton">수정</button>
-				<button class="btn btn-danger" type="reset">초기화</button>
+				<button class="btn btn-warning" type="submit" id="addButton">수정</button>
+				<button class="btn btn-warning" type="reset">초기화</button>
 		</form>
 	</div>
 </body>
