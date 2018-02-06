@@ -5,27 +5,23 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link href="<c:url value="/resources/css/bootstrap.min.css" />" rel="stylesheet">
-<style type="text/css">
-	.homeicon {
-		padding-top: 12px;
-	}
-</style>
+<link href="<c:url value="/resources/min_css/min_css.css" />" rel="stylesheet">
 <title>book List</title>
 </head>
 <body>
 	<div class="container">
 		<div class="row">
-			<h2 class="col-lg-2">book List</h2>
-			<a class="col-lg-10 homeicon" href="${pageContext.request.contextPath}/"><img alt="home" src="${pageContext.request.contextPath}/resources/img/home.png"></a>
+			<h2 class="col-lg-2 col-sm-3">book List</h2>
+			<a class="col-lg-10 col-sm-9 homeicon" href="${pageContext.request.contextPath}/"><img alt="home" src="${pageContext.request.contextPath}/resources/img/home.png"></a>
 		</div>
-		<a href="${pageContext.request.contextPath}/book/bookInsert" class="btn btn-danger">추가하기</a><br>
-		<table class="table table-bordered">
+		<a href="${pageContext.request.contextPath}/book/bookInsert" class="btn btn-danger">ADD</a>
+		<table class="table table-striped table-hover">
 			<thead>
-				<tr>
-					<th>넘버</th>
-					<th>제목</th>
-					<th>수정</th>
-					<th>삭제</th>
+				<tr class="danger">
+					<th>No.</th>
+					<th>NAME</th>
+					<th>UPDATE</th>
+					<th>DELETE</th>
 				</tr>
 			</thead>
 			<c:forEach var="book" items="${list}">
