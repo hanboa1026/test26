@@ -7,8 +7,8 @@
 	<select id="selectCountryList"
 			resultType="ksmart.project.test26.service.Country">
 		SELECT
-		country_id as countryId
-		,country_name as countryName
+			country_id as countryId
+			,country_name as countryName
 		FROM country
 	</select>
 
@@ -17,8 +17,8 @@
 			parameterType="int"
 			resultType="ksmart.project.test26.service.Country">
 		SELECT
-		country_id as countryId
-		,country_name as countryName
+			country_id as countryId
+			,country_name as countryName
 		FROM country
 		WHERE country_id = #{countryId}
 	</select>
@@ -26,16 +26,18 @@
 	<!-- insert -->	
 	<insert id="insertCountry"
 			parameterType="ksmart.project.test26.service.Country">
-		INSERT
-		INTO country (country_name)
-		VALUES (#{countryName})
+		INSERT INTO country(
+			country_name)
+		VALUES (
+			#{countryName}
+		)
 	</insert>
 
 	<!-- update -->
 	<update id="updateCountry"
 			parameterType="ksmart.project.test26.service.Country">
 		UPDATE country
-		SET country_name = #{countryName}
+			SET country_name = #{countryName}
 		WHERE country_id = #{countryId}
 	</update>
 

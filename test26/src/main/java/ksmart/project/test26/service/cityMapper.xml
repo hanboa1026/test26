@@ -7,8 +7,8 @@
 	<select id="selectCityList"
 			resultType="ksmart.project.test26.service.City">
 		SELECT
-		city_id as cityId
-		,city_name as cityName
+			city_id as cityId
+			,city_name as cityName
 		FROM city;
 	</select>
 	
@@ -17,8 +17,8 @@
 			parameterType="int"
 			resultType="ksmart.project.test26.service.City">
 		SELECT
-		city_id as cityId
-		,city_name as cityName
+			city_id as cityId
+			,city_name as cityName
 		FROM city
 		WHERE city_id = #{cityId}
 	</select>
@@ -26,16 +26,18 @@
 	<!-- insert -->
 	<insert id="insertCity"
 			parameterType="ksmart.project.test26.service.City">
-		INSERT
-		INTO city(city_name)
-		VALUES (#{cityName})
+		INSERT INTO city(
+			city_name)
+		VALUES (
+			#{cityName}
+		)
 	</insert>
 	
 	<!-- update -->
 	<update id="updateCity"
 			parameterType="ksmart.project.test26.service.City">
 		UPDATE city
-		SET city_name = #{cityName}
+			SET city_name = #{cityName}
 		WHERE city_id = #{cityId}
 	</update>
 

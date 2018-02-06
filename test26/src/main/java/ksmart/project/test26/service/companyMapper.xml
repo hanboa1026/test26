@@ -7,8 +7,8 @@
 	<select id="selectCompany"
 			resultType="ksmart.project.test26.service.Company">
 		SELECT
-		company_id as companyId
-		, company_name as companyName
+			company_id as companyId
+			, company_name as companyName
 		FROM company;
 	</select>
 
@@ -17,8 +17,8 @@
 			parameterType="int"
 			resultType="ksmart.project.test26.service.Company">
 		SELECT
-		company_id as companyId
-		, company_name as companyName
+			company_id as companyId
+			, company_name as companyName
 		FROM company
 		WHERE company_id = #{companyId};
 	</select>
@@ -26,16 +26,18 @@
 	<!-- insert -->
 	<insert id="insertCompany"
 			parameterType="ksmart.project.test26.service.Company">
-		INSERT
-		INTO company(company_name)
-		VALUES(#{companyName})
+		INSERT INTO company(
+			company_name)
+		VALUES (
+			#{companyName}
+		)
 	</insert>
 
 	<!-- update -->
 	<update id="updateCompany"
 			parameterType="ksmart.project.test26.service.Company">
 		UPDATE company
-		SET company_name = #{companyName}
+			SET company_name = #{companyName}
 		WHERE company_id = #{companyId}
 	</update>
 	

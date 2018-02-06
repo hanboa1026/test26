@@ -7,8 +7,8 @@
 	<select id="selectBookList"
 			resultType="ksmart.project.test26.service.Book">
 		SELECT
-		book_id as bookId
-		,book_name as bookName
+			book_id as bookId
+			,book_name as bookName
 		FROM book;
 	</select>
 	
@@ -17,8 +17,8 @@
 			parameterType="int"
 			resultType="ksmart.project.test26.service.Book">
 		SELECT
-		book_id as bookId
-		,book_name as bookName
+			book_id as bookId
+			,book_name as bookName
 		FROM book
 		WHERE book_id = #{bookId}
 	</select>
@@ -26,16 +26,18 @@
 	<!-- insert -->	
 	<insert id="insertBook"
 			parameterType="ksmart.project.test26.service.Book">
-		INSERT
-		INTO book(book_name)
-		VALUES (#{bookName})
+		INSERT INTO book(
+			book_name)
+		VALUES (
+			#{bookName}
+		)
 	</insert>
 
 	<!-- update -->	
 	<update id="updateBook"
 			parameterType="ksmart.project.test26.service.Book">
 		UPDATE book
-		SET book_name = #{bookName}
+			SET book_name = #{bookName}
 		WHERE book_id = #{bookId}
 	</update>
 	

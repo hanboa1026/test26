@@ -7,8 +7,8 @@
 	<select id="selectIdolList"
 			resultType="ksmart.project.test26.service.Idol">
 		SELECT 
-		idol_id as idolId
-		,idol_name as idolName
+			idol_id as idolId
+			,idol_name as idolName
 		FROM idol
 	</select>
 	
@@ -17,8 +17,8 @@
 			parameterType="int"
 			resultType="ksmart.project.test26.service.Idol">
 		SELECT
-		idol_id as idolId
-		,idol_name as idolName
+			idol_id as idolId
+			,idol_name as idolName
 		FROM idol
 		WHERE idol_id = #{idolId}
 	</select>
@@ -26,16 +26,18 @@
 	<!-- insert -->
 	<insert id="insertIdol"
 			parameterType="ksmart.project.test26.service.Idol">
-		INSERT
-		INTO idol(idol_name)
-		VALUES(#{idolName})
+		INSERT INTO idol(
+			idol_name)
+		VALUES (
+			#{idolName}
+		)
 	</insert>
 
 	<!-- update -->
 	<update id="updateIdol"
 			parameterType="ksmart.project.test26.service.Idol">
 		UPDATE idol
-		SET idol_name = #{idolName}
+			SET idol_name = #{idolName}
 		WHERE idol_Id = #{idolId}
 	</update>
 	
