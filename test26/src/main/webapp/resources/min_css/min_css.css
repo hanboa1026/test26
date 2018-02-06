@@ -18,3 +18,16 @@ h1 {
 .homeicon {
 		padding-top: 14px;
 	}
+/* footer.jsp */
+.logoImg {
+	width : 147.5px;
+	height: 32.5px;
+	display: block;
+	margin: 0 auto;
+}
+.copyLight {
+	width: 280px;
+	height: 20px;
+	display: block;
+	margin: 0 auto;
+}
