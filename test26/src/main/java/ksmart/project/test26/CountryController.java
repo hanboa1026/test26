@@ -31,7 +31,7 @@ public class CountryController {
  * 	URL을 컨트롤러의 매서드와 매핑할 때 사용하는 스프링 프레임워크의 어노테이션이다.
  * 	매서든 내에서 viewName을 별도로 설정하지 않으면 @RequestMapping의 path로
  * 	설정한 URL이 그대로 viewName으로 설정된다.*/
-	public String CountryList(Model model, HttpSession session) {
+	public String countryList(Model model, HttpSession session) {
 		if(session.getAttribute("loginMember") == null ) {
 			return "redirect:/log/login"; 
 		}
@@ -42,7 +42,7 @@ public class CountryController {
 	
 	// 입력페이지 요청
 	@RequestMapping(value="/countryAdd", method=RequestMethod.GET)
-	public String CountryInsert(HttpSession session) {
+	public String countryInsert(HttpSession session) {
 		if(session.getAttribute("loginMember") == null ) {
 			return "redirect:/log/login"; 
 		}
@@ -51,7 +51,7 @@ public class CountryController {
 	   
 	// 입력처리 요청
 	@RequestMapping(value="/countryAdd", method=RequestMethod.POST)
-	public String CountryInsert(Country country, HttpSession session) {
+	public String countryInsert(Country country, HttpSession session) {
 		if(session.getAttribute("loginMember") == null ) {
 			return "redirect:/log/login"; 
 		}
@@ -61,7 +61,7 @@ public class CountryController {
 	
 	// 업데이트 정보요청
 	@RequestMapping(value="/countryModify", method=RequestMethod.GET)
-	public String CountryUpdate(HttpSession session, Model model,@RequestParam(value="countryId", required=true)int countryId) {
+	public String countryUpdate(HttpSession session, Model model,@RequestParam(value="countryId", required=true)int countryId) {
 		if(session.getAttribute("loginMember") == null ) {
 			return "redirect:/log/login"; 
 		}
@@ -72,7 +72,7 @@ public class CountryController {
 	
 	// 업데이트 처리요청
 	@RequestMapping(value="/countryModify", method=RequestMethod.POST)
-	public String CountryUpdate(Country country, HttpSession session) {
+	public String countryUpdate(Country country, HttpSession session) {
 		if(session.getAttribute("loginMember") == null ) {
 			return "redirect:/log/login"; 
 		}
@@ -82,7 +82,7 @@ public class CountryController {
 
 	// 삭제
 	@RequestMapping(value="/countryRemove", method=RequestMethod.GET)
-	public String CountryDelete(HttpSession session, @RequestParam(value="countryId", required=true)int countryId) {
+	public String countryDelete(HttpSession session, @RequestParam(value="countryId", required=true)int countryId) {
 		if(session.getAttribute("loginMember") == null ) {
 			return "redirect:/log/login"; 
 		}
