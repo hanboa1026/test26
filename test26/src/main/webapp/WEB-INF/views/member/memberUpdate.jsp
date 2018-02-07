@@ -35,7 +35,7 @@
 					<input type="hidden" name="memberNo" id="memberNo" value="${member.memberNo}">
 					ID : <input type="text" name="memberId" id="memberId" value="${member.memberId}" readonly="readonly">
 					PW : <input type="password" name="memberPw" id="memberPw" value="${member.memberPw}">
-					LEVEL : <input type="text" name="memberPw" id="memberPw" value="${member.memberLevel}">
+					LEVEL : <input type="text" name="memberLevel" id="memberLevel" value="${member.memberLevel}">
 					<button id="modiButton" class="btn" type="button">수정</button>
 					<button class="btn" type="reset">초기화</button>
 				</div>

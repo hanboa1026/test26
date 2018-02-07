@@ -24,8 +24,8 @@ public class MemberDao {
 		return sqlSessionTemplate.selectOne(localName + "selectMemberByNo", memberNo);
 	}	
 	// 업데이트
-	public int updateMember(Member memberNo) {
-		return sqlSessionTemplate.update(localName + "updateMember", memberNo);
+	public int updateMember(Member member) {
+		return sqlSessionTemplate.update(localName + "updateMember", member);
 	}	
 	// 삭제
 	public int deleteMember(int memberNo) {

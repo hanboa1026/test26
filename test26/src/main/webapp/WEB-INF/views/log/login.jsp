@@ -35,7 +35,7 @@
 				<input id="memberId" class="loginInfo" name="memberId" type="text" placeholder="ID" required><br />
 				<input id="memberPw" class="loginInfo" name="memberPw" type="password" placeholder="Password" required>
 				<button type="button" id="loginButton" class="btn btn-lg btn-info btn-block">Login</button>
-				<a href="" class="btn btn-lg btn-info btn-block">회원가입</a>
+				<a href="${pageContext.request.contextPath}/member/memberAdd" class="btn btn-lg btn-info btn-block">회원가입</a>
 			</form>
 		</div>
 	</div>
