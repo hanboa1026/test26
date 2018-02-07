@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link href="<c:url value="/resources/css/bootstrap.min.css" />" rel="stylesheet">
 <link href="<c:url value="/resources/min_css/min_css.css" />" rel="stylesheet">
-<link href="<c:url value="/resources/min_css/login_css.css" />" rel="stylesheet">
+<link href="<c:url value="/resources/min_css/member_css.css?ver=1" />" rel="stylesheet">
 <script src="<c:url value="/resources/jquery-3.3.1.min.js" />"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
@@ -27,7 +27,7 @@
 </head>
 <body>
 	<div class="container">
-			<a class="loginHomeIcon" href="${pageContext.request.contextPath}/"><img alt="home" src="${pageContext.request.contextPath}/resources/img/home_gray.png"></a>
+		<a class="loginHomeIcon" href="${pageContext.request.contextPath}/"><img alt="home" src="${pageContext.request.contextPath}/resources/img/home.png"></a>
 		<section class="loginWrap">
 			<span class="loginImg"></span>
 			<h2 class="loginTitle">Member Login</h2>
@@ -36,7 +36,7 @@
 				<input class="loginInfo" id="memberPw" name="memberPw" placeholder='Password' type='password'>
 	  			<button id="loginButton">LOGIN</button>
 	  		</form>
-			<h3 class="joinWrap">
+			<h3 class="aWrap">
 	    		<a class="joinMessge" href='${pageContext.request.contextPath}/member/memberAdd'>회원가입하실래요?</a>
 	 		</h3>
 		</section>

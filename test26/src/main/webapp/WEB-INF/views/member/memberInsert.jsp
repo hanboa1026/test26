@@ -5,6 +5,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link href="<c:url value="/resources/css/bootstrap.min.css" />" rel="stylesheet">
 <link href="<c:url value="/resources/min_css/min_css.css" />" rel="stylesheet">
+<link href="<c:url value="/resources/min_css/member_css.css" />" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <script src="<c:url value="/resources/jquery-3.3.1.min.js" />"></script>
 <script type="text/javascript">
@@ -22,34 +23,22 @@
 		})
 	})
 </script>
-<title>Member Insert</title>
+<title>Member Join</title>
 </head>
 <body>
 	<div class="container">
-		<div class="row">
-			<h2 class="col-lg-2 col-sm-3">Join</h2>
-			<a class="col-lg-10 col-sm-9 homeicon" href="${pageContext.request.contextPath}/"><img alt="home" src="${pageContext.request.contextPath}/resources/img/home.png"></a>
-		</div>
-		<form id="memberAddForm" action="${pageContext.request.contextPath}/member/memberAdd" method="post">
-			<div>
-				<table class="table table-hover">
-				<tr>
-					<td class="active">ID</td>
-					<td><input type="text" name="memberId" id="memberId"></td>
-				</tr>
-				<tr>
-					<td class="active">PW</td>
-					<td><input type="password" name="memberPw" id="memberPw"></td>
-				</tr>
-				<tr>
-					<td class="active">LEVEL</td>
-					<td><input type="text" name="memberLevel" id="memberLevel"></td>
-				</tr>												
-				</table>
-				<button id="addButton" class="btn" type="button">입력</button>
-				<button class="btn" type="reset">초기화</button>
-			</div>
-		</form>
+			<a class="loginHomeIcon" href="${pageContext.request.contextPath}/"><img alt="home" src="${pageContext.request.contextPath}/resources/img/home.png"></a>
+		<section class="joinWrap">
+			<span class="joinImg"></span>
+			<h2 class="joinTitle">Member Join</h2>
+			<form class="joinForm" id="memberAddForm" action="${pageContext.request.contextPath}/member/memberAdd" method="post">
+					<input class="joinInfo" type="text" name="memberId" id="memberId" placeholder="아이디를 입력하세요">
+					<input class="joinInfo" type="password" name="memberPw" id="memberPw" placeholder="비밀번호를 입력하세요">
+					<input class="joinInfo" type="text" name="memberLevel" id="memberLevel" placeholder="입력하지망">
+					<button class="joinButton" id="addButton" type="button">입력</button>
+					<button class="resetButton" type="reset">초기화</button>
+			</form>
+		</section>
 		<jsp:include page="/WEB-INF/views/inc/footer.jsp"></jsp:include>
 	</div>
 </body>
