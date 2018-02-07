@@ -6,6 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link href="<c:url value="/resources/css/bootstrap.min.css" />" rel="stylesheet">
 <link href="<c:url value="/resources/min_css/min_css.css" />" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <title>Country List</title>
 </head>
 <body>
@@ -32,9 +33,9 @@
 						<td>${country.countryId}</td>
 						<td>${country.countryName}</td>
 						<td><a
-							href="${pageContext.request.contextPath}/countryModify?countryId=${country.countryId}">수정</a></td>
+							class="btn btn-primary" href="${pageContext.request.contextPath}/countryModify?countryId=${country.countryId}"><i class="fa fa-pencil"></i></a></td>
 						<td><a
-							href="${pageContext.request.contextPath}/countryRemove?countryId=${country.countryId}">삭제</a></td>
+							class="btn btn-danger" href="${pageContext.request.contextPath}/countryRemove?countryId=${country.countryId}"><i class="fa fa-trash"></i></a></td>
 					</tr>
 				</tbody>
 			</c:forEach>

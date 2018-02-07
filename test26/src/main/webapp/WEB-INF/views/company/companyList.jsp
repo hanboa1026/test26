@@ -6,9 +6,11 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link href="<c:url value="/resources/css/bootstrap.min.css" />" rel="stylesheet">
 <link href="<c:url value="/resources/min_css/min_css.css" />" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <title>Company List</title>
 </head>
 <body>
+ 	
 	<div class="container">
 		<div class="row">
 			<h2 class="col-lg-3 col-sm-3">Company List</h2>
@@ -26,8 +28,8 @@
 			<tr>
 				<td>${company.companyId}</td>
 				<td>${company.companyName}</td>
-				<td><a href="${pageContext.request.contextPath}/company/companyUpdate?companyId=${company.companyId}">Edit</a></td>
-				<td><a href="${pageContext.request.contextPath}/company/companyDelete?companyId=${company.companyId}">Remove</a></td>
+				<td><a class="btn btn-primary" href="${pageContext.request.contextPath}/company/companyUpdate?companyId=${company.companyId}"><i class="fa fa-pencil"></i></a></td>
+				<td><a class="btn btn-danger"  href="${pageContext.request.contextPath}/company/companyDelete?companyId=${company.companyId}"><i class="fa fa-trash"></i></a></td>
 			</tr>
 			</c:forEach>
 		</table>
