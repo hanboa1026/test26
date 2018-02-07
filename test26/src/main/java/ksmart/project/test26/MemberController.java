@@ -75,10 +75,9 @@ public class MemberController {
 	
 	// 업데이트 처리요청
 	@RequestMapping(value="/member/memberModify", method=RequestMethod.POST)
-	public String memberUpdate(HttpSession session, Model model,@RequestParam(value="memberNo", required=true)Member member) {
-		model.addAttribute("member",member);
+	public String memberUpdate(Member member) {
 		memberDao.updateMember(member);
-		return "member/memberInfo";		
+		return "redirect:/";	
 	}
 	
 	// 삭제

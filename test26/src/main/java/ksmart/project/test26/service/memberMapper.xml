@@ -35,7 +35,7 @@
 			,member_pw as memberPw
 			,member_level as memberLevel 
 		FROM member
-		WHERE member_no = #{member.memberNo}	
+		WHERE member_no = #{memberNo}	
 	</select>
 	
 	<!-- insert -->	
@@ -56,10 +56,10 @@
 	<update id="updateMember"
 			parameterType="ksmart.project.test26.service.Member">
 		UPDATE member
-			SET member_id = #{member.memberId}
-			,member_pw = #{member.memberPw}
-			,member_level = #{member.memberLevel}
-		WHERE member_no = #{member.memberNo}		
+			SET member_id = #{memberId}
+			,member_pw = #{memberPw}
+			,member_level = #{memberLevel}
+		WHERE member_no = #{memberNo}		
 	</update>
 	
 	<!-- delete -->
