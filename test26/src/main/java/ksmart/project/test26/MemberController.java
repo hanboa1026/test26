@@ -37,13 +37,10 @@ public class MemberController {
 	
 	// 하나정보 요청
 	@RequestMapping(value="/member/memberInfo", method=RequestMethod.GET)
-	public String memberSelectByNo(HttpSession session, Model model) {
-		Member member = (Member)session.getAttribute("loginMember");
-		Member logMember = memberDao.selectMemberByNo(member.getMemberNo());
-				//memberDao.selectMemberByNo(memberNo);
-		/*Member member = (Member)httpSession.getAttribute("loginMember");
-		+		Member reMember = memberDao.selectMemberInfo(member.getMemberNo());*/
-		model.addAttribute("member", logMember);
+	public String memberSelectByNo(Model model, int memberNo) {
+		model.addAttribute("member", memberDao.selectMemberByNo(memberNo));
+		logger.debug("회원 번호 {}번",memberNo); //회원 번호 ?번 출력
+		//멤버 정보를 model에 담아서 리턴
 		return "member/memberInfo";
 	}
 	
@@ -62,14 +59,8 @@ public class MemberController {
 	
 	// 업데이트 정보요청
 	@RequestMapping(value="/member/memberModify", method=RequestMethod.GET)
-	public String memberUpdate(HttpSession session, Model model,@RequestParam(value="memberNo", required=true)int memberNo) {	
-		if(session.getAttribute("loginMember") == null ) {
-			return "redirect:/log/login"; 
-		}
-		Member member = (Member)session.getAttribute("loginMember");
-		Member logMember = memberDao.selectMemberByNo(member.getMemberNo());
-		model.addAttribute("member", logMember);
-		memberDao.selectMemberByNo(memberNo);
+	public String memberUpdate(Model model,@RequestParam(value="memberNo", required=true)int memberNo) {	
+		model.addAttribute("member", memberDao.selectMemberByNo(memberNo));
 		return "member/memberUpdate";		
 	}
 	
