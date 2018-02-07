@@ -20,7 +20,7 @@ public class CompanyController {
 	@Autowired
 	private CompanyService companyService;
 	
-	// 목록조회 서비스 이용
+	// 목록조회 service 이용
 		@RequestMapping(value="/company/companyList", method = RequestMethod.GET)
 		public String movie(Model model, HttpSession session) {
 			if(session.getAttribute("loginMember") == null ) {
@@ -53,7 +53,7 @@ public class CompanyController {
         return "redirect:/company/companyList"; 
 	}
     
-    // 업데이트 처리 서비스 이용
+    // 업데이트 처리 service 이용
     @RequestMapping(value="/company/companyUpdate", method = RequestMethod.POST)
     public String companyUpdate(Company company, HttpSession session){
     	// 세션이 없으면 로그인 페이지로 리다이렉트
@@ -65,7 +65,7 @@ public class CompanyController {
 	}
     
     
-    // 업데이트 정보요청 서비스 이용
+    // 업데이트 정보요청 service 이용
     @RequestMapping(value="/company/companyUpdate", method = RequestMethod.GET)
    	public String companyUpdate(Model model, HttpSession session, @RequestParam(value="companyId", required=true) int companyId){
        	// 세션이 없으면 로그인 페이지로 리다이렉트
