@@ -27,8 +27,8 @@
 <body>
 	<div class="container">
 		<div class="row">
-			<h2 class="col-lg-3 col-sm-4">Join</h2>
-			<a class="col-lg-9 col-sm-8 homeicon" href="${pageContext.request.contextPath}/"><img alt="home" src="${pageContext.request.contextPath}/resources/img/home.png"></a>
+			<h2 class="col-lg-2 col-sm-3">Join</h2>
+			<a class="col-lg-10 col-sm-9 homeicon" href="${pageContext.request.contextPath}/"><img alt="home" src="${pageContext.request.contextPath}/resources/img/home.png"></a>
 		</div>
 		<form id="memberAddForm" action="${pageContext.request.contextPath}/member/memberAdd" method="post">
 			<div>
