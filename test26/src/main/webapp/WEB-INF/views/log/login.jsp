@@ -40,6 +40,7 @@
 	    		<a class="joinMessge" href='${pageContext.request.contextPath}/member/memberAdd'>회원가입하실래요?</a>
 	 		</h3>
 		</section>
+		<jsp:include page="/WEB-INF/views/inc/footer.jsp"></jsp:include>
 	</div>
 </body>
 </html>
