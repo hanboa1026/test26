@@ -14,10 +14,12 @@
 		<h1>HOME</h1>
 		<div class="logInOut">
 			<c:if test="${empty sessionScope.loginMember}">
-				<a class="btn btn-default btn-lg" href="${pageContext.request.contextPath}/log/login">login</a>
+				<a class="btn btn-default btn-lg" href="${pageContext.request.contextPath}/log/login">Login</a>
+				<a class="btn btn-default btn-lg" href="${pageContext.request.contextPath}/member/memberAdd">Join</a>
 			</c:if>
 			<c:if test="${not empty sessionScope.loginMember}">
-				<a class="btn btn-default btn-lg" href="${pageContext.request.contextPath}/log/logOut">logout</a>
+				<a class="btn btn-default btn-lg" href="${pageContext.request.contextPath}/log/logOut">LogOut</a>
+				<a class="btn btn-default btn-lg" href="${pageContext.request.contextPath}/member/memberInfo?memberNo=${loginMember.memberNo}">MyPage</a>
 			</c:if>
 		</div>
 		<div class="animalImg">
