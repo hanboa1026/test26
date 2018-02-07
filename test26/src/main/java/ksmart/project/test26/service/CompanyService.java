@@ -16,10 +16,8 @@ public class CompanyService {
 	
 	// 목록조희
 	public List<Company> selectCompanyList() {
-		
 		List<Company> list = companyDao.selectCompanyList();
 		return list;
-		
 	}
 	
 	// 입력처리서비스

@@ -13,11 +13,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import ksmart.project.test26.service.Idol;
 import ksmart.project.test26.service.IdolDao;
+import ksmart.project.test26.service.IdolService;
 
 @Controller
 public class IdolController{
 	@Autowired
 	private IdolDao idolDao;
+	private IdolService idolService;
+	
 	
 	// 목록조회
 	@RequestMapping(value="/idol/idolList",method=RequestMethod.GET)
@@ -80,4 +83,4 @@ public class IdolController{
 		return "redirect:/idol/idolList";
 	}
 }
- 
+
