@@ -5,7 +5,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link href="<c:url value="/resources/css/bootstrap.min.css" />" rel="stylesheet">
-<link href="<c:url value="/resources/min_css/min_css.css?ver=1" />" rel="stylesheet">
+<link href="<c:url value="/resources/min_css/min_css.css" />" rel="stylesheet">
+<link href="<c:url value="/resources/min_css/login_css.css" />" rel="stylesheet">
 <script src="<c:url value="/resources/jquery-3.3.1.min.js" />"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
@@ -26,18 +27,19 @@
 </head>
 <body>
 	<div class="container">
-		<div class="row">
-			<h2 class="col-lg-2 col-sm-3">login Form</h2>
-			<a class="col-lg-10 col-sm-9 homeicon" href="${pageContext.request.contextPath}/"><img alt="home" src="${pageContext.request.contextPath}/resources/img/home.png"></a>
-		</div>
-		<div class="loginWrap">
+			<a class="loginHomeIcon" href="${pageContext.request.contextPath}/"><img alt="home" src="${pageContext.request.contextPath}/resources/img/home_gray.png"></a>
+		<section class="loginWrap">
+			<span class="loginImg"></span>
+			<h2 class="loginTitle">Member Login</h2>
 			<form class="loginForm" id="loginForm" action="${pageContext.request.contextPath}/log/loginAction" method="POST">
-				<input id="memberId" class="loginInfo" name="memberId" type="text" placeholder="ID" required><br />
-				<input id="memberPw" class="loginInfo" name="memberPw" type="password" placeholder="Password" required>
-				<button type="button" id="loginButton" class="btn btn-lg btn-info btn-block">Login</button>
-				<a href="${pageContext.request.contextPath}/member/memberAdd" class="btn btn-lg btn-info btn-block">회원가입</a>
-			</form>
-		</div>
+				<input class="loginInfo" id="memberId" name="memberId" placeholder='User Name' type='text'>
+				<input class="loginInfo" id="memberPw" name="memberPw" placeholder='Password' type='password'>
+	  			<button id="loginButton">LOGIN</button>
+	  		</form>
+			<h3 class="joinWrap">
+	    		<a class="joinMessge" href='#'>회원가입하실래요?</a>
+	 		</h3>
+		</section>
 	</div>
 </body>
 </html>
