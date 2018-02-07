@@ -37,7 +37,7 @@
 	  			<button id="loginButton">LOGIN</button>
 	  		</form>
 			<h3 class="joinWrap">
-	    		<a class="joinMessge" href='#'>회원가입하실래요?</a>
+	    		<a class="joinMessge" href='${pageContext.request.contextPath}/member/memberAdd'>회원가입하실래요?</a>
 	 		</h3>
 		</section>
 	</div>
