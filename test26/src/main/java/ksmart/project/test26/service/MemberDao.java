@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 public class MemberDao {
 	@Autowired
 	private SqlSessionTemplate sqlSessionTemplate;
-	String localName = "ksmart.project.test26.service.memberMapper.";		
+	String localName = "ksmart.project.test26.service.MemberMapper.";		
 	// 목록조회
 	public List<Member> selectMemberList(){
 		return sqlSessionTemplate.selectList(localName + "selectMemberList");
