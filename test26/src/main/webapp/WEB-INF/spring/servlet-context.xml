@@ -53,7 +53,7 @@
 				<value>classpath:ksmart/project/test26/service/companyMapper.xml</value>
 				<value>classpath:ksmart/project/test26/service/countryMapper.xml</value>
 				<value>classpath:ksmart/project/test26/service/idolMapper.xml</value>
-				<value>classpath:ksmart/project/test26/service/memberMapper.xml</value>					
+				<value>classpath:ksmart/project/test26/service/MemberMapper.xml</value>					
 				
 			</list>
 		</property>
