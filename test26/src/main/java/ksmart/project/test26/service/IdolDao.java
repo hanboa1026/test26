@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public class IdolDao {
-	private String str = "ksmart.project.test26.service.idolMapper.";
+	private String str = "ksmart.project.test26.service.IdolMapper.";
 	@Autowired
 	private SqlSessionTemplate sqlSessionTemplate;
 	// 목록조회
