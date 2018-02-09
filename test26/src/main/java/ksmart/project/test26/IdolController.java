@@ -18,11 +18,10 @@ import ksmart.project.test26.service.IdolService;
 @Controller
 public class IdolController{
 	@Autowired
-	private IdolDao idolDao;
 	private IdolService idolService;
 	
 	
-	// 목록조회
+/*	// 목록조회
 	@RequestMapping(value="/idol/idolList",method=RequestMethod.GET)
 	public String IdolList(Model model, HttpSession session) {
 		if(session.getAttribute("loginMember")==null) {
@@ -30,16 +29,35 @@ public class IdolController{
 		}
 		List<Idol> list = idolDao.selectIdolList();
 		model.addAttribute("list",list);
-		return "idol/idolList";		
-	}
-	  
-	// 입력페이지 요청
+		return "idol/idolList";
+	}*/	
+	// 목록조회
+	@RequestMapping(value="/idol/idolList",method=RequestMethod.GET)
+	public String IdolList(Model model, HttpSession session) {
+		if(session.getAttribute("loginMember")==null) {
+			return "redirect:/log/login";
+		}
+		List<Idol> list = idolService.selectIdolList();
+		model.addAttribute("list",list);
+		return "idol/idolList";
+	}	
+		
+/*	// 입력페이지 요청
 	@RequestMapping(value="/idol/idolInsert", method=RequestMethod.POST)
 	public String idolInsert(Idol idol, HttpSession session) {
 		if(session.getAttribute("loginMember")==null) {
 			return "redirect:/log/login";
 		}
 		idolDao.insertIdol(idol);
+		return "redirect:/idol/idolList";
+	}*/
+	// 입력페이지 요청
+	@RequestMapping(value="/idol/idolInsert", method=RequestMethod.POST)
+	public String idolInsert(Idol idol, HttpSession session) {
+		if(session.getAttribute("loginMember")==null) {
+			return "redirect:/log/login";
+		}
+		idolService.insertIdol(idol);
 		return "redirect:/idol/idolList";
 	}
 	
@@ -50,9 +68,10 @@ public class IdolController{
 			return "redirect:/log/login";
 		}
 		return "idol/idolInsert";
-	}	
+	}
 	
-	// 업데이트 정보요청
+	
+/*	// 업데이트 정보요청
 	@RequestMapping(value="/idol/idolUpdate", method=RequestMethod.GET)
 	public String idolUpdate(Model model, @RequestParam(value="idolId", required=true) int idolId, HttpSession session) {
 		if(session.getAttribute("loginMember")==null) {
@@ -61,9 +80,19 @@ public class IdolController{
 		Idol idol = idolDao.updateGetIdol(idolId);
 		model.addAttribute("idol", idol);
 		return "idol/idolUpdate";
+	}*/
+	// 업데이트 정보요청
+	@RequestMapping(value="/idol/idolUpdate", method=RequestMethod.GET)
+	public String idolUpdate(Model model, @RequestParam(value="idolId", required=true) int idolId, HttpSession session) {
+		if(session.getAttribute("loginMember")==null) {
+			return "redirect:/log/login";
+		}
+		Idol idol = idolService.updateGetIdol(idolId);
+		model.addAttribute("idol", idol);
+		return "idol/idolUpdate";
 	}
 	
-	// 업데이트 처리요청
+	/*// 업데이트 처리요청
 	@RequestMapping(value="/idol/idolUpdate", method=RequestMethod.POST)
 	public String idolUpdate(Idol idol, HttpSession session) {
 		if(session.getAttribute("loginMember")==null) {
@@ -71,9 +100,18 @@ public class IdolController{
 		}
 		idolDao.updateIdol(idol);
 		return "redirect:/idol/idolList";
+	}*/
+	// 업데이트 처리요청
+	@RequestMapping(value="/idol/idolUpdate", method=RequestMethod.POST)
+	public String idolUpdate(Idol idol, HttpSession session) {
+		if(session.getAttribute("loginMember")==null) {
+			return "redirect:/log/login";
+		}
+		idolService.updateIdol(idol);
+		return "redirect:/idol/idolList";
 	}
 	
-	// 삭제
+/*	// 삭제
 	@RequestMapping(value="/idol/idolDelete" ,method=RequestMethod.GET)
 	public String idolDelete(@RequestParam(value="idolId", required=true) int idolId, HttpSession session) {
 		if(session.getAttribute("loginMember")==null) {
@@ -81,6 +119,16 @@ public class IdolController{
 		}
 		idolDao.deleteIdol(idolId);
 		return "redirect:/idol/idolList";
+	}*/
+	// 삭제
+	@RequestMapping(value="/idol/idolDelete" ,method=RequestMethod.GET)
+	public String idolDelete(@RequestParam(value="idolId", required=true) int idolId, HttpSession session) {
+		if(session.getAttribute("loginMember")==null) {
+			return "redirect:/log/login";
+		}
+		idolService.deleteIdol(idolId);
+		return "redirect:/idol/idolList";
 	}
+	
 }
 
