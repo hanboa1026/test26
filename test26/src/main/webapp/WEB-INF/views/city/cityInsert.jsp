@@ -28,12 +28,12 @@
 			<a class="col-lg-9 col-sm-8 homeicon" href="${pageContext.request.contextPath}/"><img alt="home" src="${pageContext.request.contextPath}/resources/img/home.png"></a>
 		</div>
 		<form id="cityInsertForm" action="${pageContext.request.contextPath}/city/cityInsert" method="post">
-		<div class="alert alert-info">
-			<div>도시 이름을 입력해주세요.</div>
-			<input type="text" name="cityName">
-		</div>
-		<button id="addButton" class="btn btn-primary" type="button">입력</button>
-		<button class="btn btn-primary" type="reset">초기화</button>
+			<div class="alert alert-info">
+				<div>도시 이름을 입력해주세요.</div>
+				<input type="text" name="cityName" id="cityName">
+				<button id="addButton" class="btn btn-primary" type="button">입력</button>
+				<button class="btn btn-primary" type="reset">초기화</button>
+			</div>
 		</form>
 		<jsp:include page="/WEB-INF/views/inc/footer.jsp"></jsp:include>
 	</div>
