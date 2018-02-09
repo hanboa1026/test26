@@ -21,7 +21,7 @@
 					<a class="homeicon" href="${pageContext.request.contextPath}/"><img alt="home" src="${pageContext.request.contextPath}/resources/img/home.png"></a>
 				</div>
 				<div class="col-lg-10 col-sm-9">
-					<a href="${pageContext.request.contextPath}/countryAdd" class="btn btn-danger">ADD</a>
+					<a href="${pageContext.request.contextPath}/book/bookInsert" class="btn btn-danger">ADD</a>
 				</div>
 		</div>	
 		<div class="row">
