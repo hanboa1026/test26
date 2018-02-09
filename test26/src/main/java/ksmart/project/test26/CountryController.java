@@ -13,14 +13,16 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import ksmart.project.test26.service.Country;
 import ksmart.project.test26.service.CountryDao;
+import ksmart.project.test26.service.CountryService;
 @Controller
 /* spring MVC의 Controller 클래스 선언을 단순화시켜준다.
  *	스프링 컨트롤러, 서블릿을 상속할 필요가 없으며,
  *	@Controller로 등록된 클래스 파일에 대한 bean을 자동으로 생성해준다.
  */
 public class CountryController {
+
 	@Autowired
-	private CountryDao countryDao;
+	private CountryService countryService;
 /* 	@Autowired
  * 	의존관계를 자동설정할 때 사용한다. 타입을 이용하여 의존하는 객체를 삽입해준다.
  * 	해당 타입의 빈객체가 존재하지 않거나 또는 2개 이상 존재할 경우 예외가 발생한다. */
@@ -35,7 +37,7 @@ public class CountryController {
 		if(session.getAttribute("loginMember") == null ) {
 			return "redirect:/log/login"; 
 		}
-		List<Country> list = countryDao.selectCountryList();
+		List<Country> list = countryService.selectCountryList();
 		model.addAttribute("list",list);
 		return "country/countryList";
 	}
@@ -55,7 +57,7 @@ public class CountryController {
 		if(session.getAttribute("loginMember") == null ) {
 			return "redirect:/log/login"; 
 		}
-		countryDao.insertCountry(country);
+		countryService.insertCountry(country);
 		return "redirect:/country/countryList";
 	}
 	
@@ -65,7 +67,7 @@ public class CountryController {
 		if(session.getAttribute("loginMember") == null ) {
 			return "redirect:/log/login"; 
 		}
-		Country country = countryDao.selectCountryById(countryId);
+		Country country = countryService.getCountry(countryId);
 		model.addAttribute("country",country);
 		return "country/countryUpdate";
 	}
@@ -76,7 +78,7 @@ public class CountryController {
 		if(session.getAttribute("loginMember") == null ) {
 			return "redirect:/log/login"; 
 		}
-		countryDao.updateCountry(country);
+		countryService.updateCountry(country);
 		return "redirect:/country/countryList";
 	}
 
@@ -86,7 +88,7 @@ public class CountryController {
 		if(session.getAttribute("loginMember") == null ) {
 			return "redirect:/log/login"; 
 		}
-		countryDao.deleteCountry(countryId);
+		countryService.deleteCountry(countryId);
 		return "redirect:/country/countryList";
 	}	
 }
