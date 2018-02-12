@@ -38,7 +38,7 @@
 						<th>DELETE</th>
 					</tr>
 				</thead>
-				<c:forEach var="book" items="${list}">
+				<c:forEach var="book" items="${BookList}">
 					<tbody>
 						<tr>
 							<td>${book.bookId}</td>

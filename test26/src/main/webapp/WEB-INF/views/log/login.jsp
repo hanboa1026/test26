@@ -32,8 +32,8 @@
 			<span class="loginImg"></span>
 			<h2 class="loginTitle">Member Login</h2>
 			<form class="loginForm" id="loginForm" action="${pageContext.request.contextPath}/log/loginAction" method="POST">
-				<input class="loginInfo" id="memberId" name="memberId" placeholder='User Name' type='text'>
-				<input class="loginInfo" id="memberPw" name="memberPw" placeholder='Password' type='password'>
+				<input class="loginInfo" id="memberId" name="memberId" value="kyuwonism" placeholder='User Name' type='text'>
+				<input class="loginInfo" id="memberPw" name="memberPw" value="1234567" placeholder='Password' type='password'>
 	  			<button id="loginButton">LOGIN</button>
 	  		</form>
 			<h3 class="aWrap">

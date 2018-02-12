@@ -1,6 +1,7 @@
 package ksmart.project.test26;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -23,20 +24,25 @@ public class BookController {
 	private static final Logger logger = LoggerFactory.getLogger(BookController.class);
 	
 	// 목록조회 service 이용
-	@RequestMapping(value="/book/bookList", method=RequestMethod.GET)
+	@RequestMapping(value="/book/bookList")
 	public String bookList(Model model, HttpSession session, @RequestParam(value="currentPage", defaultValue="1") int currentPage
-															,@RequestParam(value="rowPerPage", defaultValue="10") int rowPerPage) {
+															, @RequestParam(value="rowPerPage", defaultValue="10") int rowPerPage) {
 		if(session.getAttribute("loginMember") == null) {
 			return "redirect:/log/login";
 		}
 		
 		logger.debug("booklist method 실행 currentpage is{}", currentPage);
 		logger.debug("booklist method 실행 rowPerPage is{}", rowPerPage);
+		Map map = bookService.getBookListByPage(currentPage, rowPerPage);
+		List<Book> list = (List<Book>)map.get("list");
+		int lastPage = (Integer)map.get("lastPage");
 		
+
+		model.addAttribute("bookList", list);
+		model.addAttribute("lastPage", lastPage);
+		model.addAttribute("currentPage", currentPage);
+		model.addAttribute("rowPerPage", rowPerPage);
 		
-		
-		List<Book> list = bookService.selectBookList();
-		model.addAttribute("list", list);
 		return "book/bookList";
 	}
 	

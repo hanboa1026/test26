@@ -9,7 +9,7 @@
 		SELECT
 			book_id as bookId
 			,book_name as bookName
-		FROM book LIMIT #{startRow}, ${rowPerPage}
+			FROM book
 	</select>
 	
 	<!-- select -->
@@ -50,7 +50,17 @@
 	</delete>
 	
 	<!-- select bookCount -->
-	<select id="bookCountRow">
+	<select id="bookCountRow" resultType="Integer">
 		SELECT COUNT(*) FROM book
 	</select>
+	
+	<!-- select for switching page -->
+	<select id="selectBookPage" parameterType="java.util.Map" resultType="ksmart.project.test26.service.Book">
+		SELECT book_id as bookId
+				,book_name as bookName
+				FROM book
+				ORDER BY book_id
+				LIMIT #{startRow}, #{rowPerPage}
+	</select>
+	
 </mapper>

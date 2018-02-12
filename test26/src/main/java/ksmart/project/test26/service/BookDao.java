@@ -1,8 +1,11 @@
 package ksmart.project.test26.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -11,6 +14,7 @@ public class BookDao {
 	@Autowired
 	private SqlSessionTemplate sqlSessionTemplate;
 	String localName = "ksmart.project.test26.mapper.BookMapper.";
+	private static final Logger logger = LoggerFactory.getLogger(BookDao.class);
 	// 목록조회
 	public List<Book> selectBookList() {
 		return sqlSessionTemplate.selectList(localName+"selectBookList");
@@ -30,5 +34,18 @@ public class BookDao {
 	// 등록
 	public int insertBook(Book book) {
 		return sqlSessionTemplate.insert(localName+"insertBook", book);
+	}
+	
+	// 총 카운트
+	public int totalCount() {
+		int totalCount = sqlSessionTemplate.selectOne(localName + "bookCountRow");
+		logger.debug("totalCount() 메소드 실행  totalCount is {}", totalCount);
+		return totalCount;
+	}
+	
+	
+	public List<Book> selectBookListPage(Map map){
+		List<Book> list = sqlSessionTemplate.selectList(localName + "selectBookPage", map);
+		return list;
 	}
 }
