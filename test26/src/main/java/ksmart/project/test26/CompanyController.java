@@ -32,16 +32,11 @@ public class CompanyController {
 			if(session.getAttribute("loginMember") == null ) {
 				return "redirect:/log/login"; 
 			}
-			
 			logger.debug("list Method 실행 currentPage is {}", currentPage);
 			logger.debug("list Method 실행 pagePerRowis {}", rowPerPage);
-
 			Map map = companyService.getCompanyListByPage(currentPage, rowPerPage);
-			
-			
 			List<Company> list = (List<Company>)map.get("list");
 			int lastPage = (Integer)map.get("lastPage");
-		
 			model.addAttribute("Companylist",list);
 			model.addAttribute("lastPage",lastPage);
 			model.addAttribute("currentPage", currentPage);

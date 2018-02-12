@@ -9,7 +9,7 @@
 		SELECT
 			book_id as bookId
 			,book_name as bookName
-		FROM book;
+		FROM book LIMIT #{startRow}, ${rowPerPage}
 	</select>
 	
 	<!-- select -->
@@ -49,4 +49,8 @@
 		WHERE book_id = #{bookId}
 	</delete>
 	
+	<!-- select bookCount -->
+	<select id="bookCountRow">
+		SELECT COUNT(*) FROM book
+	</select>
 </mapper>

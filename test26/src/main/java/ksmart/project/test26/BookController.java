@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,13 +20,21 @@ import ksmart.project.test26.service.BookService;
 public class BookController {
 	@Autowired
 	private BookService bookService;
+	private static final Logger logger = LoggerFactory.getLogger(BookController.class);
 	
 	// 목록조회 service 이용
 	@RequestMapping(value="/book/bookList", method=RequestMethod.GET)
-	public String bookList(Model model, HttpSession session) {
+	public String bookList(Model model, HttpSession session, @RequestParam(value="currentPage", defaultValue="1") int currentPage
+															,@RequestParam(value="rowPerPage", defaultValue="10") int rowPerPage) {
 		if(session.getAttribute("loginMember") == null) {
 			return "redirect:/log/login";
 		}
+		
+		logger.debug("booklist method 실행 currentpage is{}", currentPage);
+		logger.debug("booklist method 실행 rowPerPage is{}", rowPerPage);
+		
+		
+		
 		List<Book> list = bookService.selectBookList();
 		model.addAttribute("list", list);
 		return "book/bookList";
