@@ -31,6 +31,7 @@ public class MemberController {
 			return "redirect:/log/login"; 
 		}
 		List<Member> list = memberDao.selectMemberList();
+		logger.debug("회원 목록{}", list);
 		model.addAttribute("list",list);
 		return "member/memberList";
 	}
@@ -38,8 +39,8 @@ public class MemberController {
 	// 하나정보 요청
 	@RequestMapping(value="/member/memberInfo", method=RequestMethod.GET)
 	public String memberSelectByNo(Model model, int memberNo) {
-		model.addAttribute("member", memberDao.selectMemberByNo(memberNo));
 		logger.debug("회원 번호 {}번",memberNo); //회원 번호 ?번 출력
+		model.addAttribute("member", memberDao.selectMemberByNo(memberNo));
 		//멤버 정보를 model에 담아서 리턴
 		return "member/memberInfo";
 	}
@@ -53,6 +54,7 @@ public class MemberController {
 	// 입력처리 요청
 	@RequestMapping(value="/member/memberAdd", method=RequestMethod.POST)
 	public String memberInsert(Member member, HttpSession session) {
+		logger.debug("회원 정보{}", member);
 		memberDao.insertMember(member);
 		return "home";
 	}
@@ -67,6 +69,7 @@ public class MemberController {
 	// 업데이트 처리요청
 	@RequestMapping(value="/member/memberModify", method=RequestMethod.POST)
 	public String memberUpdate(Member member) {
+		logger.debug("회원 정보{}", member);
 		memberDao.updateMember(member);
 		return "redirect:/";	
 	}
@@ -74,6 +77,7 @@ public class MemberController {
 	// 삭제
 	@RequestMapping(value="/member/memberRemove", method=RequestMethod.GET)
 	public String memberDelete(Model model,@RequestParam(value="memberNo", required=true)int memberNo) {
+		logger.debug("회원 번호 {}번",memberNo);
 		memberDao.deleteMember(memberNo);
 		return "/log/logOut";		
 	}
@@ -87,7 +91,7 @@ public class MemberController {
 	// 로그인 요청
 	@RequestMapping(value = "/log/loginAction", method = RequestMethod.POST)
 	public String login(HttpSession session, Member member){
-		logger.debug("member{}", member);
+		logger.debug("회원 정보{}", member);
 	//	 1. logger.debug(member)
 	//	 2. dao(member)
 		Member member1 = memberDao.login(member);
@@ -112,6 +116,7 @@ public class MemberController {
 	// 로그아웃 요청
 	@RequestMapping(value = "/log/logOut", method = RequestMethod.GET)
 	public String logout(HttpSession session, Member member){
+		logger.debug("회원 정보{}", member);
 			session.invalidate();
 		return "home";		
 	}	
