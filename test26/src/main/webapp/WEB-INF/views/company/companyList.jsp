@@ -24,7 +24,7 @@
 				<th>UPDATE</th>
 				<th>DELETE</th>
 			</tr>
-			<c:forEach var="company" items="${list}">
+			<c:forEach var="company" items="${Companylist}">
 			<tr>
 				<td>${company.companyId}</td>
 				<td>${company.companyName}</td>
@@ -33,8 +33,13 @@
 			</tr>
 			</c:forEach>
 		</table>
-		<a href="${pageContext.request.contextPath}/companyList?currentPage=${currentPage-1}">이전</a>
-		<a href="${pageContext.request.contextPath}/companyList?currentPage=${currentPage+1}">다음</a>
+		<c:if test="${currentPage!=1}">
+		<a href="${pageContext.request.contextPath}/company/companyList?currentPage=${currentPage-1}">이전</a>
+		</c:if>
+		
+		<c:if test="${ currentpage != lastPage}">
+		<a href="${pageContext.request.contextPath}/company/companyList?currentPage=${currentPage+1}">다음</a>
+		</c:if>
 		<jsp:include page="/WEB-INF/views/inc/footer.jsp"></jsp:include>
 	</div>
 	</body>

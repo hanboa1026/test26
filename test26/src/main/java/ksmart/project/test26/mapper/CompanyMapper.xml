@@ -49,11 +49,11 @@
 		WHERE company_id = #{companyId}
 	</delete>
 	
-	<select id="countRow">
+	<select id="countRow" resultType="Integer">
 		SELECT COUNT(*) FROM company
 	</select>
 	
-	<select id="switchingPage" parameterType="java.util.Map">
+	<select id="switchingPage" parameterType="java.util.Map" resultType="ksmart.project.test26.service.Company">
 		SELECT company_id as companyId
 			,company_name as companyName
 			FROM company

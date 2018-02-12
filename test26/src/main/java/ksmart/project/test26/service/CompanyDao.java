@@ -1,16 +1,22 @@
 package ksmart.project.test26.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
+
 
 @Repository
 public class CompanyDao {	
 	@Autowired
 	private SqlSessionTemplate sqlSessionTemplate;
 	String localName = "ksmart.project.test26.mapper.CompanyMapper.";
+	private static final Logger logger = LoggerFactory.getLogger(CompanyDao.class);
 	// 목록조회
 	public List<Company> selectCompanyList() {
 		return sqlSessionTemplate.selectList(localName + "selectCompany");
@@ -33,4 +39,21 @@ public class CompanyDao {
 	public int insertCompany(Company company) {
 		return sqlSessionTemplate.insert(localName + "insertCompany", company);
 	}
+	
+	// 리스트 페이지 선택
+	public List<Company> selectCompanyListPage(Map map) {
+		logger.debug("selectCompanyListPage(Map map) 메소드 map is {}",map);
+		List<Company> list = sqlSessionTemplate.selectList(localName + "switchingPage", map);
+		logger.debug("selectCompanyListPage(Map map) 메소드 list is {}", list);
+		return list;
+		
+	}
+	
+	// companyList total row 
+	public int totalCount() {
+		int totalCount = sqlSessionTemplate.selectOne(localName + "countRow");
+		logger.debug("totalCount() 메소드 totalCount is {}", totalCount);
+		return totalCount;
+	}
+	
 }
