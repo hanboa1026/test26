@@ -49,4 +49,16 @@
 		WHERE company_id = #{companyId}
 	</delete>
 	
+	<select id="countRow">
+		SELECT COUNT(*) FROM company
+	</select>
+	
+	<select id="switchingPage" parameterType="java.util.Map">
+		SELECT company_id as companyId
+			,company_name as companyName
+			FROM company
+			ORDER BY company_id
+			LIMIT #{startRow}, #{rowPerPage}
+	</select>
+	
 </mapper>
