@@ -5,13 +5,21 @@
 
 	<!-- select list-->
 	<select id="selectCountryList"
+			parameterType="java.util.Map"
 			resultType="ksmart.project.test26.service.Country">
 		SELECT
 			country_id as countryId
 			,country_name as countryName
 		FROM country
+		LIMIT #{beginRow}, #{pagePerRow}
 	</select>
-
+		
+	<!-- select count -->
+	<select id="getCountryCount"
+			resultType="int">
+		SELECT COUNT(*) FROM country
+	</select>
+	
 	<!-- select -->
 	<select id="selectCountryById"
 			parameterType="int"

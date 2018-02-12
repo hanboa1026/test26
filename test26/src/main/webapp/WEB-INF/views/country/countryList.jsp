@@ -53,6 +53,14 @@
 					</tbody>
 				</c:forEach>
 			</table>
+				<ul>
+				<c:if test="${currentPage > 1}">
+					<li class="previous"><a href="${pageContext.request.contextPath}/country/countryList?currentPage=${currentPage-1}">Previous</a></li>
+				</c:if>
+				<c:if test="${currentPage < lastPage}">
+					<li class="next"><a href="${pageContext.request.contextPath}/country/countryList?currentPage=${currentPage+1}">Next</a></li>
+				</c:if>
+				</ul>
 			</div>
 		</div>
 	</div>

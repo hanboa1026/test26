@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,8 +23,14 @@ import ksmart.project.test26.service.CountryService;
  */
 public class CountryController {
 
+	private static final Logger logger = LoggerFactory.getLogger(CountryController.class);
+	
 	@Autowired
 	private CountryService countryService;
+	
+	@Autowired
+	private CountryDao countryDao;
+	
 /* 	@Autowired
  * 	의존관계를 자동설정할 때 사용한다. 타입을 이용하여 의존하는 객체를 삽입해준다.
  * 	해당 타입의 빈객체가 존재하지 않거나 또는 2개 이상 존재할 경우 예외가 발생한다. */
@@ -33,11 +41,21 @@ public class CountryController {
  * 	URL을 컨트롤러의 매서드와 매핑할 때 사용하는 스프링 프레임워크의 어노테이션이다.
  * 	매서든 내에서 viewName을 별도로 설정하지 않으면 @RequestMapping의 path로
  * 	설정한 URL이 그대로 viewName으로 설정된다.*/
-	public String countryList(Model model, HttpSession session) {
+	public String countryList(Model model, HttpSession session
+							,@RequestParam(value="currentPage", required=false, defaultValue="1") int currentPage) {
 		if(session.getAttribute("loginMember") == null ) {
 			return "redirect:/log/login"; 
 		}
-		List<Country> list = countryService.selectCountryList();
+		int countryCount = countryService.getCountryCount();
+		int pagePerRow = 10;
+		int lastPage = (int)(Math.ceil(countryCount/pagePerRow));
+		// 마지막페이지 = 총 목록 수 / 10
+		logger.debug("현재 페이지 {}번",currentPage); //1번
+		List<Country> list = countryService.selectCountryList(currentPage, pagePerRow);
+		logger.debug("나라 목록 {}",list);
+		model.addAttribute("currentPage",currentPage); 
+		model.addAttribute("countryCount",countryCount);
+		model.addAttribute("lastPage",lastPage);
 		model.addAttribute("list",list);
 		return "country/countryList";
 	}
@@ -57,6 +75,7 @@ public class CountryController {
 		if(session.getAttribute("loginMember") == null ) {
 			return "redirect:/log/login"; 
 		}
+		logger.debug("나라 정보 {}",country);
 		countryService.insertCountry(country);
 		return "redirect:/country/countryList";
 	}
@@ -67,6 +86,7 @@ public class CountryController {
 		if(session.getAttribute("loginMember") == null ) {
 			return "redirect:/log/login"; 
 		}
+		logger.debug("나라 번호 {}번",countryId);
 		Country country = countryService.getCountry(countryId);
 		model.addAttribute("country",country);
 		return "country/countryUpdate";
@@ -78,6 +98,7 @@ public class CountryController {
 		if(session.getAttribute("loginMember") == null ) {
 			return "redirect:/log/login"; 
 		}
+		logger.debug("나라 정보 {}",country);
 		countryService.updateCountry(country);
 		return "redirect:/country/countryList";
 	}
@@ -88,6 +109,7 @@ public class CountryController {
 		if(session.getAttribute("loginMember") == null ) {
 			return "redirect:/log/login"; 
 		}
+		logger.debug("나라 번호 {}번",countryId);
 		countryService.deleteCountry(countryId);
 		return "redirect:/country/countryList";
 	}	

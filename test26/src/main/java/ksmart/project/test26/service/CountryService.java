@@ -1,6 +1,8 @@
 package ksmart.project.test26.service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,9 +16,20 @@ public class CountryService {
 	private CountryDao countryDao;
 	
 	// 목록조회
-	public List<Country> selectCountryList(){
-		List<Country> list = countryDao.selectCountryList();
+	public List<Country> selectCountryList(int currentPage, int pagePerRow){
+		Map<String, Integer> map = new HashMap<String, Integer>();
+		map.put("beginRow", (currentPage-1)*pagePerRow);
+		//beginRow = 0 = (1-1)*10 = 0
+		map.put("pagePerRow", pagePerRow);
+		List<Country> list = countryDao.selectCountryList(map, pagePerRow, pagePerRow);
+		
 		return list;
+	}
+	
+	// 총목록수조회
+	public int getCountryCount() {
+		int count = countryDao.getCountryCount();
+		return count;
 	}
 	
 	// 입력처리서비스
