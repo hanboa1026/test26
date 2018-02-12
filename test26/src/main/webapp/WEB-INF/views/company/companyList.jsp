@@ -33,6 +33,8 @@
 			</tr>
 			</c:forEach>
 		</table>
+		<a href="${pageContext.request.contextPath}/companyList?currentPage=${currentPage-1}">이전</a>
+		<a href="${pageContext.request.contextPath}/companyList?currentPage=${currentPage+1}">다음</a>
 		<jsp:include page="/WEB-INF/views/inc/footer.jsp"></jsp:include>
 	</div>
 	</body>
