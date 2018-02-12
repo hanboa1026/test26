@@ -1,8 +1,11 @@
 package ksmart.project.test26.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -11,9 +14,24 @@ public class IdolDao {
 	private String str = "ksmart.project.test26.mapper.IdolMapper.";
 	@Autowired
 	private SqlSessionTemplate sqlSessionTemplate;
+	private static final Logger logger=LoggerFactory.getLogger(IdolDao.class);
+	
+	// 리스트 페이지 선택
+	public List<Idol> selectIdolListPage(Map<String, Integer> map, int currentPage, int pagePerRow){
+		/*logger.debug("selectIdolListPage(Map map) 메소드 map is{}", map);
+		List<Idol> list = sqlSessionTemplate.selectList(str+"switchingPage",map);
+		logger.debug("selectIdolListPage(Map map) 메소드 list is()",list);*/
+		return sqlSessionTemplate.selectList(str+"selectIdolList",map);
+		
+	}
+	// 총갯수
+	public int getIdolCount() {
+		return sqlSessionTemplate.selectOne(str+"getIdolCount");
+	}
+	
 	// 목록조회
-	public List<Idol> selectIdolList(){
-		return sqlSessionTemplate.selectList(str+"selectIdolList");
+	public List<Idol> selectIdolList(Map<String, Integer> map, int currentPage, int pagePerRow){
+		return sqlSessionTemplate.selectList(str+"selectIdolList",map);
 	}
 	// 업데이트 정보요청
 	public Idol updateGetIdol(int idolId) {

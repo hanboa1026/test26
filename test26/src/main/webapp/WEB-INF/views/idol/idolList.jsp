@@ -15,7 +15,7 @@
 			<h2 class="col-lg-2 col-sm-3">Idol List</h2>
 			<a class="col-lg-10 col-sm-9 homeicon" href="${pageContext.request.contextPath}/"><img alt="home" src="${pageContext.request.contextPath}/resources/img/home.png"></a>
 		</div>
-		<a href="${pageContext.request.contextPath}/idol/idolInsert" class="btn btn-info">idol ADD</a>
+		<a href="${pageContext.request.contextPath}/idol/idolInsert" class="btn btn-info">ADD</a>
 		<table class= "table table-striped table-hover">
 		<thead>
 			<tr class="info">
@@ -33,9 +33,17 @@
 					<td><a class="btn btn-primary" href="${pageContext.request.contextPath}/idol/idolUpdate?idolId=${idol.idolId}"><i class="fa fa-pencil"></i></a></td>
 					<td><a class="btn btn-danger" href="${pageContext.request.contextPath}/idol/idolDelete?idolId=${idol.idolId}"><i class="fa fa-trash"></i></a></td>
 				</tr>
-			</tbody>	
+			</tbody>
 		</c:forEach>
-		</table>
+		</table> 
+			<c:if test="${currentPage > 1}">
+			<a href="${pageContext.request.contextPath}/idol/idolList?currentPage=${currentPage-1}">이전</a>
+			</c:if>
+			<c:if test="${currentPage < lastPage}">
+			<a href="${pageContext.request.contextPath}/idol/idolList?currentPage=${currentPage+1}">다음</a>
+			</c:if>
+
+		
 		<jsp:include page="/WEB-INF/views/inc/footer.jsp"></jsp:include>
 	</div>
 </body>
