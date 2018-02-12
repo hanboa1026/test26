@@ -21,7 +21,7 @@ public class CountryService {
 		map.put("beginRow", (currentPage-1)*pagePerRow);
 		//beginRow = 0 = (1-1)*10 = 0
 		map.put("pagePerRow", pagePerRow);
-		List<Country> list = countryDao.selectCountryList(map, pagePerRow, pagePerRow);
+		List<Country> list = countryDao.selectCountryList(map, currentPage, pagePerRow);
 		
 		return list;
 	}
