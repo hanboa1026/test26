@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public class CountryDao {
-	private String localName = "ksmart.project.test26.service.CountryMapper.";	
+	private String localName = "ksmart.project.test26.mapper.CountryMapper.";	
 	@Autowired
 	private SqlSessionTemplate sqlSessionTemplate;	
 	// 목록조회

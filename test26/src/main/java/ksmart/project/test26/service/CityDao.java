@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 public class CityDao {
 	@Autowired
 	private SqlSessionTemplate sqlSessionTemplate;
-	String localName = "ksmart.project.test26.service.CityMapper.";
+	String localName = "ksmart.project.test26.mapper.CityMapper.";
 	// 목록조회
 	public List<City> selectCityList() {
 		return sqlSessionTemplate.selectList(localName+"selectCityList");
