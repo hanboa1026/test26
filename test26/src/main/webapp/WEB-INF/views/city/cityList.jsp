@@ -29,26 +29,36 @@
 				<jsp:include page="/WEB-INF/views/inc/left.jsp"></jsp:include>
 			</div>
 			<div class="col-lg-10">
-			<table class="table table-striped table-hover">
-				<thead>
-					<tr class="info">
-						<th>No.</th>
-						<th>NAME</th>
-						<th>UPDATE</th>
-						<th>DELETE</th>
-					</tr>
-				</thead>
-				<c:forEach var="city" items="${list}">
-					<tbody>
-						<tr>
-							<td>${city.cityId}</td>
-							<td>${city.cityName}</td>
-							<td><a class="btn btn-primary" href="${pageContext.request.contextPath}/city/cityUpdate?cityId=${city.cityId}"><i class="fa fa-pencil"></i></a></td>
-							<td><a class="btn btn-danger" href="${pageContext.request.contextPath}/city/cityDelete?cityId=${city.cityId}"><i class="fa fa-trash"></i></a></td>
+				<table class="table table-striped table-hover">
+					<thead>
+						<tr class="info">
+							<th>No.</th>
+							<th>NAME</th>
+							<th>UPDATE</th>
+							<th>DELETE</th>
 						</tr>
-					</tbody>
-				</c:forEach>
-			</table>
+					</thead>
+					<c:forEach var="city" items="${list}">
+						<tbody>
+							<tr>
+								<td>${city.cityId}</td>
+								<td>${city.cityName}</td>
+								<td><a class="btn btn-primary" href="${pageContext.request.contextPath}/city/cityUpdate?cityId=${city.cityId}"><i class="fa fa-pencil"></i></a></td>
+								<td><a class="btn btn-danger" href="${pageContext.request.contextPath}/city/cityDelete?cityId=${city.cityId}"><i class="fa fa-trash"></i></a></td>
+							</tr>
+						</tbody>
+					</c:forEach>
+				</table>
+				<!-- 페이징 -->
+				<nav aria-label="Page navigation example">
+					<ul class="pagination justify-content-center">
+						<c:forEach var="i" begin="1" end="${countPage}" step="1">
+							<li class="page-item">
+								<a class="page-link" href="${pageContext.request.contextPath}/city/cityList?currentPage=${i}">${i}</a>
+							</li>
+						</c:forEach>
+					</ul>
+				</nav>
 			</div>
 		</div>
 	</div>

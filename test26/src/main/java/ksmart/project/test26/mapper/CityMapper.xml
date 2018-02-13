@@ -47,6 +47,19 @@
 		DELETE
 		FROM city
 		WHERE city_id = #{cityId}
-	</delete>	
+	</delete>
+	
+	<!-- page -->
+	<select id="selectCityCountByPage" resultType="int">
+		SELECT COUNT(*) FROM city
+	</select>	
+	
+	<select id="selectCityListByPage" parameterType="java.util.Map" resultType="ksmart.project.test26.service.City">
+		SELECT 
+			city_id AS cityId
+			, city_name AS cityName
+		FROM city
+		LIMIT #{startPage}, #{pagePerRow}
+	</select>
 	
 </mapper>

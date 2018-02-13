@@ -1,9 +1,12 @@
 package ksmart.project.test26;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,16 +21,27 @@ import ksmart.project.test26.service.CityService;
 public class CityController {
 	@Autowired
 	private CityService cityService;
+	private static final Logger logger = LoggerFactory.getLogger(CityController.class);
 	
-	// 목록조회 service 이용
-	@RequestMapping(value="/city/cityList", method=RequestMethod.GET)
-	public String cityList(Model model, HttpSession session) {
-		// 세션이 없으면 로그인 페이지로 리다이렉트 
-    	if(session.getAttribute("loginMember") == null ) {
-			return "redirect:/log/login"; 
+	// 도시 조회(페이징)
+	@RequestMapping(value = "/city/cityList", method = RequestMethod.GET)
+	public String selectCityListAndCountByPage(Model model, HttpSession httpSession
+										, @RequestParam(value = "currentPage", required = false, defaultValue = "1") int currentPage
+										, @RequestParam(value = "pagePerRow", required = false, defaultValue = "10") int pagePerRow) {
+		logger.debug("{} : <- currentPage CityController.java", currentPage);
+		logger.debug("{} : <- pagePerRow CityController.java", pagePerRow);
+		// 로그인 접근 처리
+		if(httpSession.getAttribute("loginMember") == null) {
+			return "redirect:/";
 		}
-		List<City> list = cityService.selectCityList();
+		Map<String, Object> map = cityService.selectCityListAndCountByPage(currentPage, pagePerRow);
+		List<City> list = (List<City>)(map.get("list"));
+		int countPage = (Integer)map.get("countPage");
+		logger.debug("{} : <- list CityController.java", list);
+		logger.debug("{} : <- countPage CityController.java", countPage);
 		model.addAttribute("list", list);
+		model.addAttribute("countPage", countPage);
+		model.addAttribute("currentPage", currentPage);
 		return "city/cityList";
 	}
 	
@@ -85,4 +99,19 @@ public class CityController {
     	cityService.deleteCity(cityId);
 		return "redirect:/city/cityList";
 	}
+	
+	// 도시 전체 조회
+	@RequestMapping(value = "/city/cityListAll", method = RequestMethod.GET)
+	public String cityList(HttpSession httpSession, Model model) {
+		logger.debug("{} : <- httpSession CityController.java", httpSession);
+		logger.debug("{} : <- model CityController.java", model);
+		// 로그인 접근 처리
+		if(httpSession.getAttribute("loginMember") == null) {
+			return "redirect:/";
+		}
+			List<City> list = cityService.selectCityList();
+			logger.debug("{} : <- list CityController.java", list);
+			model.addAttribute("list", list);
+		return "city/cityList";
+		}
 }

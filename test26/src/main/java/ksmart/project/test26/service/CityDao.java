@@ -1,8 +1,11 @@
 package ksmart.project.test26.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -11,6 +14,7 @@ public class CityDao {
 	@Autowired
 	private SqlSessionTemplate sqlSessionTemplate;
 	String localName = "ksmart.project.test26.mapper.CityMapper.";
+	private static final Logger logger = LoggerFactory.getLogger(CityDao.class);
 	// 목록조회
 	public List<City> selectCityList() {
 		return sqlSessionTemplate.selectList(localName+"selectCityList");
@@ -31,4 +35,16 @@ public class CityDao {
 	public int insertCity(City city) {
 		return sqlSessionTemplate.insert(localName+"insertCity", city);
 	}
+	// 전체 도시 수(페이징)
+	public int selectCityCountByPage() {
+		logger.debug("<selectCityCountByPage CityDao");
+		return sqlSessionTemplate.selectOne(localName+"selectCityCountByPage");
+	}
+		
+	// 도시 조회(페이징)
+	public List<City> selectCityListByPage(Map map) {
+		logger.debug("{} : <- startPage CityDao.java", map.get("startPage"));
+		logger.debug("{} : <- pagePerRow CityDao.java", map.get("pagePerRow"));
+		return sqlSessionTemplate.selectList(localName+"selectCityListByPage", map);
+		}
 }
