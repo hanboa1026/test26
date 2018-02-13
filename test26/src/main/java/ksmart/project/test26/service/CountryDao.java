@@ -19,21 +19,12 @@ public class CountryDao {
 	private SqlSessionTemplate sqlSessionTemplate;	
 	
 	// 목록조회
-	public List<Country> selectCountryList(Map<String, Integer> map) {
+	public List<Country> selectCountryList(Map<String, Object> map) {
 		return sqlSessionTemplate.selectList(localName+"selectCountryList",map);
 	}
-	// 총목록수조회
-	public int getCountryCount() {
-		return sqlSessionTemplate.selectOne(localName+"getCountryCount");
-	}
-	// 검색후조회(검색기능)
-	public List<Object> getCountryListBySearch(Map<String, String> map) {
-		logger.debug("CountryDao 검색 : {}",map);
-		return sqlSessionTemplate.selectList(localName+"selectCountrySearchList", map);
-	}
-	// 검색후총목록수조회(검색기능)
-	public int getCountryCountBySearch(Map<String, String> map) {
-		return sqlSessionTemplate.selectOne(localName+"getCountryCountBySearch", map);
+	// 목록수조회
+	public int getCountryCount(Map<String, Object> map) {
+		return sqlSessionTemplate.selectOne(localName+"getCountryCount",map);
 	}
 	// 업데이트 정보요청
 	public Country selectCountryById(int countryId) {

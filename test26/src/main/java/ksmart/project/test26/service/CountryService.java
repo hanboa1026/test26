@@ -20,45 +20,33 @@ public class CountryService {
 	private CountryDao countryDao;
 	
 	// 목록조회
-	public List<Country> selectCountryList(int currentPage, int pagePerRow){
+	public List<Country> selectCountryList(int currentPage, int pagePerRow,String searchOption, String keyword){
 		logger.debug("현재 페이지 {}번",currentPage);
 		logger.debug("목록 수 {}개",pagePerRow);
-		Map<String, Integer> map = new HashMap<String, Integer>();
+		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("beginRow", (currentPage-1)*pagePerRow);
 		//beginRow = (1-1)*10 = 0
 		map.put("pagePerRow", pagePerRow);
 		//LIMIT (beginRow)0,(pagePerRow)10 : 0번째부터 10번째까지
+		logger.debug("CountryService 검색조건 : {}",searchOption);
+		logger.debug("CountryService 검색어 : {}",keyword);
+		map.put("searchOption", searchOption);
+		map.put("keyword", keyword);
 		List<Country> list = countryDao.selectCountryList(map);
+		logger.debug("CountryService 검색후 나라 목록 : {}",list);
 		
 		return list;
 	}
 	
 	// 총목록수조회
-	public int getCountryCount() {
-		int count = countryDao.getCountryCount();
+	public int getCountryCount(String searchOption, String keyword) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("searchOption", searchOption);
+		map.put("keyword", keyword);
+		int count = countryDao.getCountryCount(map);
 		return count;
 	}
-	
-	// 검색후목록조회
-	public List<Object> getCountryListBySearch(String searchOption, String keyword) {
-		Map<String, String> map = new HashMap<String, String>();
-		logger.debug("CountryService 검색조건 : {}",searchOption);
-		logger.debug("CountryService 검색어 : {}",keyword);
-		map.put("searchOption", searchOption);
-		map.put("keyword", keyword);
-		List<Object> list = countryDao.getCountryListBySearch(map);
-		logger.debug("CountryService 검색후 나라 목록 : {}",list);
-		return list;
-	}
-	
-	// 검색후총목록수조회
-	public int getCountryCountBySearch(String searchOption, String keyword) {
-		Map<String, String> map = new HashMap<String, String>();
-		map.put("searchOption", searchOption);
-		map.put("keyword", keyword);
-		int sCount = countryDao.getCountryCountBySearch(map);
-		return sCount;
-	}
+
 	// 입력처리서비스
 	public int insertCountry(Country country) {
 		int row = countryDao.insertCountry(country);

@@ -10,35 +10,21 @@
 		SELECT
 			country_id as countryId
 			,country_name as countryName
-		FROM country
+		FROM test.country
+		<include refid="search"></include>
 		LIMIT #{beginRow}, #{pagePerRow}
+		<!-- WHERE절을 include 태그로 삽입 -->
 	</select>
 	
-	<!-- select search list -->
-	<select id="selectCountrySearchList"
-		resultType="ksmart.project.test26.service.Country"
-		parameterType="java.util.Map">
-		SELECT
-			country_id as countryId
-			,country_name as countryName
-		FROM test.country
+	<!-- select count -->
+	<select id="getCountryCount"
+			resultType="int"
+			parameterType="java.util.Map">
+		SELECT COUNT(*) FROM test.country
 		<include refid="search"></include>
 		<!-- WHERE절을 include 태그로 삽입 -->
 	</select>
 		
-	<!-- select count -->
-	<select id="getCountryCount"
-			resultType="int">
-		SELECT COUNT(*) FROM country
-	</select>
-		
-	<!-- select count by search-->
-	<select id="getCountryCountBySearch"
-			resultType="int">
-		SELECT COUNT(*) FROM country
-		<include refid="search"></include>
-	</select>
-	
 	<!-- sql code parts
 		 -반복되는 sql의 일부를 sql태그를 이용하여 따로 뺄 수 있다. -->
 	<sql id = "search">

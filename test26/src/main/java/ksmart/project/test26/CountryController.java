@@ -32,46 +32,35 @@ public class CountryController {
  * 	해당 타입의 빈객체가 존재하지 않거나 또는 2개 이상 존재할 경우 예외가 발생한다. */
 	
 	// 목록조회
-	@RequestMapping(value="/country/countryList", method=RequestMethod.GET)
+	@RequestMapping(value="/country/countryList")
 /*	@RequestMapping
  * 	URL을 컨트롤러의 매서드와 매핑할 때 사용하는 스프링 프레임워크의 어노테이션이다.
  * 	매서든 내에서 viewName을 별도로 설정하지 않으면 @RequestMapping의 path로
  * 	설정한 URL이 그대로 viewName으로 설정된다.*/
 	public String countryList(Model model, HttpSession session
-							,@RequestParam(value="currentPage", required=false, defaultValue="1") int currentPage)
-							{
+							,@RequestParam(value="currentPage", required=false, defaultValue="1") int currentPage
+							,@RequestParam(value="searchOption", defaultValue="country_name") String searchOption
+							,@RequestParam(value="keyword", defaultValue="") String keyword)	{
+		logger.debug("검색 조건 {}",searchOption);
+		logger.debug("검색 단어 {}",keyword);
 		if(session.getAttribute("loginMember") == null ) {
 			return "redirect:/log/login"; 
 		}
-		int countryCount = countryService.getCountryCount();
+		int countryCount = countryService.getCountryCount(searchOption, keyword);
 		int pagePerRow = 10;
 		int lastPage = (int)(Math.ceil(countryCount/pagePerRow));
 		// 마지막페이지 = 총 목록 수 / 10
 		logger.debug("현재 페이지 {}번",currentPage); //1번
-		List<Country> list = countryService.selectCountryList(currentPage, pagePerRow);
+		List<Country> list = countryService.selectCountryList(currentPage, pagePerRow, searchOption, keyword);
 		logger.debug("나라 목록 {}",list);
+		logger.debug("총 갯수 {}",countryCount);
 		model.addAttribute("currentPage",currentPage); 
 		model.addAttribute("lastPage",lastPage);
 		model.addAttribute("list",list);
-		return "country/countryList";
-	}
-	
-	// 검색
-	@RequestMapping(value="/country/countryList", method=RequestMethod.POST)
-	public String countryList(Model model
-							,@RequestParam(value="searchOption", defaultValue="country_name") String searchOption
-							,@RequestParam(value="keyword", defaultValue="") String keyword) {
-		logger.debug("검색 조건 {}",searchOption);
-		logger.debug("검색 단어 {}",keyword);
-		List<Object> listBySearch = countryService.getCountryListBySearch(searchOption, keyword);
-		logger.debug("검색 후 나라 목록 {}",listBySearch);
-		int countryCount = countryService.getCountryCountBySearch(searchOption, keyword);
-		logger.debug("총 갯수 {}",countryCount);
 		model.addAttribute("searchOption",searchOption);
 		model.addAttribute("keyword",keyword);
-		model.addAttribute("listBySearch",listBySearch);
 		model.addAttribute("countryCount",countryCount);
-		return "/country/countryList";
+		return "country/countryList";
 	}
 	
 	// 입력페이지 요청

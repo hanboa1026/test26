@@ -42,29 +42,7 @@
 				<jsp:include page="/WEB-INF/views/inc/left.jsp"></jsp:include>
 			</div>
 			<div class="col-lg-10">
-			<table class="table table-striped table-hover">
-				<thead>
-					<tr class="success">
-						<th>No.</th>
-						<th>NAME</th>
-						<th>UPDATE</th>
-						<th>DELETE</th>
-					</tr>
-				</thead>
-				<c:forEach var="countryBySearch" items="${listBySearch}">
-					<tbody>
-						<tr>
-							<td>${countryBySearch.countryId}</td>
-							<td>${countryBySearch.countryName}</td>
-							<td><a
-								class="btn btn-primary" href="${pageContext.request.contextPath}/countryModify?countryId=${country.countryId}"><i class="fa fa-pencil"></i></a></td>
-							<td><a
-								class="btn btn-danger" href="${pageContext.request.contextPath}/countryRemove?countryId=${country.countryId}"><i class="fa fa-trash"></i></a></td>
-						</tr>
-					</tbody>
-				</c:forEach>
-			</table>
-			<table class="table table-striped table-hover">
+				<table class="table table-striped table-hover">
 				<thead>
 					<tr class="success">
 						<th>No.</th>
