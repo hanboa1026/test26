@@ -15,15 +15,7 @@ public class IdolDao {
 	@Autowired
 	private SqlSessionTemplate sqlSessionTemplate;
 	private static final Logger logger=LoggerFactory.getLogger(IdolDao.class);
-	
-	// 리스트 페이지 선택
-	public List<Idol> selectIdolListPage(Map<String, Integer> map, int currentPage, int pagePerRow){
-		/*logger.debug("selectIdolListPage(Map map) 메소드 map is{}", map);
-		List<Idol> list = sqlSessionTemplate.selectList(str+"switchingPage",map);
-		logger.debug("selectIdolListPage(Map map) 메소드 list is()",list);*/
-		return sqlSessionTemplate.selectList(str+"selectIdolList",map);
-		
-	}
+
 	// 총갯수
 	public int getIdolCount() {
 		return sqlSessionTemplate.selectOne(str+"getIdolCount");

@@ -12,39 +12,53 @@
 <body>
 	<div class="container">
 		<div class="row">
-			<h2 class="col-lg-2 col-sm-3">Idol List</h2>
-			<a class="col-lg-10 col-sm-9 homeicon" href="${pageContext.request.contextPath}/"><img alt="home" src="${pageContext.request.contextPath}/resources/img/home.png"></a>
+			<div class="col-lg-12">
+				<h1>Idol&nbsp;List</h1>
+			</div>
 		</div>
-		<a href="${pageContext.request.contextPath}/idol/idolInsert" class="btn btn-info">ADD</a>
-		<table class= "table table-striped table-hover">
-		<thead>
-			<tr class="info">
-				<th>No.</th>
-				<th>NAME</th>
-				<th>UPDATE</th>
-				<th>DELETE</th>
-			</tr>
-		</thead>
-		<c:forEach var="idol" items="${list}">
-			<tbody>
-				<tr>
-					<td>${idol.idolId}</td>
-					<td>${idol.idolName}</td>
-					<td><a class="btn btn-primary" href="${pageContext.request.contextPath}/idol/idolUpdate?idolId=${idol.idolId}"><i class="fa fa-pencil"></i></a></td>
-					<td><a class="btn btn-danger" href="${pageContext.request.contextPath}/idol/idolDelete?idolId=${idol.idolId}"><i class="fa fa-trash"></i></a></td>
-				</tr>
-			</tbody>
-		</c:forEach>
-		</table> 
-			<c:if test="${currentPage > 1}">
-			<a href="${pageContext.request.contextPath}/idol/idolList?currentPage=${currentPage-1}">이전</a>
-			</c:if>
-			<c:if test="${currentPage < lastPage}">
-			<a href="${pageContext.request.contextPath}/idol/idolList?currentPage=${currentPage+1}">다음</a>
-			</c:if>
-
-		
+		<div class="row">		
+			<div class="col-lg-2 col-sm-3">			
+				<a class="homeicon" href="${pageContext.request.contextPath}/"><img alt="home" src="${pageContext.request.contextPath}/resources/img/home.png"></a>
+			</div>
+			<div class="col-lg-10 col-sm-9">
+				<a href="${pageContext.request.contextPath}/idol/idolInsert" class="btn btn-info">ADD</a>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-2">
+				<jsp:include page="/WEB-INF/views/inc/left.jsp"></jsp:include>
+			</div>
+			<div class="col-lg-10">
+			<table class= "table table-striped table-hover">
+				<thead>
+					<tr class="info">
+						<th>No.</th>
+						<th>NAME</th>
+						<th>UPDATE</th>
+						<th>DELETE</th>
+					</tr>
+				</thead>
+				<c:forEach var="idol" items="${list}">
+					<tbody>
+						<tr>
+							<td>${idol.idolId}</td>
+							<td>${idol.idolName}</td>
+							<td><a class="btn btn-primary" href="${pageContext.request.contextPath}/idol/idolUpdate?idolId=${idol.idolId}"><i class="fa fa-pencil"></i></a></td>
+							<td><a class="btn btn-danger" href="${pageContext.request.contextPath}/idol/idolDelete?idolId=${idol.idolId}"><i class="fa fa-trash"></i></a></td>
+						</tr>
+					</tbody>
+				</c:forEach>
+			</table> 
+				<c:if test="${currentPage > 1}">
+					<a href="${pageContext.request.contextPath}/idol/idolList?currentPage=${currentPage-1}">이전</a>
+				</c:if>
+				<c:if test="${currentPage < lastPage}">
+					<a href="${pageContext.request.contextPath}/idol/idolList?currentPage=${currentPage+1}">다음</a>
+				</c:if>
+			</div>
+		</div>
 		<jsp:include page="/WEB-INF/views/inc/footer.jsp"></jsp:include>
 	</div>
+	
 </body>
 </html>
