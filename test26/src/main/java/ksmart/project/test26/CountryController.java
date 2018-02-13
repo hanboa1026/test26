@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import ksmart.project.test26.service.Country;
-import ksmart.project.test26.service.CountryDao;
 import ksmart.project.test26.service.CountryService;
 @Controller
 /* spring MVC의 Controller 클래스 선언을 단순화시켜준다.
@@ -27,9 +26,6 @@ public class CountryController {
 	
 	@Autowired
 	private CountryService countryService;
-	
-	@Autowired
-	private CountryDao countryDao;
 	
 /* 	@Autowired
  * 	의존관계를 자동설정할 때 사용한다. 타입을 이용하여 의존하는 객체를 삽입해준다.
@@ -54,7 +50,6 @@ public class CountryController {
 		List<Country> list = countryService.selectCountryList(currentPage, pagePerRow);
 		logger.debug("나라 목록 {}",list);
 		model.addAttribute("currentPage",currentPage); 
-		model.addAttribute("countryCount",countryCount);
 		model.addAttribute("lastPage",lastPage);
 		model.addAttribute("list",list);
 		return "country/countryList";

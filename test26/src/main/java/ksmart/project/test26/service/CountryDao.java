@@ -20,14 +20,8 @@ public class CountryDao {
 	private SqlSessionTemplate sqlSessionTemplate;	
 	
 	// 목록조회
-	public List<Country> selectCountryList(Map<String, Integer> map, int currentPage, int pagePerRow) {
-		/*logger.debug("현재 페이지 {}번",currentPage);
-		logger.debug("목록 수 {}개",pagePerRow);
-		map.put("beginRow", (currentPage-1)*pagePerRow);
-		//beginRow = 0 = (1-1)*10 = 0
-		map.put("pagePerRow", pagePerRow);
-		//LIMIT 0,10 : 0번째부터 10번째까지
-*/		return sqlSessionTemplate.selectList(localName+"selectCountryList",map);
+	public List<Country> selectCountryList(Map<String, Integer> map) {
+		return sqlSessionTemplate.selectList(localName+"selectCountryList",map);
 	}
 	// 총목록수조회
 	public int getCountryCount() {
