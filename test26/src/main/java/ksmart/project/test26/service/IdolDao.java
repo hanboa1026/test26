@@ -11,34 +11,33 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public class IdolDao {
-	private String str = "ksmart.project.test26.mapper.IdolMapper.";
-	@Autowired
-	private SqlSessionTemplate sqlSessionTemplate;
-	private static final Logger logger=LoggerFactory.getLogger(IdolDao.class);
+   private String str = "ksmart.project.test26.mapper.IdolMapper.";
+   @Autowired
+   private SqlSessionTemplate sqlSessionTemplate;
+   private static final Logger logger=LoggerFactory.getLogger(IdolDao.class);
 
-	// 총갯수
-	public int getIdolCount() {
-		return sqlSessionTemplate.selectOne(str+"getIdolCount");
-	}
-	
-	// 목록조회
-	public List<Idol> selectIdolList(Map<String, Integer> map){
-		return sqlSessionTemplate.selectList(str+"selectIdolList",map);
-	}
-	// 업데이트 정보요청
-	public Idol updateGetIdol(int idolId) {
-		return sqlSessionTemplate.selectOne(str+"getIdol", idolId);
-	}
-	// 업데이트
-	public int updateIdol(Idol idol) {
-		return sqlSessionTemplate.update(str+"updateIdol", idol);
-	}
-	// 삭제
-	public int deleteIdol(int idolId) {
-		return sqlSessionTemplate.delete(str+"deleteIdol",idolId);
-	}
-	// 등록
-	public int insertIdol(Idol idol) {
-		return sqlSessionTemplate.insert(str+"insertIdol",idol);
-	}
+   // 목록수 조회
+   public int getIdolCount(Map<String, Object> map) {
+      return sqlSessionTemplate.selectOne(str+"getIdolCount",map);
+   }
+   // 목록조회
+   public List<Idol> selectIdolList(Map<String, Object> map){
+      return sqlSessionTemplate.selectList(str+"selectIdolList",map);
+   }
+   // 업데이트 정보요청
+   public Idol updateGetIdol(int idolId) {
+      return sqlSessionTemplate.selectOne(str+"getIdol", idolId);
+   }
+   // 업데이트
+   public int updateIdol(Idol idol) {
+      return sqlSessionTemplate.update(str+"updateIdol", idol);
+   }
+   // 삭제
+   public int deleteIdol(int idolId) {
+      return sqlSessionTemplate.delete(str+"deleteIdol",idolId);
+   }
+   // 등록
+   public int insertIdol(Idol idol) {
+      return sqlSessionTemplate.insert(str+"insertIdol",idol);
+   }
 }

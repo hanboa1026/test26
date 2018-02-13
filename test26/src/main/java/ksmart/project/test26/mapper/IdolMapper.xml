@@ -2,60 +2,81 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="ksmart.project.test26.mapper.IdolMapper">
-	<!-- select List-->
-	<select id="selectIdolList"
-			parameterType="java.util.Map"
-			resultType="ksmart.project.test26.service.Idol">
+   <!-- select List-->
+   <select id="selectIdolList"
+         parameterType="java.util.Map"
+         resultType="ksmart.project.test26.service.Idol">
 		SELECT 
-			idol_id as idolId
-			,idol_name as idolName
-		FROM idol 
+        	 idol_id as idolId
+         	,idol_name as idolName
+		FROM test.idol
+      <include refid="search"></include>
 		LIMIT #{startRow}, #{rowPerPage}
-	</select>
-	
-	<!-- select count -->
-	<select id="getIdolCount"
-			resultType="int">
-		SELECT COUNT(*) FROM idol
-	</select>
-	
-	<!-- select -->
-	<select id="getIdol"
-			parameterType="int"
-			resultType="ksmart.project.test26.service.Idol">
-		SELECT
-			idol_id as idolId
-			,idol_name as idolName
-		FROM idol
-		WHERE idol_id = #{idolId}
-	</select>
-	
-	<!-- insert -->
-	<insert id="insertIdol"
-			parameterType="ksmart.project.test26.service.Idol">
-		INSERT INTO idol(
-			idol_name)
-		VALUES (
-			#{idolName}
-		)
-	</insert>
+		<!-- WHERE절을 include 태그로 삽입 -->
+   </select>
+   
+   <!-- select count -->
+   <select id="getIdolCount"
+         resultType="int"
+         parameterType="java.util.Map">
+		SELECT COUNT(*) FROM test.idol
+		<include refid="search"></include>
+		<!-- WHERE절을 include 태그로 삽입 -->
+   </select>
+   
+   <!-- sql code parts -반복되는 sql의 일부를 sql 태그를 이용하여 따로  쓸 수 있다.-->
+   <sql id = "search">
+   		<choose>
+   		<!-- 전체 검색 -->
+   		<when test="searchOption == 'all'">
+   			<!-- searchOption이 all일때 -->
+   			WHERE idol_name LIKE CONCAT('%',#{keyword},'%')
+   			<!-- name이 keyword와 같을 때(keyword의 기본값은"":공백 )-->
+   		</when>
+   		<!-- 부분 검색 -->
+   		<otherwise>
+   			WHERE #{searchOption} LIKE CONCAT('%',#{keyword},'%')
+   			<!-- 검색 조건이 keyword와 같을때, 검색조건(기본값idol_name)과 keyword에 값 부여(ex:아이돌이름) -->
+   		</otherwise>
+   		</choose>
+   </sql>
+   
+   <!-- select -->
+   <select id="getIdol"
+         parameterType="int"
+         resultType="ksmart.project.test26.service.Idol">
+      SELECT
+         idol_id as idolId
+         ,idol_name as idolName
+      FROM idol
+      WHERE idol_id = #{idolId}
+   </select>
+   
+   <!-- insert -->
+   <insert id="insertIdol"
+         parameterType="ksmart.project.test26.service.Idol">
+      INSERT INTO idol(
+         idol_name)
+      VALUES (
+         #{idolName}
+      )
+   </insert>
 
-	<!-- update -->
-	<update id="updateIdol"
-			parameterType="ksmart.project.test26.service.Idol">
-		UPDATE idol
-			SET idol_name = #{idolName}
-		WHERE idol_Id = #{idolId}
-	</update>
-	
-	<!-- delete -->
-	<delete id="deleteIdol"
-			parameterType="ksmart.project.test26.service.Idol">
-		DELETE
-		FROM idol
-		WHERE idol_id = #{idolId}
-	</delete>
+   <!-- update -->
+   <update id="updateIdol"
+         parameterType="ksmart.project.test26.service.Idol">
+      UPDATE idol
+         SET idol_name = #{idolName}
+      WHERE idol_Id = #{idolId}
+   </update>
+   
+   <!-- delete -->
+   <delete id="deleteIdol"
+         parameterType="ksmart.project.test26.service.Idol">
+      DELETE
+      FROM idol
+      WHERE idol_id = #{idolId}
+   </delete>
 
 </mapper>
-
 

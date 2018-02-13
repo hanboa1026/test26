@@ -28,8 +28,15 @@
 			<div class="col-lg-2">
 				<jsp:include page="/WEB-INF/views/inc/left.jsp"></jsp:include>
 			</div>
+				<form action="${pageContext.request.contextPath}/idol/idolList?" method="POST">
+				<select name="serchOption">
+				<option value="all"<c:out value="${searchOption == 'all'?'selected':''}"/>>전체보기</option>
+				</select>
+				<input name="keyword" type="${keyword}">
+				<input type="submit" value="SEARCH">
+				</form>
 			<div class="col-lg-10">
-			<table class= "table table-striped table-hover">
+			<table class= "table table-striped table-hover">			
 				<thead>
 					<tr class="info">
 						<th>No.</th>
