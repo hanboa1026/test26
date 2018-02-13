@@ -23,12 +23,12 @@ public class CityController {
 	private CityService cityService;
 	private static final Logger logger = LoggerFactory.getLogger(CityController.class);
 	
-	// 도시 조회(페이징)
+	// 도시 조회(페이징) + 검색
 	@RequestMapping(value = "/city/cityList", method = RequestMethod.GET)
 	public String selectCityListAndCountByPage(Model model, HttpSession httpSession
 										, @RequestParam(value = "currentPage", required = false, defaultValue = "1") int currentPage
 										, @RequestParam(value = "pagePerRow", required = false, defaultValue = "10") int pagePerRow
-										, @RequestParam(value="word",required =false) String word) {
+										, @RequestParam(value="word", required = false) String word) {
 		logger.debug("{} : <- currentPage CityController.java", currentPage);
 		logger.debug("{} : <- pagePerRow CityController.java", pagePerRow);
 		logger.debug("{} : <- pagePerRow CityController.java", word);

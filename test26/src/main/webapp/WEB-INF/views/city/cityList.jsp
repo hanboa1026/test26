@@ -31,8 +31,8 @@
 				<div class="col-lg-7 col-sm-6">
 					<a href="${pageContext.request.contextPath}/city/cityInsert" class="btn btn-primary">ADD</a>
 				</div>
+				<!-- 검색처리 시작 -->
 				<form action="${pageContext.request.contextPath}/city/cityList?word=${word}" method="get" id="searchCityForm" class="col-lg-3 col-sm-3 form-inline">
-					<!-- 검색처리 -->
 					<div class="input-group">
 						<input id="searchCity" name="word" type="text" class="form-control" placeholder="Search">
 						<div class="input-group-btn">
@@ -42,6 +42,7 @@
 						</div>
 					</div>
 				</form>
+				<!-- 검색처리 끝 -->
 		</div>	
 		<div class="row">
 			<div class="col-lg-2">
@@ -68,7 +69,7 @@
 						</tbody>
 					</c:forEach>
 				</table>
-				<!-- 페이징 -->
+				<!-- 페이징 시작 -->
 				<nav aria-label="Page navigation example">
 					<ul class="pagination justify-content-center">
 						<c:forEach var="i" begin="1" end="${countPage}" step="1">
@@ -78,6 +79,7 @@
 						</c:forEach>
 					</ul>
 				</nav>
+				<!-- 페이징 끝 -->
 			</div>
 		</div>
 	</div>

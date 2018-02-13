@@ -16,7 +16,7 @@ public class CityService {
 	@Autowired
 	private CityDao cityDao;
 	private static final Logger logger = LoggerFactory.getLogger(CityService.class);
-	// 도시 조회(페이징)
+	// 도시 조회(페이징) + 검색
 	public Map<String, Object> selectCityListAndCountByPage(int currentPage, int pagePerRow, String word) {
 		logger.debug("{} : <- currentPage cityService.java", currentPage);
 		logger.debug("{} : <- pagePerRow cityService.java", pagePerRow);
@@ -39,7 +39,7 @@ public class CityService {
 		if(count%pagePerRow != 0) {
 			countPage++;
 		}
-		logger.debug("{} : >countPage cityService.java", countPage);
+		logger.debug("{} : <- countPage cityService.java", countPage);
 		// list, 페이지 수 리턴
 		Map<String, Object> returnMap = new HashMap<String, Object>();
 		returnMap.put("word", word);

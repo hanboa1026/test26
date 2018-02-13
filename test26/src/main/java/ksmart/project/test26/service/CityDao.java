@@ -42,7 +42,7 @@ public class CityDao {
 		return sqlSessionTemplate.selectOne(localName+"selectCityCountByPage", map);
 	}
 		
-	// 도시 조회(페이징)
+	// 도시 조회(페이징) + 검색
 	public List<City> selectCityListByPage(Map map) {
 		logger.debug("{} : <- startPage CityDao.java", map.get("startPage"));
 		logger.debug("{} : <- pagePerRow CityDao.java", map.get("pagePerRow"));
