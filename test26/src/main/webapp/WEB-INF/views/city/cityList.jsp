@@ -7,6 +7,14 @@
 <link href="<c:url value="/resources/css/bootstrap.min.css" />" rel="stylesheet">
 <link href="<c:url value="/resources/min_css/min_css.css" />" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="<c:url value="/resources/jquery-3.3.1.min.js" />"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('#searchButton').click(function(){
+				$('#searchCityForm').submit();
+		})
+	})
+</script>
 <title>City List</title>
 </head>
 <body>
@@ -20,9 +28,20 @@
 				<div class="col-lg-2 col-sm-3">
 					<a class="homeicon" href="${pageContext.request.contextPath}/"><img alt="home" src="${pageContext.request.contextPath}/resources/img/home.png"></a>
 				</div>
-				<div class="col-lg-10 col-sm-9">
+				<div class="col-lg-7 col-sm-6">
 					<a href="${pageContext.request.contextPath}/city/cityInsert" class="btn btn-primary">ADD</a>
 				</div>
+				<form action="${pageContext.request.contextPath}/city/cityList?word=${word}" method="get" id="searchCityForm" class="col-lg-3 col-sm-3 form-inline">
+					<!-- 검색처리 -->
+					<div class="input-group">
+						<input id="searchCity" name="word" type="text" class="form-control" placeholder="Search">
+						<div class="input-group-btn">
+							<button id="searchButton" type="button" class="btn btn-primary">
+								<i class="glyphicon glyphicon-search"></i>
+							</button>
+						</div>
+					</div>
+				</form>
 		</div>	
 		<div class="row">
 			<div class="col-lg-2">

@@ -27,21 +27,23 @@ public class CityController {
 	@RequestMapping(value = "/city/cityList", method = RequestMethod.GET)
 	public String selectCityListAndCountByPage(Model model, HttpSession httpSession
 										, @RequestParam(value = "currentPage", required = false, defaultValue = "1") int currentPage
-										, @RequestParam(value = "pagePerRow", required = false, defaultValue = "10") int pagePerRow) {
+										, @RequestParam(value = "pagePerRow", required = false, defaultValue = "10") int pagePerRow
+										, @RequestParam(value="word",required =false) String word) {
 		logger.debug("{} : <- currentPage CityController.java", currentPage);
 		logger.debug("{} : <- pagePerRow CityController.java", pagePerRow);
+		logger.debug("{} : <- pagePerRow CityController.java", word);
 		// 로그인 접근 처리
 		if(httpSession.getAttribute("loginMember") == null) {
 			return "redirect:/";
 		}
-		Map<String, Object> map = cityService.selectCityListAndCountByPage(currentPage, pagePerRow);
+		Map<String, Object> map = cityService.selectCityListAndCountByPage(currentPage, pagePerRow, word);
 		List<City> list = (List<City>)(map.get("list"));
 		int countPage = (Integer)map.get("countPage");
-		logger.debug("{} : <- list CityController.java", list);
-		logger.debug("{} : <- countPage CityController.java", countPage);
+		String searchWord = (String) map.get("word");
 		model.addAttribute("list", list);
 		model.addAttribute("countPage", countPage);
 		model.addAttribute("currentPage", currentPage);
+		model.addAttribute("word", searchWord);
 		return "city/cityList";
 	}
 	

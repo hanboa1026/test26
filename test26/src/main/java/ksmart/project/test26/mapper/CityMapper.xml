@@ -59,6 +59,9 @@
 			city_id AS cityId
 			, city_name AS cityName
 		FROM city
+		<if test="word != null">
+			WHERE city_name LIKE CONCAT("%", #{word}, "%")
+		</if>
 		LIMIT #{startPage}, #{pagePerRow}
 	</select>
 	

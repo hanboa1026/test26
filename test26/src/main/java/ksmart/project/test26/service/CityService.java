@@ -17,21 +17,23 @@ public class CityService {
 	private CityDao cityDao;
 	private static final Logger logger = LoggerFactory.getLogger(CityService.class);
 	// 도시 조회(페이징)
-	public Map<String, Object> selectCityListAndCountByPage(int currentPage, int pagePerRow) {
+	public Map<String, Object> selectCityListAndCountByPage(int currentPage, int pagePerRow, String word) {
 		logger.debug("{} : <- currentPage cityService.java", currentPage);
 		logger.debug("{} : <- pagePerRow cityService.java", pagePerRow);
+		logger.debug("{} : word cityService.java", word);
 		int startPage = 0;
 		if(currentPage > 1) {
 			startPage = (currentPage-1)*pagePerRow;
 		}
 		// DAO에 시작 페이지와 행의 수 보내기
-		Map<String, Integer> map = new HashMap<String, Integer>();
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("word", word);
 		map.put("startPage", startPage);
 		map.put("pagePerRow", pagePerRow);
 		List<City> list = cityDao.selectCityListByPage(map);
 		logger.debug("{} : <- list cityService.java", list);
 		// 총 행의 수를 보여줄 행의 수로 나눈 뒤 나머지가 0일 경우는 넘어가고 아닐 경우 +1 한다.
-		int count = cityDao.selectCityCountByPage();
+		int count = cityDao.selectCityCountByPage(map);
 		logger.debug("{} : <- count cityService.java", count);
 		int countPage = count/pagePerRow;
 		if(count%pagePerRow != 0) {
@@ -40,6 +42,7 @@ public class CityService {
 		logger.debug("{} : >countPage cityService.java", countPage);
 		// list, 페이지 수 리턴
 		Map<String, Object> returnMap = new HashMap<String, Object>();
+		returnMap.put("word", word);
 		returnMap.put("list", list);
 		returnMap.put("countPage", countPage);
 		return returnMap;

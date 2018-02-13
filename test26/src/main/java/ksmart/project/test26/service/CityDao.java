@@ -36,15 +36,17 @@ public class CityDao {
 		return sqlSessionTemplate.insert(localName+"insertCity", city);
 	}
 	// 전체 도시 수(페이징)
-	public int selectCityCountByPage() {
-		logger.debug("<selectCityCountByPage CityDao");
-		return sqlSessionTemplate.selectOne(localName+"selectCityCountByPage");
+	public int selectCityCountByPage(Map map) {
+		logger.debug(" <- selectCityCountByPage CityDao.java");
+		logger.debug("{} : word selectCityCountByPage CityDao.java", map.get("word"));
+		return sqlSessionTemplate.selectOne(localName+"selectCityCountByPage", map);
 	}
 		
 	// 도시 조회(페이징)
 	public List<City> selectCityListByPage(Map map) {
 		logger.debug("{} : <- startPage CityDao.java", map.get("startPage"));
 		logger.debug("{} : <- pagePerRow CityDao.java", map.get("pagePerRow"));
+		logger.debug("{} : word selectCityCountByPage CityDao.java", map.get("word"));
 		return sqlSessionTemplate.selectList(localName+"selectCityListByPage", map);
 		}
 }
