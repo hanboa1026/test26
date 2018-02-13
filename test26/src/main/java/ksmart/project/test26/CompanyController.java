@@ -1,6 +1,5 @@
 package ksmart.project.test26;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -16,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import ksmart.project.test26.service.Company;
-import ksmart.project.test26.service.CompanyDao;
 import ksmart.project.test26.service.CompanyService;
 
 @Controller
@@ -27,6 +25,7 @@ public class CompanyController {
 	private static final Logger logger = LoggerFactory.getLogger(CompanyController.class);
 	
 	// 목록조회 service 이용
+		@SuppressWarnings("unchecked")
 		@RequestMapping(value="/company/companyList")
 		public String movie(Model model, HttpSession session, @RequestParam(value="currentPage", defaultValue="1") int currentPage
 															, @RequestParam(value="rowPerPage", defaultValue="10") int rowPerPage
@@ -37,8 +36,7 @@ public class CompanyController {
 			logger.debug("list Method 실행 currentPage is {}", currentPage);
 			logger.debug("list Method 실행 pagePerRow is {}", rowPerPage);
 			logger.debug("list Method 실행 keyword is {}", keyword);
-			
-			Map map = companyService.getCompanyListByPage(currentPage, rowPerPage, keyword);
+			Map<String, Object> map = companyService.getCompanyListByPage(currentPage, rowPerPage, keyword);
 			List<Company> list = (List<Company>)map.get("list");
 			int lastPage = (Integer)map.get("lastPage");
 			int totalCount = (Integer)map.get("totalCount");
@@ -52,10 +50,6 @@ public class CompanyController {
 			
 			return "company/companyList";	
 		}
-		
-
-	
-    
 	// 입력페이지 요청
 	@RequestMapping(value="/company/companyInsert", method = RequestMethod.GET)
 	public String companyAdd(HttpSession session) {
@@ -87,7 +81,6 @@ public class CompanyController {
     	companyService.updateCompany(company);
     	return "redirect:/company/companyList";
 	}
-    
     
     // 업데이트 정보요청 service 이용
     @RequestMapping(value="/company/companyUpdate", method = RequestMethod.GET)

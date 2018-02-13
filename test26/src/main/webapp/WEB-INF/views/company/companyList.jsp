@@ -27,19 +27,19 @@
 				href="${pageContext.request.contextPath}/"><img alt="home"
 				src="${pageContext.request.contextPath}/resources/img/home.png"></a>
 		</div>
-		<div class="col-lg-10 col-sm-9">
+		<div class="col-lg-7 col-sm-6">
 			<a href="${pageContext.request.contextPath}/company/companyInsert"
 				class="btn btn-warning">ADD</a>
-				<form action="${pageContext.request.contextPath}/company/companyList" method="POST">
-				<select name="searchOption">
-					<option value="companyNo">회사NO</option>
-					<option value="companyName">회사이름</option>
-				</select>
-				<input type="text" name="keyword">
-				<input type="submit" value="검색">
-				</form>
-				
 		</div>
+		
+			<form action="${pageContext.request.contextPath}/company/companyList" method="POST" class="col-lg-3 col-sm-3 form-inline">
+				<div class="input-group">
+				<input class="form-control" type="text" name="keyword">
+				<div class="input-group-btn">
+					<button class="btn btn-default" type="submit" value="검색"><i class="glyphicon glyphicon-search"></i></button>
+				</div>
+				</div>
+			</form>
 	</div>
 	<div class="row">
 		<div class="col-lg-2">
@@ -66,15 +66,16 @@
 					</tr>
 				</c:forEach>
 			</table>
+			<div class="clearfix"></div>
+			<ul class="pagination pull-right">
 			<c:if test="${currentPage!=1}">
-				<a
-					href="${pageContext.request.contextPath}/company/companyList?currentPage=${currentPage-1}">이전</a>
+				<li><a href="${pageContext.request.contextPath}/company/companyList?currentPage=${currentPage-1}"><span class="glyphicon glyphicon-chevron-left"></span></a></li>
 			</c:if>
 
 			<c:if test="${ currentpage != lastPage}">
-				<a
-					href="${pageContext.request.contextPath}/company/companyList?currentPage=${currentPage+1}">다음</a>
+				<li><a href="${pageContext.request.contextPath}/company/companyList?currentPage=${currentPage+1}"><span class="glyphicon glyphicon-chevron-right"></span></a></li>
 			</c:if>
+			</ul>
 			</div>
 		</div>
 	</div>
