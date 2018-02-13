@@ -38,7 +38,8 @@ public class CountryController {
  * 	매서든 내에서 viewName을 별도로 설정하지 않으면 @RequestMapping의 path로
  * 	설정한 URL이 그대로 viewName으로 설정된다.*/
 	public String countryList(Model model, HttpSession session
-							,@RequestParam(value="currentPage", required=false, defaultValue="1") int currentPage) {
+							,@RequestParam(value="currentPage", required=false, defaultValue="1") int currentPage)
+							{
 		if(session.getAttribute("loginMember") == null ) {
 			return "redirect:/log/login"; 
 		}
@@ -53,6 +54,24 @@ public class CountryController {
 		model.addAttribute("lastPage",lastPage);
 		model.addAttribute("list",list);
 		return "country/countryList";
+	}
+	
+	// 검색
+	@RequestMapping(value="/country/countryList", method=RequestMethod.POST)
+	public String countryList(Model model
+							,@RequestParam(value="searchOption", defaultValue="country_name") String searchOption
+							,@RequestParam(value="keyword", defaultValue="") String keyword) {
+		logger.debug("검색 조건 {}",searchOption);
+		logger.debug("검색 단어 {}",keyword);
+		List<Object> listBySearch = countryService.getCountryListBySearch(searchOption, keyword);
+		logger.debug("검색 후 나라 목록 {}",listBySearch);
+		int countryCount = countryService.getCountryCountBySearch(searchOption, keyword);
+		logger.debug("총 갯수 {}",countryCount);
+		model.addAttribute("searchOption",searchOption);
+		model.addAttribute("keyword",keyword);
+		model.addAttribute("listBySearch",listBySearch);
+		model.addAttribute("countryCount",countryCount);
+		return "/country/countryList";
 	}
 	
 	// 입력페이지 요청

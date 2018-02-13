@@ -17,13 +17,24 @@
 			</div>
 		</div>
 		<div class="row">
-				<div class="col-lg-2 col-sm-3">
+				<div class="col-sm-3">
 				<a class="homeicon"
 					href="${pageContext.request.contextPath}/"><img alt="home"
 					src="${pageContext.request.contextPath}/resources/img/home.png"></a>
 				</div>
-				<div class="col-lg-10 col-sm-9">
+				<div class="col-sm-3">
 				<a href="${pageContext.request.contextPath}/countryAdd" class="btn btn-success">ADD</a>
+				</div>
+				<div class="col-sm-6">
+				<form action="${pageContext.request.contextPath}/country/countryList" method="post">
+					<select name="searchOption">
+					<!-- 검색 조건을 검색 처리후 결과화면에 보여주기 위해 c:out 출력채그 사용 (삼항연산자) -->
+					<option value="all"	<c:out value="${searchOption == 'all'?'selected':''}"/>>전체보기</option>
+					<%-- <option value="country_name" <c:out value="${searchOption == 'country_name'?'selected':''}"/>>이름</option> --%>
+					</select> 
+					<input name="keyword" value="${keyword}">
+					<input type="submit" value="SEARCH">
+				</form>
 				</div>
 		</div>	
 		<div class="row">
@@ -31,6 +42,28 @@
 				<jsp:include page="/WEB-INF/views/inc/left.jsp"></jsp:include>
 			</div>
 			<div class="col-lg-10">
+			<table class="table table-striped table-hover">
+				<thead>
+					<tr class="success">
+						<th>No.</th>
+						<th>NAME</th>
+						<th>UPDATE</th>
+						<th>DELETE</th>
+					</tr>
+				</thead>
+				<c:forEach var="countryBySearch" items="${listBySearch}">
+					<tbody>
+						<tr>
+							<td>${countryBySearch.countryId}</td>
+							<td>${countryBySearch.countryName}</td>
+							<td><a
+								class="btn btn-primary" href="${pageContext.request.contextPath}/countryModify?countryId=${country.countryId}"><i class="fa fa-pencil"></i></a></td>
+							<td><a
+								class="btn btn-danger" href="${pageContext.request.contextPath}/countryRemove?countryId=${country.countryId}"><i class="fa fa-trash"></i></a></td>
+						</tr>
+					</tbody>
+				</c:forEach>
+			</table>
 			<table class="table table-striped table-hover">
 				<thead>
 					<tr class="success">

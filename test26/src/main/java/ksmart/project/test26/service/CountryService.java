@@ -10,8 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import ksmart.project.test26.CountryController;
-
 @Service
 @Transactional
 public class CountryService {
@@ -41,6 +39,26 @@ public class CountryService {
 		return count;
 	}
 	
+	// 검색후목록조회
+	public List<Object> getCountryListBySearch(String searchOption, String keyword) {
+		Map<String, String> map = new HashMap<String, String>();
+		logger.debug("CountryService 검색조건 : {}",searchOption);
+		logger.debug("CountryService 검색어 : {}",keyword);
+		map.put("searchOption", searchOption);
+		map.put("keyword", keyword);
+		List<Object> list = countryDao.getCountryListBySearch(map);
+		logger.debug("CountryService 검색후 나라 목록 : {}",list);
+		return list;
+	}
+	
+	// 검색후총목록수조회
+	public int getCountryCountBySearch(String searchOption, String keyword) {
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("searchOption", searchOption);
+		map.put("keyword", keyword);
+		int sCount = countryDao.getCountryCountBySearch(map);
+		return sCount;
+	}
 	// 입력처리서비스
 	public int insertCountry(Country country) {
 		int row = countryDao.insertCountry(country);

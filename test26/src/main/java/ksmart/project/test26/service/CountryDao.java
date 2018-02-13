@@ -1,6 +1,5 @@
 package ksmart.project.test26.service;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -26,6 +25,15 @@ public class CountryDao {
 	// 총목록수조회
 	public int getCountryCount() {
 		return sqlSessionTemplate.selectOne(localName+"getCountryCount");
+	}
+	// 검색후조회(검색기능)
+	public List<Object> getCountryListBySearch(Map<String, String> map) {
+		logger.debug("CountryDao 검색 : {}",map);
+		return sqlSessionTemplate.selectList(localName+"selectCountrySearchList", map);
+	}
+	// 검색후총목록수조회(검색기능)
+	public int getCountryCountBySearch(Map<String, String> map) {
+		return sqlSessionTemplate.selectOne(localName+"getCountryCountBySearch", map);
 	}
 	// 업데이트 정보요청
 	public Country selectCountryById(int countryId) {
