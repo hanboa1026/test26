@@ -1,5 +1,6 @@
 package ksmart.project.test26.service;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -50,10 +51,10 @@ public class CompanyDao {
 	}
 	
 	// companyList total row 
-	public int totalCount() {
-		int totalCount = sqlSessionTemplate.selectOne(localName + "countRow");
+	public int totalCount(String keyword) {
+		int totalCount = sqlSessionTemplate.selectOne(localName + "countRow",keyword);
 		logger.debug("totalCount() 메소드 totalCount is {}", totalCount);
 		return totalCount;
 	}
-	
+
 }

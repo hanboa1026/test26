@@ -30,6 +30,15 @@
 		<div class="col-lg-10 col-sm-9">
 			<a href="${pageContext.request.contextPath}/company/companyInsert"
 				class="btn btn-warning">ADD</a>
+				<form action="${pageContext.request.contextPath}/company/companyList" method="POST">
+				<select name="searchOption">
+					<option value="companyNo">회사NO</option>
+					<option value="companyName">회사이름</option>
+				</select>
+				<input type="text" name="keyword">
+				<input type="submit" value="검색">
+				</form>
+				
 		</div>
 	</div>
 	<div class="row">

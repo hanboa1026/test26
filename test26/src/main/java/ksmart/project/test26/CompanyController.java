@@ -1,5 +1,6 @@
 package ksmart.project.test26;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -28,21 +29,31 @@ public class CompanyController {
 	// 목록조회 service 이용
 		@RequestMapping(value="/company/companyList")
 		public String movie(Model model, HttpSession session, @RequestParam(value="currentPage", defaultValue="1") int currentPage
-															, @RequestParam(value="rowPerPage", defaultValue="10") int rowPerPage) {
+															, @RequestParam(value="rowPerPage", defaultValue="10") int rowPerPage
+															, @RequestParam(value="keyword", defaultValue="") String keyword ) {
 			if(session.getAttribute("loginMember") == null ) {
 				return "redirect:/log/login"; 
 			}
 			logger.debug("list Method 실행 currentPage is {}", currentPage);
-			logger.debug("list Method 실행 pagePerRowis {}", rowPerPage);
-			Map map = companyService.getCompanyListByPage(currentPage, rowPerPage);
+			logger.debug("list Method 실행 pagePerRow is {}", rowPerPage);
+			logger.debug("list Method 실행 keyword is {}", keyword);
+			
+			Map map = companyService.getCompanyListByPage(currentPage, rowPerPage, keyword);
 			List<Company> list = (List<Company>)map.get("list");
 			int lastPage = (Integer)map.get("lastPage");
+			int totalCount = (Integer)map.get("totalCount");
+			
 			model.addAttribute("Companylist",list);
 			model.addAttribute("lastPage",lastPage);
 			model.addAttribute("currentPage", currentPage);
 			model.addAttribute("rowPerPage", rowPerPage);
+			model.addAttribute("totalCount", totalCount);
+			model.addAttribute("keyword", keyword);
+			
 			return "company/companyList";	
 		}
+		
+
 	
     
 	// 입력페이지 요청

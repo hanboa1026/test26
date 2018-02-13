@@ -50,7 +50,10 @@ public class CompanyService {
 	}
 	
 	// 페이징 작업
-	public Map<String, Object> getCompanyListByPage(int currentPage, int rowPerPage){
+	public Map<String, Object> getCompanyListByPage(int currentPage, int rowPerPage, String keyword){
+		logger.debug("getCompanyListByPage()메소드 실행 currentPage is {}", currentPage);
+		logger.debug("getCompanyListByPage()메소드 실행 rowPerpage is {}", rowPerPage);
+		logger.debug("getCompanyListByPage()메소드 실행 keyword is {}", keyword);
 		//startRow 선언
 		int startRow = 0;
 		
@@ -59,32 +62,25 @@ public class CompanyService {
 		
 		Map map = new HashMap();
 		
+		int totalCount = companyDao.totalCount(keyword);
 		// map에 startRow와 rowPerPage를 매핑한다.
 		map.put("startRow", startRow);
 		map.put("rowPerPage", rowPerPage);
-		
-		
-		/*
-		 * currentPage & rowPerPage -> startRow
-		 * 1. selectSampleListByPage(Map) -> List
-		 * 2. totalCount / rowPerPage -> int
-		 */
+		map.put("keyword", keyword);
 		
 		Map returnMap = new HashMap();
 		
 		List<Company> list = companyDao.selectCompanyListPage(map);
 		
-		int totalCount = companyDao.totalCount();
 		
 		int lastPage = (int)Math.ceil(((double)totalCount/(double)rowPerPage));
 		
 		returnMap.put("list", list);
 		returnMap.put("lastPage", lastPage);
+		returnMap.put("totalCount", totalCount);
 		
 		return returnMap;
 	}
 
-	
-	
 
 }

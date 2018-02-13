@@ -57,8 +57,20 @@
 		SELECT company_id as companyId
 			,company_name as companyName
 			FROM company
+			<if test="keyword != null">
+				WHERE company_name LIKE CONCAT ('%',#{keyword},'%')
+			</if>
 			ORDER BY company_id
 			LIMIT #{startRow}, #{rowPerPage}
 	</select>
+		
+		<!-- 검색 레코드 갯수 -->
+		<select id="countForSearch" resultType="int" parameterType="java.lang.String">
+			SELECT COUNT(*) FROM company
+			<if test="_paraeter!=null">
+			 	WHERE ${searchOption} LIKE CONCAT('%',#{keyword},'%')
+			 </if>
+		</select>
+	
 	
 </mapper>
