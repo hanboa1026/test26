@@ -36,8 +36,6 @@ public class BookController {
 		Map map = bookService.getBookListByPage(currentPage, rowPerPage);
 		List<Book> list = (List<Book>)map.get("list");
 		int lastPage = (Integer)map.get("lastPage");
-		
-
 		model.addAttribute("bookList", list);
 		model.addAttribute("lastPage", lastPage);
 		model.addAttribute("currentPage", currentPage);

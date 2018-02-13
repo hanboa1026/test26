@@ -43,9 +43,11 @@ public class BookDao {
 		return totalCount;
 	}
 	
-	
+	//리스트 페이지 선택
 	public List<Book> selectBookListPage(Map map){
+		logger.debug("selectBookListPage(Map map) 메소드 map is {}",map);
 		List<Book> list = sqlSessionTemplate.selectList(localName + "selectBookPage", map);
+		logger.debug("selectBookListPage(Map map) 메소드 list is {}",list);
 		return list;
 	}
 }
