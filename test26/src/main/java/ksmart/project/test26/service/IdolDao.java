@@ -30,7 +30,7 @@ public class IdolDao {
 	}
 	
 	// 목록조회
-	public List<Idol> selectIdolList(Map<String, Integer> map, int currentPage, int pagePerRow){
+	public List<Idol> selectIdolList(Map<String, Integer> map){
 		return sqlSessionTemplate.selectList(str+"selectIdolList",map);
 	}
 	// 업데이트 정보요청

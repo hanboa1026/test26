@@ -24,7 +24,7 @@ public class IdolService {
 		map.put("startRow", (currentPage-1)*pagePerRow);
 		map.put("rowPerPage", pagePerRow);
 		
-		List<Idol> list = idolDao.selectIdolList(map, pagePerRow, pagePerRow);
+		List<Idol> list = idolDao.selectIdolList(map);
 		return list;
 	}
 	
