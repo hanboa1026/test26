@@ -37,14 +37,14 @@ public class BookDao {
 	}
 	
 	// 총 카운트
-	public int totalCount() {
-		int totalCount = sqlSessionTemplate.selectOne(localName + "bookCountRow");
+	public int totalCount(String keyword) {
+		int totalCount = sqlSessionTemplate.selectOne(localName + "bookCountRow", keyword);
 		logger.debug("totalCount() 메소드 실행  totalCount is {}", totalCount);
 		return totalCount;
 	}
 	
 	//리스트 페이지 선택
-	public List<Book> selectBookListPage(Map map){
+	public List<Book> selectBookListPage(Map<String, Object> map){
 		logger.debug("selectBookListPage(Map map) 메소드 map is {}",map);
 		List<Book> list = sqlSessionTemplate.selectList(localName + "selectBookPage", map);
 		logger.debug("selectBookListPage(Map map) 메소드 list is {}",list);

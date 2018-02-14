@@ -59,8 +59,19 @@
 		SELECT book_id as bookId
 				,book_name as bookName
 				FROM book
+				<if test="keyword !=null">
+					WHERE book_name LIKE CONCAT ('%', #{keyword}, '%')
+				</if>
 				ORDER BY book_id
 				LIMIT #{startRow}, #{rowPerPage}
+	</select>
+	
+	<!-- 검색 레코드 갯수 -->
+	<select id="bookForSearch" resultType="int" parameterType="java.lang.String">
+		<if test="_parameter!=null">
+		SELECT COUNT(*) book
+			WHERE ${searchOption} LIKE COUNT('%',#{keyword},'%')
+		</if>	
 	</select>
 	
 </mapper>

@@ -23,7 +23,7 @@
 				<div class="col-lg-7 col-sm-6">
 					<a href="${pageContext.request.contextPath}/book/bookInsert" class="btn btn-danger">ADD</a>
 				</div>
-		<form action = "${pageContext.request.contextPath}/book/booklist" method="post" class="col-lg-3 col-sm-3 form-inline">
+		<form action = "${pageContext.request.contextPath}/book/bookList" method="POST" class="col-lg-3 col-sm-3 form-inline">
 			<div class="input-group">
 			<input class="form-control" type="text" name="keyword">
 			<div class="input-group-btn">

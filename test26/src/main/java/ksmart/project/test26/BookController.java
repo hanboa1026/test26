@@ -24,22 +24,28 @@ public class BookController {
 	private static final Logger logger = LoggerFactory.getLogger(BookController.class);
 	
 	// 목록조회 service 이용
+	@SuppressWarnings("unchecked")
 	@RequestMapping(value="/book/bookList")
 	public String bookList(Model model, HttpSession session, @RequestParam(value="currentPage", defaultValue="1") int currentPage
-															, @RequestParam(value="rowPerPage", defaultValue="10") int rowPerPage) {
+															, @RequestParam(value="rowPerPage", defaultValue="10") int rowPerPage
+															, @RequestParam(value="keyword", defaultValue="")String keyword) {
 		if(session.getAttribute("loginMember") == null) {
 			return "redirect:/log/login";
 		}
 		
 		logger.debug("booklist method 실행 currentpage is{}", currentPage);
 		logger.debug("booklist method 실행 rowPerPage is{}", rowPerPage);
-		Map map = bookService.getBookListByPage(currentPage, rowPerPage);
+		logger.debug("booklist Method 실행 keyword id{}", keyword);
+		Map<String, Object> map = bookService.getBookListByPage(currentPage, rowPerPage, keyword);
 		List<Book> list = (List<Book>)map.get("list");
 		int lastPage = (Integer)map.get("lastPage");
+		int totalCount = (Integer)map.get("totalCount");
 		model.addAttribute("bookList", list);
 		model.addAttribute("lastPage", lastPage);
 		model.addAttribute("currentPage", currentPage);
 		model.addAttribute("rowPerPage", rowPerPage);
+		model.addAttribute("totalCount", totalCount);
+		model.addAttribute("keyword", keyword);
 		
 		return "book/bookList";
 	}
@@ -51,7 +57,7 @@ public class BookController {
     	if(session.getAttribute("loginMember") == null ) {
 			return "redirect:/log/login"; 
 		}
-		return "book/bookInsert";
+		return "/book/bookInsert";
 	}
 	
 	// 입력 처리요청 service 이용
