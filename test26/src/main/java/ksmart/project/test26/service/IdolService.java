@@ -25,7 +25,7 @@ public class IdolService {
 	  Map<String, Object> map = new HashMap<String, Object>();      
       map.put("startRow", (currentPage-1)*pagePerRow);
       //beginRow = (1-1)*10 = 0
-      map.put("rowPerPage", pagePerRow);
+      map.put("pagePerRow", pagePerRow);
       //LIMIT (beginRow)0,(PagePerRow)10 : 0번부터 10번까지
       logger.debug("IdolService 검색조건 : {}", searchOption);
       logger.debug("IdolService 검색어 : {}",keyword);

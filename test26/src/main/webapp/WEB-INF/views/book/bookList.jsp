@@ -20,9 +20,18 @@
 				<div class="col-lg-2 col-sm-3">
 					<a class="homeicon" href="${pageContext.request.contextPath}/"><img alt="home" src="${pageContext.request.contextPath}/resources/img/home.png"></a>
 				</div>
-				<div class="col-lg-10 col-sm-9">
+				<div class="col-lg-7 col-sm-6">
 					<a href="${pageContext.request.contextPath}/book/bookInsert" class="btn btn-danger">ADD</a>
 				</div>
+		<form action = "${pageContext.request.contextPath}/book/booklist" method="post" class="col-lg-3 col-sm-3 form-inline">
+			<div class="input-group">
+			<input class="form-control" type="text" name="keyword">
+			<div class="input-group-btn">
+				<button class="btn btn-danger" type="submit" value="검색"><i class="glyphicon glyphicon-search"></i></button>
+			</div>
+			</div>		
+		</form>
+				
 		</div>	
 		<div class="row">
 			<div class="col-lg-2">

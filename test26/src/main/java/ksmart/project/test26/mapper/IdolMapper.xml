@@ -11,7 +11,7 @@
          	,idol_name as idolName
 		FROM test.idol
       <include refid="search"></include>
-		LIMIT #{startRow}, #{rowPerPage}
+		LIMIT #{startRow}, #{pagePerRow}
 		<!-- WHERE절을 include 태그로 삽입 -->
    </select>
    

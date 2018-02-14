@@ -16,6 +16,10 @@ public class Idol {
 		this.idolName = idolName;
 	}
 	
+	@Override
+	public String toString() {
+		return "idol [idolId=" + idolId + ", idolName=" + idolName + "]";
+	}		
 	
 
 }

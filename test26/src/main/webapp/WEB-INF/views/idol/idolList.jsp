@@ -20,21 +20,23 @@
 			<div class="col-lg-2 col-sm-3">			
 				<a class="homeicon" href="${pageContext.request.contextPath}/"><img alt="home" src="${pageContext.request.contextPath}/resources/img/home.png"></a>
 			</div>
-			<div class="col-lg-10 col-sm-9">
+			<div class="col-lg-7 col-sm-6">
 				<a href="${pageContext.request.contextPath}/idol/idolInsert" class="btn btn-info">ADD</a>
-			</div>
-		</div>
-		<div class="row">
+			</div>		
+			<div class="col-lg-4 col-sm-6 form-inline">
+				<form action="${pageContext.request.contextPath}/idol/idolList?" method="POST">
+				<select name="serchOption" class="form-control">
+				<option value="all"<c:out value="${searchOption == 'all'?'selected':''}"/>>전체보기</option>
+				</select>
+				<input name="keyword" value="${keyword}" class="form-control" placeholder="Search">
+				<button class="btn btn-success" type="submit" value="검색"><i class="glyphicon glyphicon-search"></i></button>
+				</form>
+				</div>
+					</div>
+					<div class="row">
 			<div class="col-lg-2">
 				<jsp:include page="/WEB-INF/views/inc/left.jsp"></jsp:include>
 			</div>
-				<form action="${pageContext.request.contextPath}/idol/idolList?" method="POST">
-				<select name="serchOption">
-				<option value="all"<c:out value="${searchOption == 'all'?'selected':''}"/>>전체보기</option>
-				</select>
-				<input name="keyword" type="${keyword}">
-				<input type="submit" value="SEARCH">
-				</form>
 			<div class="col-lg-10">
 			<table class= "table table-striped table-hover">			
 				<thead>

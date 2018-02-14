@@ -47,9 +47,9 @@ public class IdolController{
       List<Idol> list = idolService.getIdolListBYPAGE(currentPage, pagePerRow,searchOption,keyword);
       logger.debug("Idol목록{}",list);
       model.addAttribute("currentPage",currentPage); 
-      model.addAttribute("idolCount",idolCount);
       model.addAttribute("lastPage",lastPage);
       model.addAttribute("list",list);
+      model.addAttribute("searchOption",searchOption);     
       model.addAttribute("keyword",keyword);
       model.addAttribute("idolCount",idolCount);
       return "idol/idolList";
