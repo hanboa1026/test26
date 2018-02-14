@@ -17,23 +17,23 @@
 			</div>
 		</div>
 		<div class="row">
-				<div class="col-sm-3">
+				<div class="col-lg-2 col-sm-3">
 				<a class="homeicon"
 					href="${pageContext.request.contextPath}/"><img alt="home"
 					src="${pageContext.request.contextPath}/resources/img/home.png"></a>
 				</div>
-				<div class="col-sm-3">
+				<div class="col-lg-6 col-sm-3">
 				<a href="${pageContext.request.contextPath}/countryAdd" class="btn btn-success">ADD</a>
 				</div>
-				<div class="col-sm-6">
+				<div class="col-lg-4 col-sm-6 form-inline">
 				<form action="${pageContext.request.contextPath}/country/countryList" method="post">
-					<select name="searchOption">
+					<select name="searchOption" class="form-control">
 					<!-- 검색 조건을 검색 처리후 결과화면에 보여주기 위해 c:out 출력채그 사용 (삼항연산자) -->
 					<option value="all"	<c:out value="${searchOption == 'all'?'selected':''}"/>>전체보기</option>
 					<%-- <option value="country_name" <c:out value="${searchOption == 'country_name'?'selected':''}"/>>이름</option> --%>
 					</select> 
-					<input name="keyword" value="${keyword}">
-					<input type="submit" value="SEARCH">
+					<input name="keyword" value="${keyword}" class="form-control" placeholder="Search">
+					<button class="btn btn-success" type="submit" value="검색"><i class="glyphicon glyphicon-search"></i></button>
 				</form>
 				</div>
 		</div>	
