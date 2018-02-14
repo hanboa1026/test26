@@ -6,7 +6,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link href="<c:url value="/resources/css/bootstrap.min.css" />" rel="stylesheet">
 <link href="<c:url value="/resources/min_css/min_css.css" />" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+
 <title>Country List</title>
 </head>
 <body>
@@ -17,15 +18,14 @@
 			</div>
 		</div>
 		<div class="row">
-				<div class="col-lg-2 col-sm-3">
+				<div class="col-lg-2 col-sm-4">
 				<a class="homeicon"
-					href="${pageContext.request.contextPath}/"><img alt="home"
-					src="${pageContext.request.contextPath}/resources/img/home.png"></a>
+					href="${pageContext.request.contextPath}/"><i class="fa fa-home"></i></a>
 				</div>
-				<div class="col-lg-6 col-sm-3">
-				<a href="${pageContext.request.contextPath}/countryAdd" class="btn btn-success">ADD</a>
+				<div class="col-lg-2 col-sm-2">
+				<a href="${pageContext.request.contextPath}/countryAdd" class="btn btn-success"><i class="fas fa-plus-square"></i></a>
 				</div>
-				<div class="col-lg-4 col-sm-6 form-inline">
+				<div class="col-lg-8 col-sm-6 form-inline">
 				<form action="${pageContext.request.contextPath}/country/countryList" method="post">
 					<select name="searchOption" class="form-control">
 					<!-- 검색 조건을 검색 처리후 결과화면에 보여주기 위해 c:out 출력채그 사용 (삼항연산자) -->
@@ -33,7 +33,7 @@
 					<%-- <option value="country_name" <c:out value="${searchOption == 'country_name'?'selected':''}"/>>이름</option> --%>
 					</select> 
 					<input name="keyword" value="${keyword}" class="form-control" placeholder="Search">
-					<button class="btn btn-success" type="submit" value="검색"><i class="glyphicon glyphicon-search"></i></button>
+					<button class="btn btn-success" type="submit" value="검색"><i class="fas fa-search"></i></button>
 				</form>
 				</div>
 		</div>	
@@ -57,7 +57,7 @@
 							<td>${country.countryId}</td>
 							<td>${country.countryName}</td>
 							<td><a
-								class="btn btn-primary" href="${pageContext.request.contextPath}/countryModify?countryId=${country.countryId}"><i class="fa fa-pencil"></i></a></td>
+								class="btn btn-primary" href="${pageContext.request.contextPath}/countryModify?countryId=${country.countryId}"><i class="fa fa-pencil-alt"></i></a></td>
 							<td><a
 								class="btn btn-danger" href="${pageContext.request.contextPath}/countryRemove?countryId=${country.countryId}"><i class="fa fa-trash"></i></a></td>
 						</tr>
