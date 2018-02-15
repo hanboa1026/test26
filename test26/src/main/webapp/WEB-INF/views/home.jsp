@@ -3,213 +3,398 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <html>
-<head>
- <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Landing Page - Start Bootstrap Theme</title>
-<link href="<c:url value="/resources/css/bootstrap.min.css" />" rel="stylesheet">
-<link href="<c:url value="/resources/min_css/min_css.css" />" rel="stylesheet">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Agency - Start Bootstrap Theme</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="resources/css/bootstrap.min.css" rel="stylesheet">
+<%-- <link href="<c:url value="/resources/css/bootstrap.min.css" />" rel="stylesheet">
+--%>
+   <!-- Custom fonts for this template -->
+
+   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+   <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+   <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+   <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+
+   <!-- Custom styles for this template -->
 <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
-<link href="<c:url value= "/resources/simple-line-icons/css/simple-line-icons.css"/>"rel="stylesheet" type="text/css">
-<link
-	href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic"
-	rel="stylesheet" type="text/css">
+   <link href="resources/css/agency.min.css" rel="stylesheet">
+<!--      <link href="resources/css/font-awesome.min.css" rel="stylesheet"> -->
 
-<!-- Custom styles for this template -->
-<link  href="<c:url value= "/resources/css/landing-page.min.css"/>" rel="stylesheet">
+ </head>
 
-</head>
+ <body id="page-top">
 
-<body>
+   <!-- Navigation -->
+   <nav class="navbar navbar-expand-lg navbar-dark fixed-top navbar-shrink" id="mainNav">
+     <div class="container">
+       <a class="navbar-brand js-scroll-trigger" href="#page-top">Start Bootstrap</a>
+       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+         Menu<i class="fa fa-bars"></i>
+       </button>
+       <div class="collapse navbar-collapse" id="navbarResponsive">
+         <ul class="navbar-nav text-uppercase ml-auto">
+        	 <c:if test="${empty sessionScope.loginMember}">
+           <li class="nav-item">
+             <a class="btn btn-warning" href="${pageContext.request.contextPath}/log/login">Login</a>
+          </li>&nbsp;
+           <li class="nav-item">
+             <a class="btn btn-warning"  href="${pageContext.request.contextPath}/member/memberAdd">Join</a>
+           </li>
+           </c:if>
+           <c:if test="${not empty sessionScope.loginMember}">
+           <li class="nav-item">
+             <a class="btn btn-warning"  href="${pageContext.request.contextPath}/log/logOut">LogOut</a>
+           </li>&nbsp;
+           <li class="nav-item">
+             <a class="btn btn-warning"  href="${pageContext.request.contextPath}/member/memberInfo?memberNo=${loginMember.memberNo}">MyPage</a>
+           </li>
+           </c:if>
+         </ul>
+       </div>
+     </div>
+   </nav>
 
-	<!-- Navigation -->
-    <nav class="navbar navbar-light bg-light static-top">
-   	<jsp:include page="/WEB-INF/views/inc/top.jsp"></jsp:include>
-    </nav>
-    
-	<!-- Masthead -->
-	<header class="masthead text-white text-center">
-		<div class="overlay"></div>
-		<div class="container">
-			<div class="row">
-				<div class="col-xl-9 mx-auto">
-					<h1 class="mb-5">Build</h1>
-				</div>
-				<div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
-					<form>
-						<div class="form-row">
-							<div class="col-12 col-md-9 mb-2 mb-md-0">
-								<input type="email" class="form-control form-control-lg"
-									placeholder="Enter your email...">
-							</div>
-							<div class="col-12 col-md-3">
-								<button type="submit" class="btn btn-block btn-lg btn-primary">Sign
-									up!</button>
-							</div>
-						</div>
-					</form>
-				</div>
-			</div>
-		</div>
-	</header>
+   <!-- Header -->
+   <header class="masthead">
+     <div class="container">
+       <div class="intro-text">
+         <div class="intro-lead-in">Welcome To Our Studio!</div>
+         <div class="intro-heading text-uppercase">It's Nice To Meet You</div>
+         <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="#services">Tell Me More</a>
+       </div>
+     </div>
+   </header>
 
-	<!-- Icons Grid -->
-	<section class="features-icons bg-light text-center">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-4">
-					<div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
-						<div >
-							<a class="features-icons-icon d-flex"
-							href="${pageContext.request.contextPath}/book/bookList"><i class="icon-book-open m-auto text-danger"></i></a>
-						</div>						
-						<h3>BOOK LIST</h3>
-						<p class="lead mb-0">This theme will look great on any device,
-							no matter the size!</p>
-					</div>
-				</div>
-				<div class="col-lg-4">
-					<div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
-						<div >
-							<a class="features-icons-icon d-flex"
-							href="${pageContext.request.contextPath}/city/cityList"><i class="icon-star m-auto text-warning"></i></a>
-						</div>
-						<h3>CITY LIST</h3>
-						<p class="lead mb-0">Featuring the latest build of the new
-							Bootstrap 4 framework!</p>
-					</div>
-				</div>
-				<div class="col-lg-4">
-					<div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
-						<div >
-							<a class="features-icons-icon d-flex"
-							href="${pageContext.request.contextPath}/company/companyList"><i class="icon-briefcase m-auto text-info"></i></a>
-						</div>
-						<h3>COMPANY LIST</h3>
-						<p class="lead mb-0">Ready to use with your own content, or
-							customize the source files!</p>
-					</div>
-				</div>
-				</div>
-			</div>
-			<div class="container">
-				<div class="row">
-				<div class="col-lg-6">
-					<div class="features-icons-item mx-auto mb-0 mb-lg-3">
-						<div >
-							<a class="features-icons-icon d-flex"
-							href="${pageContext.request.contextPath}/country/countryList"><i class="icon-home m-auto text-primary"></i></a>
-						</div>
-						<h3>COUNTRY LIST</h3>
-						<p class="lead mb-0">Ready to use with your own content, or
-							customize the source files!</p>
-					</div>
-				</div>
-				<div class="col-lg-6">
-					<div class="features-icons-item mx-auto mb-0 mb-lg-3">
-						<div >
-							<a class="features-icons-icon d-flex"
-							href="${pageContext.request.contextPath}/idol/idolList"><i class="icon-heart m-auto text-primary"></i></a>
-						</div>
-						<h3>IDOL LIST</h3>
-						<p class="lead mb-0">Ready to use with your own content, or
-							customize the source files!</p>
-					</div>
-				</div>
-			</div>
-			</div>
-	</section>
+     <!-- Team -->
+   <section class="bg-light" id="team">
+     <div class="container">
+       <div class="row">
+         <div class="col-lg-12 text-center">
+           <h2 class="section-heading text-uppercase">Our Amazing Team</h2>
+           <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+         </div>
+       </div>
+      <div class="row">
+	<div class="col-sm-3">
+	<a class="portfolio-link" data-toggle="modal" href="#portfolioModal1">
+     <div class="team-member">
+       <img class="mx-auto rounded-circle" src="resources/img/team/2.jpg" alt="">
+       <h4>Han BoA</h4>
+       <p class="text-muted">Lead Marketer</p>
+     </div>
+    </a>
+   </div>
+	<div class="col-sm-3">
+	<a class="portfolio-link" data-toggle="modal" href="#portfolioModal2">
+           <div class="team-member">
+             <img class="mx-auto rounded-circle" src="resources/img/team/2.jpg" alt="">
+             <h4>Park Mi Ran</h4>
+             <p class="text-muted">Lead Marketer</p>
+           </div>
+          </a>
+         </div>
+         <div class="col-sm-3">
+         <a class="portfolio-link" data-toggle="modal" href="#portfolioModal3">
+           <div class="team-member">
+             <img class="mx-auto rounded-circle" src="resources/img/team/2.jpg" alt="">
+             <h4>Jung Eun Hwa</h4>
+             <p class="text-muted">Lead Marketer</p>
+           </div>
+          </a>
+         </div>
+         <div class="col-sm-3">
+          <a class="portfolio-link" data-toggle="modal" href="#portfolioModal4">
+           <div class="team-member">
+             <img class="mx-auto rounded-circle" src="resources/img/team/3.jpg" alt="">
+             <h4>Kim Kyu Won</h4>
+             <p class="text-muted">Lead Developer</p>
+           </div>
+           </a>
+         </div>
+         </div>
+         </div>
+       <div class="row">
+         <div class="col-lg-8 mx-auto text-center">
+           <p class="large text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut eaque, laboriosam veritatis, quos non quis ad perspiciatis, totam corporis ea, alias ut unde.</p>
+         </div>
+       </div>
+   </section>
 
-	<!-- Image Showcases -->
-	<section class="showcase">
-		<div class="container-fluid p-0">
-			<div class="row no-gutters">
+   <!-- Portfolio Grid -->
+   <section class="bg-light" id="portfolio">
+     <div class="container">
+       <div class="row">
+         <div class="col-lg-12 text-center">
+           <h2 class="section-heading text-uppercase">LIST</h2>
+           <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+         </div>
+       </div>
+       <div class="row">
+         <div class="col-md-4 col-sm-6 portfolio-item">    
+            <a class=""	href="${pageContext.request.contextPath}/book/bookList">
+             <img class="img-fluid" src="resources/img/portfolio/01-thumbnail.jpg" alt="">
+             </a>
+           <div class="portfolio-caption">
+             <h4>BOOK</h4>
+             <p class="text-muted">Illustration</p>
+           </div>
+         </div>
+         <div class="col-md-4 col-sm-6 portfolio-item">
+         <a class="" href="${pageContext.request.contextPath}/city/cityList">
+             <img class="img-fluid" src="resources/img/portfolio/02-thumbnail.jpg" alt="">
+             </a>
+           <div class="portfolio-caption">
+             <h4>CITY</h4>
+             <p class="text-muted">Graphic Design</p>
+           </div>
+         </div>
+         <div class="col-md-4 col-sm-6 portfolio-item">     
+         <a class=""href="${pageContext.request.contextPath}/company/companyList">  
+             <img class="img-fluid" src="resources/img/portfolio/03-thumbnail.jpg" alt="">
+             </a>
+           <div class="portfolio-caption">
+             <h4>COMPANY</h4>
+             <p class="text-muted">Identity</p>
+           </div>
+         </div>
+         <div class="col-md-2 portfolio-item">
+         </div>
+         <div class="col-md-4 col-sm-6 portfolio-item">
+         <a class="" href="${pageContext.request.contextPath}/country/countryList">
+             <img class="img-fluid" src="resources/img/portfolio/05-thumbnail.jpg" alt="">
+             </a>
+           <div class="portfolio-caption">
+             <h4>COUNTRY</h4>
+             <p class="text-muted">Website Design</p>
+           </div>
+         </div>
+         
+         <div class="col-md-4 col-sm-6 portfolio-item">
+         <a class="" href="${pageContext.request.contextPath}/idol/idolList">
+         <img class="img-fluid" src="resources/img/portfolio/06-thumbnail.jpg" alt="">
+         </a>
 
-			<div class="col-lg-6 order-lg-2 text-white showcase-img"
-					style="background-image: url('${pageContext.request.contextPath}/resources/img/bg-showcase-1.jpg');"></div>
-				<div class="col-lg-6 order-lg-1 my-auto showcase-text">
-					<h2>Fully Responsive Design</h2>
-					<p class="lead mb-0">When you use a theme created by Start
-						Bootstrap, you know that the theme will look great on any device,
-						whether it's a phone, tablet, or desktop the page will behave
-						responsively!</p>
-				</div>
-			</div>
-			<div class="row no-gutters">
-				<div class="col-lg-6 order-lg-2 text-white showcase-img"
-					style="background-image: url('${pageContext.request.contextPath}/resources/img/bg-showcase-2.jpg');"></div>
-				<div class="col-lg-6 order-lg-1 my-auto showcase-text">
-					<h2>Updated For Bootstrap 4</h2>
-					<p class="lead mb-0">Newly improved, and full of great utility
-						classes, Bootstrap 4 is leading the way in mobile responsive web
-						development! All of the themes on Start Bootstrap are now using
-						Bootstrap 4!</p>
-				</div>
-			</div>
-			<div class="row no-gutters">
-				<div class="col-lg-6 order-lg-2 text-white showcase-img"
-					style="background-image: url('${pageContext.request.contextPath}/resources/img/bg-showcase-3.jpg');"></div>
-				<div class="col-lg-6 order-lg-1 my-auto showcase-text">
-					<h2>Easy to Use &amp; Customize</h2>
-					<p class="lead mb-0">Landing Page is just HTML and CSS with a
-						splash of SCSS for users who demand some deeper customization
-						options. Out of the box, just add your content and images, and
-						your new landing page will be ready to go!</p>
-				</div>
-			</div>
-		</div>
-	</section>
+           <div class="portfolio-caption">
+             <h4>IDOL</h4>
+             <p class="text-muted">Photography</p>
+           </div>
+         </div>
+	<div class="col-md-2 portfolio-item">
+         </div>
+       </div>
+     </div>
+   </section>
 
-	<!-- Testimonials -->
-	<section class="testimonials text-center bg-light">
-		<div class="container">
-			<h2 class="mb-5">Makers</h2>
-			<div class="row">
-				<div class="col-lg-3">
-					<div class="testimonial-item mx-auto mb-5 mb-lg-0">
-						<img class="img-fluid rounded-circle mb-3"
-							src="resources/img/testimonials-1.jpg" alt="">
-						<h5>Han BoA</h5>
-						<p class="font-weight-light mb-0">"This is fantastic! Thanks
-							so much guys!"</p>
-					</div>
-				</div>
-				<div class="col-lg-3">
-					<div class="testimonial-item mx-auto mb-5 mb-lg-0">
-						<img class="img-fluid rounded-circle mb-3"
-							src="resources/img/testimonials-2.jpg" alt="">
-						<h5>Kim Kyu Won</h5>
-						<p class="font-weight-light mb-0">"Bootstrap is amazing. I've
-							been using it to create lots of super nice landing pages."</p>
-					</div>
-				</div>
-				<div class="col-lg-3">
-					<div class="testimonial-item mx-auto mb-5 mb-lg-0">
-						<img class="img-fluid rounded-circle mb-3"
-							src="resources/img/testimonials-3.jpg" alt="">
-						<h5>Park Mee Ran</h5>
-						<p class="font-weight-light mb-0">"Thanks so much for making
-							these free resources available to us!"</p>
-					</div>
-				</div>
-				<div class="col-lg-3">
-					<div class="testimonial-item mx-auto mb-5 mb-lg-0">
-						<img class="img-fluid rounded-circle mb-3"
-							src="resources/img/testimonials-3.jpg" alt="">
-						<h5>Jung Eun Hya</h5>
-						<p class="font-weight-light mb-0">"Thanks so much for making
-							these free resources available to us!"</p>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
+ 
+   <!-- Clients -->
+   <section class="py-5">
+     <div class="container">
+       <div class="row">
+         <div class="col-md-3 col-sm-6">
+           <a href="#">
+             <img class="img-fluid d-block mx-auto" src="resources/img/logos/envato.jpg" alt="">
+           </a>
+         </div>
+         <div class="col-md-3 col-sm-6">
+           <a href="#">
+             <img class="img-fluid d-block mx-auto" src="resources/img/logos/designmodo.jpg" alt="">
+           </a>
+         </div>
+         <div class="col-md-3 col-sm-6">
+           <a href="#">
+             <img class="img-fluid d-block mx-auto" src="resources/img/logos/themeforest.jpg" alt="">
+           </a>
+         </div>
+         <div class="col-md-3 col-sm-6">
+           <a href="#">
+             <img class="img-fluid d-block mx-auto" src="resources/img/logos/creative-market.jpg" alt="">
+           </a>
+         </div>
+       </div>
+     </div>
+   </section>
 
 
+   <!-- Footer -->
+   <footer>
+     <div class="container">
+       <div class="row">
+         <div class="col-md-4">
+           <span class="copyright">Copyright &copy; Your Website 2018</span>
+         </div>
+         <div class="col-md-4">
+         </div>
+         <div class="col-md-4">
+           <ul class="list-inline quicklinks">
+             <li class="list-inline-item">
+               <a href="#">Privacy Policy</a>
+             </li>
+             <li class="list-inline-item">
+               <a href="#">Terms of Use</a>
+             </li>
+           </ul>
+         </div>
+       </div>
+     </div>
+   </footer>
+
+   <!-- Portfolio Modals -->
+   <!-- Modal 1 HanBoA-->
+   <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-hidden="true">
+     <div class="modal-dialog">
+       <div class="modal-content">
+         <div class="close-modal" data-dismiss="modal">
+           <div class="lr">
+             <div class="rl"></div>
+           </div>
+         </div>
+         <div class="container">
+           <div class="row">
+             <div class="col-lg-8 mx-auto">
+               <div class="modal-body">
+                 <!-- Project Details Go Here -->
+                 <h2 class="text-uppercase">Project Name</h2>
+                 <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
+                 <img class="img-fluid d-block mx-auto" src="resources/img/portfolio/01-full.jpg" alt="">
+                 <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
+                 <ul class="list-inline">
+                   <li>Date: January 2017</li>
+                   <li>Client: Threads</li>
+                   <li>Category: Illustration</li>
+                 </ul>
+                 <button class="btn btn-primary" data-dismiss="modal" type="button">
+                   <i class="fa fa-times"></i>
+                   Close Project</button>
+               </div>
+             </div>
+           </div>
+         </div>
+       </div>
+     </div>
+   </div>
+
+   <!-- Modal 2 Park Mi Ran-->
+   <div class="portfolio-modal modal fade" id="portfolioModal2" tabindex="-1" role="dialog" aria-hidden="true">
+     <div class="modal-dialog">
+       <div class="modal-content">
+         <div class="close-modal" data-dismiss="modal">
+           <div class="lr">
+             <div class="rl"></div>
+           </div>
+         </div>
+         <div class="container">
+           <div class="row">
+             <div class="col-lg-8 mx-auto">
+               <div class="modal-body">
+                 <!-- Project Details Go Here -->
+                 <h2 class="text-uppercase">Project Name</h2>
+                 <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
+                 <img class="img-fluid d-block mx-auto" src="resources/img/portfolio/02-full.jpg" alt="">
+                 <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
+                 <ul class="list-inline">
+                   <li>Date: January 2017</li>
+                   <li>Client: Explore</li>
+                   <li>Category: Graphic Design</li>
+                 </ul>
+                 <button class="btn btn-primary" data-dismiss="modal" type="button">
+                   <i class="fa fa-times"></i>
+                   Close Project</button>
+               </div>
+             </div>
+           </div>
+         </div>
+       </div>
+     </div>
+   </div>
+
+   <!-- Modal 3 Jung Eun Hwa-->
+   <div class="portfolio-modal modal fade" id="portfolioModal3" tabindex="-1" role="dialog" aria-hidden="true">
+     <div class="modal-dialog">
+       <div class="modal-content">
+         <div class="close-modal" data-dismiss="modal">
+           <div class="lr">
+             <div class="rl"></div>
+           </div>
+         </div>
+         <div class="container">
+           <div class="row">
+             <div class="col-lg-8 mx-auto">
+               <div class="modal-body">
+                 <!-- Project Details Go Here -->
+                 <h2 class="text-uppercase">Project Name</h2>
+                 <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
+                 <img class="img-fluid d-block mx-auto" src="resources/img/portfolio/03-full.jpg" alt="">
+                 <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
+                 <ul class="list-inline">
+                   <li>Date: January 2017</li>
+                   <li>Client: Finish</li>
+                   <li>Category: Identity</li>
+                 </ul>
+                 <button class="btn btn-primary" data-dismiss="modal" type="button">
+                   <i class="fa fa-times"></i>
+                   Close Project</button>
+               </div>
+             </div>
+           </div>
+         </div>
+       </div>
+     </div>
+   </div>
+
+   <!-- Modal 4 Kim kyu Won-->
+   <div class="portfolio-modal modal fade" id="portfolioModal4" tabindex="-1" role="dialog" aria-hidden="true">
+     <div class="modal-dialog">
+       <div class="modal-content">
+         <div class="close-modal" data-dismiss="modal">
+           <div class="lr">
+             <div class="rl"></div>
+           </div>
+         </div>
+         <div class="container">
+           <div class="row">
+             <div class="col-lg-8 mx-auto">
+               <div class="modal-body">
+                 <!-- Project Details Go Here -->
+                 <h2 class="text-uppercase">Project Name</h2>
+                 <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
+                 <img class="img-fluid d-block mx-auto" src="resources/img/portfolio/04-full.jpg" alt="">
+                 <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
+                 <ul class="list-inline">
+                   <li>Date: January 2017</li>
+                   <li>Client: Lines</li>
+                   <li>Category: Branding</li>
+                 </ul>
+                 <button class="btn btn-primary" data-dismiss="modal" type="button">
+                   <i class="fa fa-times"></i>
+                   Close Project</button>
+               </div>
+             </div>
+           </div>
+         </div>
+       </div>
+     </div>
+   </div>
+     
 	<!-- Bootstrap core JavaScript -->
-	<script src="/resources/vendor/jquery/jquery.min.js"></script>
-	<script src="/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<script src="<c:url value="/resources/js/jquery-3.3.1.min.js" />"></script>
+	<script src="<c:url value="/resources/js/bootstrap.bundle.min.js"/>"></script>
+	
+	<!-- Plugin JavaScript -->
+	<script src="<c:url value="/resources/jquery.easing.min.js"/>"></script>
+	
+	<!-- Contact form JavaScript -->
+	<script src="<c:url value="/resources/js/jqBootstrapValidation.js"/>"></script>
+	<script src="<c:url value="/resources/js/contact_me.js"/>"></script>
+	
+	<!-- Custom scripts for this template -->
+	<script src="<c:url value="/resources/js/agency.min.js"/>"></script>
 
-	<jsp:include page="/WEB-INF/views/inc/footer.jsp"></jsp:include>
-</body>
-
+  </body>
 </html>

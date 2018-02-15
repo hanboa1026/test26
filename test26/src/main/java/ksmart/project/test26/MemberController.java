@@ -24,80 +24,80 @@ public class MemberController {
 	@Autowired
 	private MemberDao memberDao;
 	
-	// 목록조회
+	// 紐⑸줉議고쉶
 	@RequestMapping(value="", method=RequestMethod.GET)
 	public String memberList(Model model, HttpSession session) {
 		if(session.getAttribute("loginMember") == null ) {
 			return "redirect:/log/login"; 
 		}
 		List<Member> list = memberDao.selectMemberList();
-		logger.debug("회원 목록{}", list);
+		logger.debug("�쉶�썝 紐⑸줉{}", list);
 		model.addAttribute("list",list);
 		return "member/memberList";
 	}
 	
-	// 하나정보 요청
+	// �븯�굹�젙蹂� �슂泥�
 	@RequestMapping(value="/member/memberInfo", method=RequestMethod.GET)
 	public String memberSelectByNo(Model model, int memberNo) {
-		logger.debug("회원 번호 {}번",memberNo); //회원 번호 ?번 출력
+		logger.debug("�쉶�썝 踰덊샇 {}踰�",memberNo); //�쉶�썝 踰덊샇 ?踰� 異쒕젰
 		model.addAttribute("member", memberDao.selectMemberByNo(memberNo));
-		//멤버 정보를 model에 담아서 리턴
+		//硫ㅻ쾭 �젙蹂대�� model�뿉 �떞�븘�꽌 由ы꽩
 		return "member/memberInfo";
 	}
 	
-	// 입력페이지 요청
+	// �엯�젰�럹�씠吏� �슂泥�
 	@RequestMapping(value="/member/memberAdd", method=RequestMethod.GET)
 	public String memberInsert() {
 		return "member/memberInsert";
 	}
 	
-	// 입력처리 요청
+	// �엯�젰泥섎━ �슂泥�
 	@RequestMapping(value="/member/memberAdd", method=RequestMethod.POST)
 	public String memberInsert(Member member, HttpSession session) {
-		logger.debug("회원 정보{}", member);
+		logger.debug("�쉶�썝 �젙蹂�{}", member);
 		memberDao.insertMember(member);
 		return "home";
 	}
 	
-	// 업데이트 정보요청
+	// �뾽�뜲�씠�듃 �젙蹂댁슂泥�
 	@RequestMapping(value="/member/memberModify", method=RequestMethod.GET)
 	public String memberUpdate(Model model,@RequestParam(value="memberNo", required=true)int memberNo) {	
 		model.addAttribute("member", memberDao.selectMemberByNo(memberNo));
 		return "member/memberUpdate";		
 	}
 	
-	// 업데이트 처리요청
+	// �뾽�뜲�씠�듃 泥섎━�슂泥�
 	@RequestMapping(value="/member/memberModify", method=RequestMethod.POST)
 	public String memberUpdate(Member member) {
-		logger.debug("회원 정보{}", member);
+		logger.debug("�쉶�썝 �젙蹂�{}", member);
 		memberDao.updateMember(member);
 		return "redirect:/";	
 	}
 	
-	// 삭제
+	// �궘�젣
 	@RequestMapping(value="/member/memberRemove", method=RequestMethod.GET)
 	public String memberDelete(Model model,@RequestParam(value="memberNo", required=true)int memberNo) {
-		logger.debug("회원 번호 {}번",memberNo);
+		logger.debug("�쉶�썝 踰덊샇 {}踰�",memberNo);
 		memberDao.deleteMember(memberNo);
 		return "/log/logOut";		
 	}
 
-	// 로그인 화면 요청
+	// 濡쒓렇�씤 �솕硫� �슂泥�
 	@RequestMapping(value="/log/login", method=RequestMethod.GET)
 	public String Login() {	
 		 return "log/login";
 	}
 	
-	// 로그인 요청
+	// 濡쒓렇�씤 �슂泥�
 	@RequestMapping(value = "/log/loginAction", method = RequestMethod.POST)
 	public String login(HttpSession session, Member member){
-		logger.debug("회원 정보{}", member);
+		logger.debug("�쉶�썝 �젙蹂�{}", member);
 	//	 1. logger.debug(member)
 	//	 2. dao(member)
 		Member member1 = memberDao.login(member);
 
 	//	 3. mapper....
-	//	 4. 결과값이 null이면 redirect : login
+	//	 4. 寃곌낵媛믪씠 null�씠硫� redirect : login
 		if(member1 == null) {
 			return "redirect:/log/login";
 		} else {
@@ -107,17 +107,17 @@ public class MemberController {
 	//	 6. redirect : index or mypage
 	//	
 	//	 login / logout
-	//	 1명 : 회원가입...
-	//	 나머지 인증단계를 적용해야할 Countroller..
+	//	 1紐� : �쉶�썝媛��엯...
+	//	 �굹癒몄� �씤利앸떒怨꾨�� �쟻�슜�빐�빞�븷 Countroller..
 	//	
 		return "redirect:/";
 	}
 	
-	// 로그아웃 요청
+	// 濡쒓렇�븘�썐 �슂泥�
 	@RequestMapping(value = "/log/logOut", method = RequestMethod.GET)
 	public String logout(HttpSession session, Member member){
-		logger.debug("회원 정보{}", member);
+		logger.debug("�쉶�썝 �젙蹂�{}", member);
 			session.invalidate();
-		return "home";		
+		return "redirect:/";		
 	}	
 }
