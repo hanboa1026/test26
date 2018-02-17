@@ -25,10 +25,10 @@
 			</div>		
 			<div class="col-lg-4 col-sm-6 form-inline">
 				<form action="${pageContext.request.contextPath}/idol/idolList?" method="POST">
-				<select name="serchOption" class="form-control">
+				<select name="searchOption" class="form-control">
 				<option value="all"<c:out value="${searchOption == 'all'?'selected':''}"/>>전체보기</option>
 				</select>
-				<input name="keyword" value="${keyword}" class="form-control" placeholder="Search">
+				<input name="keyword" value="${keyword}" class="form-control" placeholder="search">
 				<button class="btn btn-success" type="submit" value="검색"><i class="glyphicon glyphicon-search"></i></button>
 				</form>
 				</div>
