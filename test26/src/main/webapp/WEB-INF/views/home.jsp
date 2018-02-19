@@ -387,7 +387,7 @@
 	<script src="<c:url value="/resources/js/bootstrap.bundle.min.js"/>"></script>
 	
 	<!-- Plugin JavaScript -->
-	<script src="<c:url value="/resources/jquery.easing.min.js"/>"></script>
+	<script src="<c:url value="/resources/css/jquery.easing.min.js"/>"></script>
 	
 	<!-- Contact form JavaScript -->
 	<script src="<c:url value="/resources/js/jqBootstrapValidation.js"/>"></script>
