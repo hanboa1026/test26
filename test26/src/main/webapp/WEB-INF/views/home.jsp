@@ -12,9 +12,9 @@
     <title>Agency - Start Bootstrap Theme</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="resources/css/bootstrap.min.css" rel="stylesheet">
-<%-- <link href="<c:url value="/resources/css/bootstrap.min.css" />" rel="stylesheet">
---%>
+    <!-- <link href="resources/css/bootstrap.min.css" rel="stylesheet"> -->
+	 <link href="<c:url value="/resources/css/bootstrap.min.css" />" rel="stylesheet">
+
    <!-- Custom fonts for this template -->
 
    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
