@@ -67,7 +67,7 @@
 		<!-- 검색 레코드 갯수 -->
 		<select id="countForSearch" resultType="int" parameterType="java.lang.String">
 			SELECT COUNT(*) FROM company
-			<if test="_paraeter!=null">
+			<if test="_parameter!=null">
 			 	WHERE ${searchOption} LIKE CONCAT('%',#{keyword},'%')
 			 </if>
 		</select>
