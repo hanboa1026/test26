@@ -76,7 +76,7 @@
 			SELECT LAST_INSERT_iD();
 		</select>
 		
-		<insert id="selectCompanyFile" parameterType="ksmart.project.test26.service.Company.CompanyFile">
+		<insert id="selectCompanyFile" parameterType="ksmart.project.test26.service.CompanyFile">
 			INSERT INTO
 			test.company_file (company_id, file_name, file_ext, file_size)
 			VALUES
