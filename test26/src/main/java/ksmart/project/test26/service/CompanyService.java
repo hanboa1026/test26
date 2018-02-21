@@ -65,4 +65,16 @@ public class CompanyService {
 		returnMap.put("totalCount", totalCount);
 		return returnMap;
 	}
+	
+	public void uploadCompany(CompanyCommand companyCommand) {
+		logger.debug("uploadCompany(CompanyCommand companyCommand) 메소드 실행 CompanyCommand is {}",companyCommand);
+		Company company = new Company();
+		company.setCompanyName(companyCommand.getCompanyName());
+		companyDao.insertCompany(company);
+		logger.debug("companyDao.insertCompnay(company) company is {}", company);
+		int companyId = companyDao.selectLastId();
+		logger.debug("int companyId = companyDao.selectLastId(); companyId is {}", companyId);
+		
+		
+	}
 }

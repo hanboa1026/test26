@@ -34,10 +34,12 @@
 		<a class="col-lg-8 col-sm-8 homeicon" href="${pageContext.request.contextPath}/"><img alt="home" src="${pageContext.request.contextPath}/resources/img/home.png"></a>
 		</div>
 		
-	 	<form action="${pageContext.request.contextPath}/companyAdd" method="post" id="addForm">
+	 	<form action="${pageContext.request.contextPath}/companyAdd" method="post" id="addForm" enctype="multipart/form-data">
 	 		<div class="alert alert-warning">
 	 			<div>회사이름 이름 </div>
 	 			<input type="text" id="companyName" name="companyName">
+	 			<!-- multiple -->
+	 			파일첨부 : <input type="file" name="file" multiple="multiple">
 	 			<button id="addButton" class="btn btn-warning" type="button">추가</button>
 	 			<button class="btn btn-warning" type="reset">초기화</button>
  			</div>

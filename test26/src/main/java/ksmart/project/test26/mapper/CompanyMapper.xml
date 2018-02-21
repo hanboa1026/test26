@@ -71,6 +71,17 @@
 			 	WHERE ${searchOption} LIKE CONCAT('%',#{keyword},'%')
 			 </if>
 		</select>
+		
+		<select id="selectLastId" resultType="integer">
+			SELECT LAST_INSERT_iD();
+		</select>
+		
+		<insert id="selectCompanyFile" parameterType="ksmart.project.test26.service.Company.CompanyFile">
+			INSERT INTO
+			test.company_file (company_id, file_name, file_ext, file_size)
+			VALUES
+			(#{companyId},#{fileName},#{fileExt},#{fileSize});
+		</insert>
 	
 	
 </mapper>

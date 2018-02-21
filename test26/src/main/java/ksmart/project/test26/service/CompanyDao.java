@@ -49,4 +49,17 @@ public class CompanyDao {
 		logger.debug("totalCount() 메소드 totalCount is {}", totalCount);
 		return totalCount;
 	}
+	
+	// upload file 
+	public int selectLastId() {
+		int selectLastId = sqlSessionTemplate.selectOne(localName + "selectLastId");
+		logger.debug("selectLastId() 메소드 실행 lastId is {}", selectLastId);
+		return selectLastId;
+	}
+	
+	// upload file
+	public void insertCompanyFile(CompanyFile companyFile) {
+		logger.debug("insertCompanyFile(CompanyFile companyFile) 메소드 실행 companyFile is {}",companyFile);
+		sqlSessionTemplate.insert(localName + "selectCompanyFile", companyFile);
+	}
 }
