@@ -1,4 +1,4 @@
-package ksmart.project.test26.service;
+package ksmart.project.test26.service.country;
 
 import java.util.List;
 import java.util.Map;
@@ -46,16 +46,20 @@ public class CountryDao {
 		logger.debug("나라 정보 {}",country);
 		return sqlSessionTemplate.insert(localName+"insertCountry",country);
 	}
-	// 파일 업로드
+	// 마지막 id 조회
 		public int selectLastId() {
 			int selectLastId = sqlSessionTemplate.selectOne(localName+"selectLastId");
 			logger.debug("selectLastId() 매서드  -- lastId is {}", selectLastId);
 			return selectLastId;
-		}
+	}
 	// 파일 업로드
 	public void insertCountryFile(CountryFile countryFile) {
 		logger.debug("insertCountryFile(CountryFile countryFile) 메서드 countryFile is {}",countryFile);
 		sqlSessionTemplate.insert(localName+"insertCountryFile", countryFile);
-		
-		}
+	}
+	//파일목록조회
+	public CountryAndCountryFile selectCountryAndCountryFile(int countryId) {
+		logger.debug("selectCountryAndCountryFileList(int countryId) 메서드 countryId is {}",countryId);
+		return sqlSessionTemplate.selectOne(localName+"selectCountryAndCountryFile", countryId);
+	}
 }

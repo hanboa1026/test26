@@ -6,12 +6,13 @@
 	<!-- select list-->
 	<select id="selectCountryList"
 			parameterType="java.util.Map"
-			resultType="ksmart.project.test26.service.Country">
+			resultType="ksmart.project.test26.service.country.Country">
 		SELECT
 			country_id as countryId
 			,country_name as countryName
 		FROM test.country
 		<include refid="search"></include>
+		ORDER BY countryId DESC
 		LIMIT #{beginRow}, #{pagePerRow}
 		<!-- WHERE절을 include 태그로 삽입 -->
 	</select>
@@ -46,7 +47,7 @@
 	<!-- select -->
 	<select id="selectCountryById"
 			parameterType="int"
-			resultType="ksmart.project.test26.service.Country">
+			resultType="ksmart.project.test26.service.country.Country">
 		SELECT
 			country_id as countryId
 			,country_name as countryName
@@ -56,7 +57,7 @@
 	
 	<!-- insert -->	
 	<insert id="insertCountry"
-			parameterType="ksmart.project.test26.service.Country">
+			useGeneratedKeys="true" keyProperty="countryId">
 		INSERT INTO country(
 			country_name)
 		VALUES (
@@ -66,7 +67,7 @@
 
 	<!-- update -->
 	<update id="updateCountry"
-			parameterType="ksmart.project.test26.service.Country">
+			parameterType="ksmart.project.test26.service.country.Country">
 		UPDATE country
 			SET country_name = #{countryName}
 		WHERE country_id = #{countryId}
@@ -74,7 +75,7 @@
 
 	<!-- delete -->
 	<delete id="deleteCountry"
-			parameterType="ksmart.project.test26.service.Country">
+			parameterType="ksmart.project.test26.service.country.Country">
 		DELETE
 		FROM country
 		WHERE country_id = #{countryId}
@@ -86,7 +87,7 @@
 		</select>
 	
 	<!-- insert file -->
-	<insert id="insertCountryFile" parameterType="ksmart.project.test26.service.CountryFile">
+	<insert id="insertCountryFile" parameterType="ksmart.project.test26.service.country.CountryFile">
 		INSERT INTO test.country_file(
 			country_id
 			, file_name
@@ -100,4 +101,34 @@
 			,#{fileSize}
 		);
 	</insert>	
+	
+	<!-- CountryAndCountryFile list parameter getting -->
+	<resultMap type="ksmart.project.test26.service.country.CountryAndCountryFile"
+				id="CountryAndCountryFile">
+		<id column="country_id" property="countryId"/>
+		<result column="country_name" property="countryName"/>
+		<collection property="list" ofType="ksmart.project.test26.service.country.CountryFile">
+			<id column="country_file_id" property="countryFileId"/>
+			<result column="file_name" property="fileName"/>
+			<result column="file_ext" property="fileExt"/>
+			<result column="file_size" property="fileSize"/>
+		</collection>
+	</resultMap>
+	
+	<!-- select countryAndCountryFile -->
+	<select id="selectCountryAndCountryFile"
+			parameterType="int"
+			resultMap="CountryAndCountryFile">
+		SELECT
+			c.country_id
+			,c.country_name
+			,f.country_file_id
+			,f.file_name
+			,f.file_ext
+			,f.file_size
+		FROM country c
+		INNER JOIN country_file f
+		ON c.country_id = f.country_id
+		WHERE c.country_id = #{countryId}
+	</select>
 </mapper>

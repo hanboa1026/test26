@@ -1,13 +1,11 @@
-package ksmart.project.test26.service;
+package ksmart.project.test26.service.country;
 
 import java.util.List;
 
-import org.springframework.web.multipart.MultipartFile;
-
-public class CountryCommand {
+public class CountryAndCountryFile {
 	private int countryId;
 	private String countryName;
-	private List<MultipartFile>file;
+	private List<CountryFile> list;
 	
 	public int getCountryId() {
 		return countryId;
@@ -21,17 +19,16 @@ public class CountryCommand {
 	public void setCountryName(String countryName) {
 		this.countryName = countryName;
 	}
-	public List<MultipartFile> getFile() {
-		return file;
+	public List<CountryFile> getList() {
+		return list;
 	}
-	public void setFile(List<MultipartFile> file) {
-		this.file = file;
+	public void setList(List<CountryFile> list) {
+		this.list = list;
 	}
 	
 	@Override
 	public String toString() {
-		return "CountryCommand [countryId=" + countryId + ", countryName=" + countryName + ", file=" + file + "]";
+		return "CountryAndCountryFile [countryId=" + countryId + ", countryName=" + countryName + ", list=" + list
+				+ "]";
 	}
-	
 }
-

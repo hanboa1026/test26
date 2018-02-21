@@ -13,9 +13,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import ksmart.project.test26.service.Country;
-import ksmart.project.test26.service.CountryCommand;
-import ksmart.project.test26.service.CountryService;
+import ksmart.project.test26.service.country.Country;
+import ksmart.project.test26.service.country.CountryCommand;
+import ksmart.project.test26.service.country.CountryService;
 @Controller
 /* spring MVC의 Controller 클래스 선언을 단순화시켜준다.
  *	스프링 컨트롤러, 서블릿을 상속할 필요가 없으며,
@@ -42,6 +42,7 @@ public class CountryController {
 							,@RequestParam(value="currentPage", required=false, defaultValue="1") int currentPage
 							,@RequestParam(value="searchOption", defaultValue="country_name") String searchOption
 							,@RequestParam(value="keyword", defaultValue="") String keyword)	{
+		logger.debug("*----countryController : countryList ----*");
 		logger.debug("검색 조건 {}",searchOption);
 		logger.debug("검색 단어 {}",keyword);
 		if(session.getAttribute("loginMember") == null ) {
@@ -52,7 +53,7 @@ public class CountryController {
 		int lastPage = (int)(Math.ceil(countryCount/pagePerRow));
 		// 마지막페이지 = 총 목록 수 / 10
 		logger.debug("현재 페이지 {}번",currentPage); //1번
-		List<Country> list = countryService.selectCountryList(currentPage, pagePerRow, searchOption, keyword);
+		List<Country> list = countryService.getCountryList(currentPage, pagePerRow, searchOption, keyword);
 		logger.debug("나라 목록 {}",list);
 		logger.debug("총 갯수 {}",countryCount);
 		model.addAttribute("currentPage",currentPage); 
@@ -61,13 +62,27 @@ public class CountryController {
 		model.addAttribute("searchOption",searchOption);
 		model.addAttribute("keyword",keyword);
 		model.addAttribute("countryCount",countryCount);
+		logger.debug("*----------------------------------------*");
 		return "country/countryList";
+	}
+	
+	// 파일목록조회
+	@RequestMapping(value="/country/countryFileList")
+	public String countryFileList(Model model, HttpSession session
+								,@RequestParam(value="countryId", required=true)int countryId) {
+		if(session.getAttribute("loginMember") == null ) {
+			return "redirect:/log/login"; 
+		}
+		return "country/countryFileList";
+		
 	}
 	
 	// 입력페이지 요청
 	@RequestMapping(value="/countryAdd", method=RequestMethod.GET)
 	public String countryInsert(HttpSession session) {
 		if(session.getAttribute("loginMember") == null ) {
+			String path = session.getServletContext().getRealPath("/resources/upload/country");
+			logger.debug("{} : path GET countryInsert CountryController", path);
 			return "redirect:/log/login"; 
 		}
 		return "country/countryInsert";
@@ -79,8 +94,13 @@ public class CountryController {
 		if(session.getAttribute("loginMember") == null ) {
 			return "redirect:/log/login"; 
 		}
+		// resource 폴더 경로
+		/*session.getServletContext().getRealPath("/");*/
+		String path = session.getServletContext().getRealPath("/resources/upload/country");
+		logger.debug("{} : path POST countryInsert CountryController", path);
+		/*path += "resources/upload/";*/
 		logger.debug("나라 정보 {}",countryCommand);
-		countryService.insertCountry(countryCommand);
+		countryService.insertCountry(countryCommand, path);
 		return "redirect:/country/countryList";
 	}
 	

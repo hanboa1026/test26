@@ -1,4 +1,4 @@
-package ksmart.project.test26.service;
+package ksmart.project.test26.service.country;
 
 public class Country {
 	private int countryId;

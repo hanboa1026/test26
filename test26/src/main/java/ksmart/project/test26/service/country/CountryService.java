@@ -1,4 +1,4 @@
-package ksmart.project.test26.service;
+package ksmart.project.test26.service.country;
 
 import java.io.File;
 import java.io.IOException;
@@ -25,7 +25,7 @@ public class CountryService {
 	private CountryDao countryDao;
 	
 	// 목록조회
-	public List<Country> selectCountryList(int currentPage, int pagePerRow,String searchOption, String keyword){
+	public List<Country> getCountryList(int currentPage, int pagePerRow,String searchOption, String keyword){
 		logger.debug("현재 페이지 {}번",currentPage);
 		logger.debug("목록 수 {}개",pagePerRow);
 		Map<String, Object> map = new HashMap<String, Object>();
@@ -43,6 +43,13 @@ public class CountryService {
 		return list;
 	}
 	
+	// 파일목록조회
+	public CountryAndCountryFile getCountryFileList(int countryId) {
+		CountryAndCountryFile countryAndCountryFile = countryDao.selectCountryAndCountryFile(countryId);
+		logger.debug("CountryService -- CountryAndCountryFile is {}",countryAndCountryFile);
+		return countryAndCountryFile;
+	}
+	
 	// 총목록수조회
 	public int getCountryCount(String searchOption, String keyword) {
 		Map<String, Object> map = new HashMap<String, Object>();
@@ -53,7 +60,7 @@ public class CountryService {
 	}
 
 	// 입력처리서비스
-	public void insertCountry(CountryCommand countryCommand) {
+	public void insertCountry(CountryCommand countryCommand, String path) {
 		Country country = new Country();
 		CountryFile countryFile = new CountryFile();
 		country.setCountryName(countryCommand.getCountryName());
@@ -84,8 +91,8 @@ public class CountryService {
 			logger.debug("countryFile(id,name,ext,size) is {} ", countryFile);
 			countryDao.insertCountryFile(countryFile);
 			
-			// 2. 파일을 저장
-			File temp = new File("c:\\upload\\"+fileName);
+			// 2. 파일을 저장 (resources)
+			File temp = new File(path+"\\"+fileName+"."+fileExt);
 			try {
 				file.transferTo(temp);
 			} catch(IllegalStateException e){
