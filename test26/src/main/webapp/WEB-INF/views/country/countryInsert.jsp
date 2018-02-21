@@ -13,7 +13,7 @@
 	    1. 모든 폼은 공백 또는 "" 문자는 입력되면 안된다.
 	    2. 내용은 1자이상 입력하여야 한다.
 	 */
-	$(document).ready(function() {
+	/* $(document).ready(function() {
 		$('#addButton').click(function() {
 			if ($('#countryName').val().length < 1) {
 				alert('한글자 이상 입력해주세요.');
@@ -22,7 +22,7 @@
 				$('#addCountryForm').submit();
 			}
 		})
-	})
+	}) */
 </script>
 <title>Insert title here</title>
 </head>
@@ -32,11 +32,15 @@
 		<h2 class="col-lg-4 col-sm-4">Country Insert Form</h2>
 		<a class="col-lg-8 col-sm-8 homeicon" href="${pageContext.request.contextPath}/"><img alt="home" src="${pageContext.request.contextPath}/resources/img/home.png"></a>
 		</div>
-		<form id="addCountryForm" method="post" action="${pageContext.request.contextPath}/countryAdd">
+		<form id="addCountryForm" method="post"
+			action="${pageContext.request.contextPath}/countryAdd"
+			enctype="multipart/form-data">
 			<div class="alert alert-success">
-				<div>이름을 입력해주세요.</div>
+				<div>이름</div>
 				<input class="form-control" id="countryName" name="countryName" type="text">
-				<button id="addButton" type="button" class="btn btn-success">입력</button>
+				<div>파일</div>
+				<input type="file" name="file" multiple="multiple">
+				<button id="addButton" type="submit" class="btn btn-success">입력</button>
 				<button class="btn btn-success" type="reset">초기화</button>
 			</div>
 		</form>

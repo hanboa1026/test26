@@ -25,12 +25,22 @@
 	
 	<!-- insert -->
 	<insert id="insertCity"
-			parameterType="ksmart.project.test26.service.City">
+			parameterType="ksmart.project.test26.service.City"
+			useGeneratedKeys="true"
+			keyProperty="cityId"
+			keyColumn="city_id">
 		INSERT INTO city(
 			city_name)
 		VALUES (
 			#{cityName}
 		)
+	</insert>
+	
+	<!-- insert 도시 파일 추가 -->
+	<insert id="insertCityFile" parameterType="ksmart.project.test26.service.CityFile">
+		INSERT INTO 
+		city_file(city_id, file_name, file_ext, file_size) 
+		VALUES(#{cityId}, #{fileName}, #{fileExt}, #{fileSize})
 	</insert>
 	
 	<!-- update -->

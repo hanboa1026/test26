@@ -1,14 +1,18 @@
 package ksmart.project.test26.service;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
 @Service
 @Transactional
@@ -66,9 +70,41 @@ public class CityService {
 		int cityOne = cityDao.deleteCity(cityId);
 		return cityOne;
 	}
-	// 등록
-	public int insertCity(City city) {
-		int cityOne = cityDao.insertCity(city);
-		return cityOne;
+	// 도시 등록 및 파일 추가
+	public void insertCity(CityCommand cityCommand) {
+		// 도시명 셋팅 후 id값 받기
+		City city = new City();
+		city.setCityName(cityCommand.getCityName());
+		cityDao.insertCity(city);
+		for(MultipartFile file : cityCommand.getFile()) {
+			// 랜덤이름 넣기
+			UUID uuid = UUID.randomUUID();
+			String fileName = uuid.toString().replace("-", ""); // 중복되지 않은 이름 랜덤입력 // replace(- 없애기)
+			// 파일확장자 추출하기
+			String originalName = file.getOriginalFilename();
+			// 오리지널 이름에서 . 다음 확장자 추출
+			String fileExt = originalName.substring(originalName.lastIndexOf(".")+1);
+			fileExt = fileExt.toLowerCase(); // 문자영에 있는 모든 영문자를 소문자로 변화
+			// 파일사이즈 받기
+			long fileSize = file.getSize();
+			CityFile cityFile = new CityFile(); // 오리지널 파일 사이즈
+			cityFile.setCityId(city.getCityId());
+			cityFile.setFileName(fileName);
+			cityFile.setFileExt(fileExt);
+			cityFile.setFileSize(fileSize);
+			logger.debug("cityFile{}", cityFile.toString());
+			// 파일 저장
+			File temp = new File("d:\\upload\\"+fileName); // resource로 변경하기
+			logger.debug("full file name : {}", temp);
+			try {
+				file.transferTo(temp);
+			} catch (IllegalStateException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			cityDao.insertCityFile(cityFile);
+		}
+		
 	}
 }

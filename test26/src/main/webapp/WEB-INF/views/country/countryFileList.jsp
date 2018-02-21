@@ -14,7 +14,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-12">
-				<h1>Country&nbsp;List</h1>
+				<h1>Country&nbsp;File&nbsp;List</h1>
 			</div>
 		</div>
 		<div class="row">
@@ -47,19 +47,17 @@
 					<tr class="success">
 						<th>No.</th>
 						<th>NAME</th>
-						<th>UPDATE</th>
-						<th>DELETE</th>
+						<th>EXT</th>
+						<th>SIZE</th>
 					</tr>
 				</thead>
-				<c:forEach var="country" items="${list}">
+				<c:forEach var="countryFile" items="${countryAndCountryFile.list}">
 					<tbody>
 						<tr>
-							<td>${country.countryId}</td>
-							<td><a href="${pageContext.request.contextPath}/country/countryFileList?countryId=${country.countryId}">${country.countryName}</a></td>
-							<td><a
-								class="btn btn-primary" href="${pageContext.request.contextPath}/countryModify?countryId=${country.countryId}"><i class="fa fa-pencil-alt"></i></a></td>
-							<td><a
-								class="btn btn-danger" href="${pageContext.request.contextPath}/countryRemove?countryId=${country.countryId}"><i class="fa fa-trash"></i></a></td>
+							<td>${countryFile.countryFileId}</td>
+							<td>${countryFile.fileName}</td>
+							<td>${countryFile.fileExt}</td>
+							<td>${countryFile.fileSize}</td>
 						</tr>
 					</tbody>
 				</c:forEach>

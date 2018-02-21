@@ -3,6 +3,8 @@ package ksmart.project.test26.service;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Options;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -34,6 +36,10 @@ public class CityDao {
 	// 등록
 	public int insertCity(City city) {
 		return sqlSessionTemplate.insert(localName+"insertCity", city);
+	}
+	// 파일 등록
+	public int insertCityFile(CityFile cityFile) {
+		return sqlSessionTemplate.insert(localName+"insertCityFile", cityFile);
 	}
 	// 전체 도시 수(페이징)
 	public int selectCityCountByPage(Map map) {

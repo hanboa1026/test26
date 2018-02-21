@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import ksmart.project.test26.service.City;
+import ksmart.project.test26.service.CityCommand;
 import ksmart.project.test26.service.CityService;
 
 @Controller
@@ -57,14 +58,16 @@ public class CityController {
 		return "city/cityInsert";
 	}
 	
-	// 입력 처리요청 service 이용
+	// 도시 입력 및 파일 업로드 처리요청 service 이용
 	@RequestMapping(value="/city/cityInsert", method=RequestMethod.POST)
-	public String cityInsert(City city, HttpSession session) {
+	public String cityInsert(CityCommand cityCommand, HttpSession session) {
+		logger.debug("title:"+cityCommand.getCityName());
+		logger.debug("size:"+cityCommand.getFile().size());
 		// 세션이 없으면 로그인 페이지로 리다이렉트 
     	if(session.getAttribute("loginMember") == null ) {
 			return "redirect:/log/login"; 
 		}
-    	cityService.insertCity(city);
+    	cityService.insertCity(cityCommand);
 		return "redirect:/city/cityList";
 	}
 	
