@@ -1,14 +1,18 @@
 package ksmart.project.test26.service;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
 @Service
 @Transactional
@@ -23,11 +27,11 @@ public class CompanyService {
 		return list;
 	}
 	// 입력처리서비스
-	public int insertCompany(Company company) {
+	/*public int insertCompany(Company company) {
 		int row = companyDao.insertCompany(company);
 		return row;
 	}
-	// 회원하나 정보 받기
+*/	// 회원하나 정보 받기
 	public Company getCompany(int companyId) {
 		Company one = companyDao.getCompany(companyId);
 		return one;
@@ -66,8 +70,8 @@ public class CompanyService {
 		return returnMap;
 	}
 	
-	public void uploadCompany(CompanyCommand companyCommand) {
-		logger.debug("uploadCompany(CompanyCommand companyCommand) 메소드 실행 CompanyCommand is {}",companyCommand);
+	public void insertCompany(CompanyCommand companyCommand, String path) {
+		logger.debug("insertCompany(CompanyCommand companyCommand) 메소드 실행 CompanyCommand is {}",companyCommand);
 		Company company = new Company();
 		company.setCompanyName(companyCommand.getCompanyName());
 		companyDao.insertCompany(company);
@@ -75,6 +79,46 @@ public class CompanyService {
 		int companyId = companyDao.selectLastId();
 		logger.debug("int companyId = companyDao.selectLastId(); companyId is {}", companyId);
 		
-		
+		for(MultipartFile file : companyCommand.getFile()) {
+			
+			CompanyFile companyFile = new CompanyFile();
+			UUID uid = UUID.randomUUID();
+			String fileName = uid.toString();
+			String originalName = file.getOriginalFilename();
+			int pos = originalName.lastIndexOf(".");
+			logger.debug("aploadCompany(CompanyCommand companyCommand) 메서드 pos is {}", pos);
+			
+			String fileExt = originalName.substring(pos+1);
+			
+			long fileSize = file.getSize();
+			
+			companyFile.setCompanyId(companyId);
+			companyFile.setFileName(fileName);
+			companyFile.setFileExt(fileExt);
+			companyFile.setFileSize(fileSize);
+			companyDao.insertCompanyFile(companyFile);
+			
+			File temp = new File(path + fileName);
+			try {
+				file.transferTo(temp);
+			} catch (IllegalStateException e) {
+				e.printStackTrace();
+				if (temp.exists()) {
+					if (temp.delete()) {
+						logger.debug("uploadCompany(CompanyCommand companyCommand) 메서드 {} 파일 삭제 성공", temp);
+					} else {
+						logger.debug("uploadCompany(CompanyCommand companyCommand) 메서드 {} 파일 삭제 실패", temp);
+					}
+				}
+			} catch (IOException e) {
+				e.printStackTrace();
+				if (temp.exists()) {
+					logger.debug("uploadCompany(CompanyCommand companyCommand) 메서드 {} 파일 삭제 성공", temp);
+				} else {
+					logger.debug("uploadCompany(CompanyCommand companyCommand) 메서드 {} 파일 삭제 실패", temp);
+				}
+			}
+		}
 	}
 }
+		

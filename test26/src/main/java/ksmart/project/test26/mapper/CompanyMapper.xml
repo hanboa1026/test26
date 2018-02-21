@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
+
+
 <mapper namespace="ksmart.project.test26.mapper.CompanyMapper">
+
+
 
 	<!-- select list-->
 	<select id="selectCompany"
@@ -60,7 +64,7 @@
 			<if test="keyword != null">
 				WHERE company_name LIKE CONCAT ('%',#{keyword},'%')
 			</if>
-			ORDER BY company_id
+			ORDER BY company_id DESC
 			LIMIT #{startRow}, #{rowPerPage}
 	</select>
 		
@@ -73,15 +77,29 @@
 		</select>
 		
 		<select id="selectLastId" resultType="integer">
-			SELECT LAST_INSERT_iD();
+			SELECT LAST_INSERT_ID();
 		</select>
 		
-		<insert id="selectCompanyFile" parameterType="ksmart.project.test26.service.CompanyFile">
+		<insert id="insertCompanyFile" parameterType="ksmart.project.test26.service.CompanyFile">
 			INSERT INTO
-			test.company_file (company_id, file_name, file_ext, file_size)
-			VALUES
+				test.company_file (company_id, file_name, file_ext, file_size)
+				VALUES
 			(#{companyId},#{fileName},#{fileExt},#{fileSize});
 		</insert>
-	
+		
+	<!-- 	<resultMap type="ksmart.project.test26.service.CompanyAndCompanyFile"
+		id="CompanyAndCompanyFile">
+		<id column="company_id" property="companyId" />
+		<result column="companyname" property="companyName" />
+		<collection 
+			property="list" 
+			ofType="ksmart.project.test26.service.companyFile">
+			<id column="company_file_id" property="companyFileId"/>
+			<result column="file_name" property="fileName"/>
+			<result column="file_ext" property="fileExt"/>
+			<result column="file_size" property="fileSize"/>
+		</collection>
+	</resultMap>
+	 -->
 	
 </mapper>

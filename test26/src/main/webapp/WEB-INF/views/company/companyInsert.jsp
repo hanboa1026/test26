@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <link href="<c:url value="/resources/css/bootstrap.min.css" />"  rel="stylesheet">
-<script type="text/javascript" src="<c:url value="/resources/jquery-3.3.1.min.js"/>"></script>
+<script type="text/javascript" src="<c:url value="/resources/js/jquery-3.3.1.min.js"/>"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <script>
@@ -13,7 +13,7 @@
         1. 모든 폼은 공백 또는 "" 문자는 입력되면 안된다.
         2. 비밀번호는 4자이상 입력하여야 한다.
     */
-    $(document).ready(function(){
+   /*  $(document).ready(function(){
         $('#addButton').click(function(){
            	if($('#companyName').val().length <1) {
                 alert('회사 이름을 입력하세요');
@@ -22,8 +22,22 @@
                 $('#addForm').submit();
             }
         })
-    })
-    
+    }) */
+    $(document).ready(function(){
+		$('#addButton').click(function(){
+			// 공백 제거
+			let companyName = $.trim($('#companyName').val());
+			if(companyName===""){
+				// 공백일경우 경고창
+				alert('공백은 입력할 수 없습니다.');
+				// 텍스트 비움
+				$('#companyName').val('');
+			}else{
+				// 공백이 아닐경우 서브밋
+				$('#addForm').submit();
+			}
+		});
+	});
 </script>
 <title>Insert title here</title>
 </head>
@@ -40,8 +54,8 @@
 	 			<input type="text" id="companyName" name="companyName">
 	 			<!-- multiple -->
 	 			파일첨부 : <input type="file" name="file" multiple="multiple">
-	 			<button id="addButton" class="btn btn-warning" type="button">추가</button>
-	 			<button class="btn btn-warning" type="reset">초기화</button>
+	 			<button type="button" id="addButton" class="btn btn-warning" >추가</button>
+	 			<!-- <button id="resetButton" class="btn btn-warning" type="reset">초기화</button> -->
  			</div>
  		</form>
  		<jsp:include page="/WEB-INF/views/inc/footer.jsp"></jsp:include>

@@ -60,6 +60,6 @@ public class CompanyDao {
 	// upload file
 	public void insertCompanyFile(CompanyFile companyFile) {
 		logger.debug("insertCompanyFile(CompanyFile companyFile) 메소드 실행 companyFile is {}",companyFile);
-		sqlSessionTemplate.insert(localName + "selectCompanyFile", companyFile);
+		sqlSessionTemplate.insert(localName + "insertCompanyFile", companyFile);
 	}
 }

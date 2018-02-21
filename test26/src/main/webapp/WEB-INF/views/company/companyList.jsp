@@ -9,8 +9,7 @@
 	rel="stylesheet">
 <link href="<c:url value="/resources/min_css/min_css.css" />"
 	rel="stylesheet">
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
 <title>Company List</title>
 </head>
 <body>
@@ -29,14 +28,14 @@
 		</div>
 		<div class="col-lg-7 col-sm-6">
 			<a href="${pageContext.request.contextPath}/company/companyInsert"
-				class="btn btn-warning">ADD</a>
+				class="btn btn-warning"><i class="fas fa-plus-circle"></i></a>
 		</div>
 		
 			<form action="${pageContext.request.contextPath}/company/companyList" method="POST" class="col-lg-3 col-sm-3 form-inline">
 				<div class="input-group">
 				<input class="form-control" type="text" name="keyword">
 				<div class="input-group-btn">
-					<button class="btn btn-default" type="submit" value="검색"><i class="glyphicon glyphicon-search"></i></button>
+					<button class="btn btn-default" type="submit" value="검색"><i class="fas fa-search"></i></button>
 				</div>
 				</div>
 			</form>
@@ -59,7 +58,7 @@
 						<td>${company.companyName}</td>
 						<td><a class="btn btn-primary"
 							href="${pageContext.request.contextPath}/company/companyUpdate?companyId=${company.companyId}"><i
-								class="fa fa-pencil"></i></a></td>
+								class="fas fa-pencil-alt"></i></a></td>
 						<td><a class="btn btn-danger"
 							href="${pageContext.request.contextPath}/company/companyDelete?companyId=${company.companyId}"><i
 								class="fa fa-trash"></i></a></td>
@@ -69,11 +68,11 @@
 			<div class="clearfix"></div>
 			<ul class="pagination pull-right">
 			<c:if test="${currentPage!=1}">
-				<li><a href="${pageContext.request.contextPath}/company/companyList?currentPage=${currentPage-1}"><span class="glyphicon glyphicon-chevron-left"></span></a></li>
+				<li class="previous"><a href="${pageContext.request.contextPath}/company/companyList?currentPage=${currentPage-1}"><i class="fas fa-chevron-left"></i></a></li>
 			</c:if>
 
 			<c:if test="${ currentpage != lastPage}">
-				<li><a href="${pageContext.request.contextPath}/company/companyList?currentPage=${currentPage+1}"><span class="glyphicon glyphicon-chevron-right"></span></a></li>
+				<li class="next"><a href="${pageContext.request.contextPath}/company/companyList?currentPage=${currentPage+1}"><i class="fas fa-chevron-right"></i></a></li>
 			</c:if>
 			</ul>
 			</div>

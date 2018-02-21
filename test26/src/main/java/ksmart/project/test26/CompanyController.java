@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import ksmart.project.test26.service.Company;
+import ksmart.project.test26.service.CompanyCommand;
 import ksmart.project.test26.service.CompanyService;
 
 @Controller
@@ -56,18 +57,22 @@ public class CompanyController {
 		if(session.getAttribute("loginMember") == null ) {
 			return "redirect:/log/login"; 
 		}
-       System.out.println("companyAdd 메소드 출력");
        return "company/companyInsert";
 	}
     
     // 입력처리 요청 service 이용
     @RequestMapping(value="/companyAdd", method = RequestMethod.POST)
-	public String companyAdd(Company company, HttpSession session) {
+	public String companyAdd(CompanyCommand companyCommand, HttpSession session) {
     	// 세션이 없으면 로그인 페이지로 리다이렉트 
     	if(session.getAttribute("loginMember") == null ) {
 			return "redirect:/log/login"; 
 		}
-        companyService.insertCompany(company);
+    	
+    	String path = session.getServletContext().getRealPath("/");
+		path += "/resources/";
+		logger.debug("companyAdd(CompanyCommand companyCommand,HttpSession session) 메소드 path is {}", path);
+		companyService.insertCompany(companyCommand, path);
+		logger.debug("companyAdd(CompanyCommand companyCommand,HttpSession session) 메소드 path is {}", path);
         return "redirect:/company/companyList"; 
 	}
     
