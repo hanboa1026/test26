@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import ksmart.project.test26.service.Country;
+import ksmart.project.test26.service.CountryCommand;
 import ksmart.project.test26.service.CountryService;
 @Controller
 /* spring MVC의 Controller 클래스 선언을 단순화시켜준다.
@@ -74,12 +75,12 @@ public class CountryController {
 	   
 	// 입력처리 요청
 	@RequestMapping(value="/countryAdd", method=RequestMethod.POST)
-	public String countryInsert(Country country, HttpSession session) {
+	public String countryInsert(CountryCommand countryCommand, HttpSession session) {
 		if(session.getAttribute("loginMember") == null ) {
 			return "redirect:/log/login"; 
 		}
-		logger.debug("나라 정보 {}",country);
-		countryService.insertCountry(country);
+		logger.debug("나라 정보 {}",countryCommand);
+		countryService.insertCountry(countryCommand);
 		return "redirect:/country/countryList";
 	}
 	

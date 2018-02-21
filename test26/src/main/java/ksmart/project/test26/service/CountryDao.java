@@ -46,5 +46,16 @@ public class CountryDao {
 		logger.debug("나라 정보 {}",country);
 		return sqlSessionTemplate.insert(localName+"insertCountry",country);
 	}
-
+	// 파일 업로드
+		public int selectLastId() {
+			int selectLastId = sqlSessionTemplate.selectOne(localName+"selectLastId");
+			logger.debug("selectLastId() 매서드  -- lastId is {}", selectLastId);
+			return selectLastId;
+		}
+	// 파일 업로드
+	public void insertCountryFile(CountryFile countryFile) {
+		logger.debug("insertCountryFile(CountryFile countryFile) 메서드 countryFile is {}",countryFile);
+		sqlSessionTemplate.insert(localName+"insertCountryFile", countryFile);
+		
+		}
 }

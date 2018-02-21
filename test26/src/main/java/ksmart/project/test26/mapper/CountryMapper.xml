@@ -80,4 +80,24 @@
 		WHERE country_id = #{countryId}
 	</delete>
 
+	<!-- select last id -->
+	<select id="selectLastId" resultType="Integer">
+		SELECT LAST_INSERT_ID();
+		</select>
+	
+	<!-- insert file -->
+	<insert id="insertCountryFile" parameterType="ksmart.project.test26.service.CountryFile">
+		INSERT INTO test.country_file(
+			country_id
+			, file_name
+			, file_ext
+			, file_size
+		)
+		VALUES (
+			#{countryId}
+			,#{fileName}
+			,#{fileExt}
+			,#{fileSize}
+		);
+	</insert>	
 </mapper>
