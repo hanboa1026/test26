@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import ksmart.project.test26.service.Idol;
+import ksmart.project.test26.service.IdolCommand;
 import ksmart.project.test26.service.IdolDao;
 import ksmart.project.test26.service.IdolService;
 
@@ -56,20 +57,22 @@ public class IdolController{
    }   
 
    // 입력처리 요청
-   @RequestMapping(value="/idol/idolInsert", method=RequestMethod.POST)
-   public String idolInsert(Idol idol, HttpSession session) {
+   @RequestMapping(value="/idolAdd", method=RequestMethod.POST)
+   public String idolInsert(IdolCommand idolCommand, HttpSession session) {
       if(session.getAttribute("loginMember")==null) {
          return "redirect:/log/login";
       }
-      logger.debug("idol정보 {}번",idol);
-      idolService.insertIdol(idol);
-      return "redirect:/idol/idolList";
+      String path = session.getServletContext().getRealPath("/resources/upload/idol");
+      logger.debug("idol정보 {}번",idolCommand);
+      idolService.insertIdol(idolCommand, path);
+      return "redirect:/idol/idolList"; 
    }
    
    // 입력페이지 요청
-   @RequestMapping(value="/idol/idolInsert", method=RequestMethod.GET)
+   @RequestMapping(value="/idolAdd", method=RequestMethod.GET)
    public String idolInsert(HttpSession session) {
       if(session.getAttribute("loginMember")==null){
+    	  String path = session.getServletContext().getRealPath("/resources/upload/idol");
          return "redirect:/log/login";
       }
       return "idol/idolInsert";
@@ -97,6 +100,31 @@ public class IdolController{
       idolService.updateIdol(idol);
       return "redirect:/idol/idolList";
    }
+   //idol 파일목록조회
+   @RequestMapping(value="/idol/idolFileList")
+   public String idolFileList(HttpSession session
+		   					,@RequestParam(value="idolId", required=true)int idolId) {
+	   //로그인 세션이 Null이면 Home으로 redirect시킴
+	   if(session.getAttribute("loginMember")==null) {
+		   return "redirct:/log/login";
+	   }
+	   logger.debug("idolAdd(HttpSession session) 메서드");
+	   return "/idol/idolFileList";
+   }
+/* @RequestMapping(value="idolAdd",method=RequestMethod.GET)
+   public String idolAdd(IdolCommand idolCommand,HttpSession session) {
+	   //로그인 세션이 Null이면 Home으로 redirect시킴
+	   if(session.getAttribute("loginMember")==null) {
+		   return "redirect:/log/login";
+	   }
+	   //idolCommand 객체 안에 정보 확인
+	   logger.debug("idolAdd(idolCommand idolcommand,HttpSession session) 메서드 idolCommand is{}", idolCommand);
+	   idolService.addIdol(idolCommand);
+	return "redirect:/idol/idolList";
+	   
+   }*/
+   
+   
    
    // 삭제
    @RequestMapping(value="/idol/idolDelete" ,method=RequestMethod.GET)

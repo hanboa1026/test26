@@ -27,15 +27,17 @@
 		
 		<a class="col-lg-9 col-sm-8 homeicon" href="${pageContext.request.contextPath}/"><img alt="home" src="${pageContext.request.contextPath}/resources/img/home.png"></a>
 		</div>
-		<form id="insertIdol" method="post" action="${pageContext.request.contextPath }/idol/idolInsert">
+		<form id="addIdolForm" method="post" action="${pageContext.request.contextPath }/idolAdd" enctype="multipart/form-data">
 			<div class="alert alert-info">
 				<div>IdolName</div>
-				<input type="text" name="IdolName" id="idolName">
-				<button id="addButton" class="btn btn-info" type="button">등록</button>
+				<input class="form-control" type="text" name="IdolName" id="idolName">
+				<div>파일</div>
+				<input type="file" name="file" multiple="multiple">
+				<button id="addButton" class="btn btn-info" type="submit">등록</button>
 				<button class="btn btn-info" type="reset">초기화</button>
-			</div>		
-		</form>
-		<jsp:include page="/WEB-INF/views/inc/footer.jsp"></jsp:include>
+			</div>
+		</form>		
+			<jsp:include page="/WEB-INF/views/inc/footer.jsp"></jsp:include>
 	</div>
 </body>
 </html>

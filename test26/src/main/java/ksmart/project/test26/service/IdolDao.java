@@ -40,4 +40,12 @@ public class IdolDao {
    public int insertIdol(Idol idol) {
       return sqlSessionTemplate.insert(str+"insertIdol",idol);
    }
+   //아이돌 추가시 마지막 Id값 찾는 부분
+   public int selectedLastId() {
+	  return sqlSessionTemplate.selectOne(str+"selectLastId");
+   }
+   //아이돌 추가시 파일첨부
+   public void insertIdol(IdolFile idolFile) {
+	   sqlSessionTemplate.insert(str+"insertIdolFile",idolFile);
+   }
 }

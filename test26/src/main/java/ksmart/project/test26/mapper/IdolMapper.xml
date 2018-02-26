@@ -78,5 +78,33 @@
       WHERE idol_id = #{idolId}
    </delete>
 
+   <!-- idol insert 마지막으로 추가된 idolId값을 가져옴 -->
+	<select id="selectLastId" resultType="int">
+		select last_insert_id()
+	</select>   
+	
+   <!-- insert file 추가 -->
+	<insert id="insertIdolFile" 
+			parameterType="ksmart.project.test26.service.IdolFile">
+		INSERT INTO
+			idol_file(idol_id,file_name,file_ext,file_size)
+		VALUE
+			(#{idolId},#{fileName},#{fileExt},#{fileSize})
+	</insert>
+	
+	<!-- IdolAndIdolFile 리스트값 파라미터로 받기  -->
+	<resultMap id="IdolAndIdolFileMap" 
+		type="ksmart.project.test26.service.IdolCommand">
+		<id column="Idol_id" property="idolId"/>
+		<result column="Idol_name" property="idolName"/>
+		<collection property="list" ofType="ksmart.project.test26.service.IdolFile">
+			<id column="Idol_file_id" property="idolFileId"/>
+			<result column="file_name" property="fileName"/>
+			<result column="file_ext" property="fileExt"/>
+			<result column="file_size" property="fileSize"/>		
+		</collection>			
+	</resultMap>
+	<!-- Idol JOIN IdolFile 조인 쿼리문 -->
+		
 </mapper>
 

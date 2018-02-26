@@ -17,11 +17,11 @@
 			</div>
 		</div>
 		<div class="row">		
-			<div class="col-lg-2 col-sm-3">			
+			<div class="col-lg-2 col-sm-4">			
 				<a class="homeicon" href="${pageContext.request.contextPath}/"><img alt="home" src="${pageContext.request.contextPath}/resources/img/home.png"></a>
 			</div>
 			<div class="col-lg-7 col-sm-6">
-				<a href="${pageContext.request.contextPath}/idol/idolInsert" class="btn btn-info">ADD</a>
+				<a href="${pageContext.request.contextPath}/idolAdd" class="btn btn-info"><i class="fas fa-plus-square"></i></a>
 			</div>		
 			<div class="col-lg-4 col-sm-6 form-inline">
 				<form action="${pageContext.request.contextPath}/idol/idolList?" method="POST">
