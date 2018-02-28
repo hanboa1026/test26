@@ -85,9 +85,9 @@
 	<div class="col-sm-3">
 	<a class="portfolio-link" data-toggle="modal" href="#portfolioModal1">
      <div class="team-member">
-       <img class="mx-auto rounded-circle" src="resources/img/team/2.jpg" alt="">
+       <img class="mx-auto rounded-circle" src="resources/img/team/hanboa.jpg" alt="">
        <h4>Han BoA</h4>
-       <p class="text-muted">Lead Marketer</p>
+       <p class="text-muted">TEAM LEADER</p>
      </div>
     </a>
    </div>
@@ -168,7 +168,7 @@
          </div>
          <div class="col-md-4 col-sm-6 portfolio-item">
          <a class="" href="${pageContext.request.contextPath}/country/countryList">
-             <img class="img-fluid" src="resources/img/portfolio/05-thumbnail.jpg" alt="">
+             <img class="img-fluid" src="resources/img/country.png" alt="">
              </a>
            <div class="portfolio-caption">
              <h4>COUNTRY</h4>
