@@ -9,7 +9,7 @@
 
 	<!-- select list-->
 	<select id="selectCompany"
-			resultType="ksmart.project.test26.service.Company">
+			resultType="ksmart.project.test26.service.company.Company">
 		SELECT
 			company_id as companyId
 			, company_name as companyName
@@ -19,7 +19,7 @@
 	<!-- select -->
 	<select id="selectCompanyOne"
 			parameterType="int"
-			resultType="ksmart.project.test26.service.Company">
+			resultType="ksmart.project.test26.service.company.Company">
 		SELECT
 			company_id as companyId
 			, company_name as companyName
@@ -29,7 +29,7 @@
 
 	<!-- insert -->
 	<insert id="insertCompany"
-			parameterType="ksmart.project.test26.service.Company">
+			parameterType="ksmart.project.test26.service.company.Company">
 		INSERT INTO company(
 			company_name)
 		VALUES (
@@ -39,7 +39,7 @@
 
 	<!-- update -->
 	<update id="updateCompany"
-			parameterType="ksmart.project.test26.service.Company">
+			parameterType="ksmart.project.test26.service.company.Company">
 		UPDATE company
 			SET company_name = #{companyName}
 		WHERE company_id = #{companyId}
@@ -47,7 +47,7 @@
 	
 	<!-- delete -->
 	<delete id="deleteCompany"
-			parameterType="ksmart.project.test26.service.Company">
+			parameterType="ksmart.project.test26.service.company.Company">
 		DELETE
 		FROM company
 		WHERE company_id = #{companyId}
@@ -57,7 +57,7 @@
 		SELECT COUNT(*) FROM company
 	</select>
 	
-	<select id="switchingPage" parameterType="java.util.Map" resultType="ksmart.project.test26.service.Company">
+	<select id="switchingPage" parameterType="java.util.Map" resultType="ksmart.project.test26.service.company.Company">
 		SELECT company_id as companyId
 			,company_name as companyName
 			FROM company
@@ -80,7 +80,7 @@
 			SELECT LAST_INSERT_ID();
 		</select>
 		
-		<insert id="insertCompanyFile" parameterType="ksmart.project.test26.service.CompanyFile">
+		<insert id="insertCompanyFile" parameterType="ksmart.project.test26.service.company.CompanyFile">
 			INSERT INTO
 				test.company_file (company_id, file_name, file_ext, file_size)
 				VALUES

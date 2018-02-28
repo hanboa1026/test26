@@ -14,9 +14,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import ksmart.project.test26.service.Company;
-import ksmart.project.test26.service.CompanyCommand;
-import ksmart.project.test26.service.CompanyService;
+import ksmart.project.test26.service.company.Company;
+import ksmart.project.test26.service.company.CompanyCommand;
+import ksmart.project.test26.service.company.CompanyService;
 
 @Controller
 public class CompanyController {

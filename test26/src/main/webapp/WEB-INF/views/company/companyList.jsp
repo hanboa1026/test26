@@ -27,6 +27,7 @@
 				src="${pageContext.request.contextPath}/resources/img/home.png"></a>
 		</div>
 		<div class="col-lg-7 col-sm-6">
+		<!-- company add -->
 			<a href="${pageContext.request.contextPath}/company/companyInsert"
 				class="btn btn-warning"><i class="fas fa-plus-circle"></i></a>
 		</div>
