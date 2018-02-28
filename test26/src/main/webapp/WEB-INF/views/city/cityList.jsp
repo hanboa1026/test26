@@ -36,9 +36,7 @@
 					<div class="input-group">
 						<input id="searchCity" name="word" type="text" class="form-control" placeholder="Search">
 						<div class="input-group-btn">
-							<button id="searchButton" type="button" class="btn btn-primary">
-								<i class="glyphicon glyphicon-search"></i>
-							</button>
+							<button id="searchButton" type="button" class="btn btn-primary">Search</button>
 						</div>
 					</div>
 				</form>

@@ -24,8 +24,8 @@
 <body>
 	<div class="container">
 		<div class="row">
-			<h2 class="col-lg-3 col-sm-4">City Update Form</h2>
-			<a class="col-lg-9 col-sm-8 homeicon" href="${pageContext.request.contextPath}/"><img alt="home" src="${pageContext.request.contextPath}/resources/img/home.png"></a>
+			<h2 class="col-lg-4 col-sm-4">City Update Form</h2>
+			<a class="col-lg-8 col-sm-8 homeicon" href="${pageContext.request.contextPath}/"><img alt="home" src="${pageContext.request.contextPath}/resources/img/home.png"></a>
 		</div>
 		<form id="cityUpdateForm" action="${pageContext.request.contextPath}/city/cityUpdate" method="post">
 		<input type="hidden" value="${cityAndCityFile.cityId}" name="cityId">
@@ -36,9 +36,9 @@
 				${cityFile.fileName}
 				<img src="${pageContext.request.contextPath}/resources/upload/city/${cityFile.fileName}.${cityFile.fileExt}" >
 			</c:forEach>
+			<button id="updateButton" class="btn btn-primary" type="submit">수정</button>
+			<button class="btn btn-primary" type="reset">초기화</button>
 		</div>
-		<button id="updateButton" class="btn btn-primary" type="submit">수정</button>
-		<button class="btn btn-primary" type="reset">초기화</button>
 		</form>
 		<jsp:include page="/WEB-INF/views/inc/footer.jsp"></jsp:include>
 	</div>

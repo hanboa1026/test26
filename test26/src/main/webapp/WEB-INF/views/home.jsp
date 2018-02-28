@@ -103,7 +103,7 @@
          <div class="col-sm-3">
          <a class="portfolio-link" data-toggle="modal" href="#portfolioModal3">
            <div class="team-member">
-             <img class="mx-auto rounded-circle" src="resources/img/team/2.jpg" alt="">
+             <img class="mx-auto rounded-circle" src="resources/img/team/4.jpg" alt="">
              <h4>Jung Eun Hwa</h4>
              <p class="text-muted">Lead Marketer</p>
            </div>
