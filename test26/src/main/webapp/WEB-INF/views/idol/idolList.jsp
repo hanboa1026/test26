@@ -28,7 +28,7 @@
 				<select name="searchOption" class="form-control">
 				<option value="all"<c:out value="${searchOption == 'all'?'selected':''}"/>>전체보기</option>
 				</select>
-				<input name="keyword" value="${keyword}" class="form-control" placeholder="search">
+				<input name="keyword" value="${keyword}" class="form-control" placeholder="Search">
 				<button class="btn btn-success" type="submit" value="검색"><i class="glyphicon glyphicon-search"></i></button>
 				</form>
 				</div>
@@ -51,7 +51,7 @@
 					<tbody>
 						<tr>
 							<td>${idol.idolId}</td>
-							<td>${idol.idolName}</td>
+							<td><a href="${pageContext.request.contextPath}/idol/idolFileList?idolId=${idol.idolId}">${idol.idolName}</a></td>
 							<td><a class="btn btn-primary" href="${pageContext.request.contextPath}/idol/idolUpdate?idolId=${idol.idolId}"><i class="fa fa-pencil"></i></a></td>
 							<td><a class="btn btn-danger" href="${pageContext.request.contextPath}/idol/idolDelete?idolId=${idol.idolId}"><i class="fa fa-trash"></i></a></td>
 						</tr>
@@ -61,7 +61,7 @@
 				<c:if test="${currentPage > 1}">
 					<a href="${pageContext.request.contextPath}/idol/idolList?currentPage=${currentPage-1}">이전</a>
 				</c:if>
-				<c:if test="${currentPage < lastPage}">
+				<c:if test="${currentPage < lastPage}">.................
 					<a href="${pageContext.request.contextPath}/idol/idolList?currentPage=${currentPage+1}">다음</a>
 				</c:if>
 			</div>

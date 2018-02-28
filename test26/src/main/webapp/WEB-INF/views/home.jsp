@@ -94,7 +94,7 @@
 	<div class="col-sm-3">
 	<a class="portfolio-link" data-toggle="modal" href="#portfolioModal2">
            <div class="team-member">
-             <img class="mx-auto rounded-circle" src="resources/img/team/2.jpg" alt="">
+             <img class="mx-auto rounded-circle" src="resources/img/team/5.jpg" alt="">
              <h4>Park Mi Ran</h4>
              <p class="text-muted">Lead Marketer</p>
            </div>

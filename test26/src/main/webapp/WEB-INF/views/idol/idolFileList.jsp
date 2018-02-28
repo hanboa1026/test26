@@ -33,7 +33,7 @@
 					<option value="all"<c:out value=${searcOption=='all'?'selected':''}"/>>전체보기</option>
 					<%-- <option value="country_name" <c:out value="${searchOption == 'country_name'?'selected':''}"/>>이름</option> --%>
 					</select>
-					<input name="keyword" value=${keyword} class="form-control" placeholder="Search">
+					<input name="keyword" value="${keyword}" class="form-control" placeholder="Search">
 					<button class="btn btn-info" type="submit" value="검색"><i class="fas fa-search"></i></button>
 				</form>
 				</div>

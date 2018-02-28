@@ -93,8 +93,8 @@
 	</insert>
 	
 	<!-- IdolAndIdolFile 리스트값 파라미터로 받기  -->
-	<resultMap id="IdolAndIdolFileMap" 
-		type="ksmart.project.test26.service.idol.IdolCommand">
+	<resultMap id="IdolAndIdolFile" 
+		type="ksmart.project.test26.service.idol.IdolAndIdolFile">
 		<id column="Idol_id" property="idolId"/>
 		<result column="Idol_name" property="idolName"/>
 		<collection property="list" ofType="ksmart.project.test26.service.idol.IdolFile">
