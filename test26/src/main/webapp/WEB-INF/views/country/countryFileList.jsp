@@ -51,7 +51,7 @@
 						<th>SIZE</th>
 					</tr>
 				</thead>
-				<c:forEach var="countryFile" items="${countryAndCountryFile.list}">
+				<c:forEach var="countryFile" items="${countryFile.list}">
 					<tbody>
 						<tr>
 							<td>${countryFile.countryFileId}</td>

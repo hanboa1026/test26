@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import ksmart.project.test26.service.country.Country;
+import ksmart.project.test26.service.country.CountryAndCountryFile;
 import ksmart.project.test26.service.country.CountryCommand;
 import ksmart.project.test26.service.country.CountryService;
 @Controller
@@ -73,6 +74,15 @@ public class CountryController {
 		if(session.getAttribute("loginMember") == null ) {
 			return "redirect:/log/login"; 
 		}
+		logger.debug("*----countryController : countryFileList ----*");
+		logger.debug("countryId{}",countryId);
+		CountryAndCountryFile countryFile = countryService.getCountryFileList(countryId);
+		logger.debug("countryFile{}",countryFile);
+		String path = session.getServletContext().getRealPath("/");	
+		path += "resources/upload/country";
+		model.addAttribute("countryFile", countryFile);
+		model.addAttribute("path",path);
+		logger.debug("*--------------------------------------------*");
 		return "country/countryFileList";
 		
 	}
@@ -81,7 +91,8 @@ public class CountryController {
 	@RequestMapping(value="/countryAdd", method=RequestMethod.GET)
 	public String countryInsert(HttpSession session) {
 		if(session.getAttribute("loginMember") == null ) {
-			String path = session.getServletContext().getRealPath("/resources/upload/country");
+			String path = session.getServletContext().getRealPath("/");	
+			path += "resources/upload/country";
 			logger.debug("{} : path GET countryInsert CountryController", path);
 			return "redirect:/log/login"; 
 		}
@@ -96,9 +107,9 @@ public class CountryController {
 		}
 		// resource 폴더 경로
 		/*session.getServletContext().getRealPath("/");*/
-		String path = session.getServletContext().getRealPath("/resources/upload/country");
+		String path = session.getServletContext().getRealPath("/");	
+		path += "resources/upload/country";
 		logger.debug("{} : path POST countryInsert CountryController", path);
-		/*path += "resources/upload/";*/
 		logger.debug("나라 정보 {}",countryCommand);
 		countryService.insertCountry(countryCommand, path);
 		return "redirect:/country/countryList";
