@@ -5,7 +5,7 @@
    <!-- select List-->
    <select id="selectIdolList"
          parameterType="java.util.Map"
-         resultType="ksmart.project.test26.service.Idol">
+         resultType="ksmart.project.test26.service.idol.Idol">
 		SELECT 
         	 idol_id as idolId
          	,idol_name as idolName
@@ -44,7 +44,7 @@
    <!-- select -->
    <select id="getIdol"
          parameterType="int"
-         resultType="ksmart.project.test26.service.Idol">
+         resultType="ksmart.project.test26.service.idol.Idol">
       SELECT
          idol_id as idolId
          ,idol_name as idolName
@@ -54,7 +54,7 @@
    
    <!-- insert -->
    <insert id="insertIdol"
-         parameterType="ksmart.project.test26.service.Idol">
+         parameterType="ksmart.project.test26.service.idol.Idol">
       INSERT INTO idol(
          idol_name)
       VALUES (
@@ -64,7 +64,7 @@
 
    <!-- update -->
    <update id="updateIdol"
-         parameterType="ksmart.project.test26.service.Idol">
+         parameterType="ksmart.project.test26.service.idol.Idol">
       UPDATE idol
          SET idol_name = #{idolName}
       WHERE idol_Id = #{idolId}
@@ -72,7 +72,7 @@
    
    <!-- delete -->
    <delete id="deleteIdol"
-         parameterType="ksmart.project.test26.service.Idol">
+         parameterType="ksmart.project.test26.service.idol.Idol">
       DELETE
       FROM idol
       WHERE idol_id = #{idolId}
@@ -85,7 +85,7 @@
 	
    <!-- insert file 추가 -->
 	<insert id="insertIdolFile" 
-			parameterType="ksmart.project.test26.service.IdolFile">
+			parameterType="ksmart.project.test26.service.idol.IdolFile">
 		INSERT INTO
 			idol_file(idol_id,file_name,file_ext,file_size)
 		VALUE
@@ -94,10 +94,10 @@
 	
 	<!-- IdolAndIdolFile 리스트값 파라미터로 받기  -->
 	<resultMap id="IdolAndIdolFileMap" 
-		type="ksmart.project.test26.service.IdolCommand">
+		type="ksmart.project.test26.service.idol.IdolCommand">
 		<id column="Idol_id" property="idolId"/>
 		<result column="Idol_name" property="idolName"/>
-		<collection property="list" ofType="ksmart.project.test26.service.IdolFile">
+		<collection property="list" ofType="ksmart.project.test26.service.idol.IdolFile">
 			<id column="Idol_file_id" property="idolFileId"/>
 			<result column="file_name" property="fileName"/>
 			<result column="file_ext" property="fileExt"/>
