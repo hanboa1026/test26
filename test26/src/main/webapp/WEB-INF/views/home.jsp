@@ -148,7 +148,7 @@
          </div>
          <div class="col-md-4 col-sm-6 portfolio-item">
          <a class="" href="${pageContext.request.contextPath}/city/cityList">
-             <img class="img-fluid" src="resources/img/portfolio/02-thumbnail.jpg" alt="">
+             <img class="img-fluid" src="resources/img/CITY.jpg" alt="">
              </a>
            <div class="portfolio-caption">
              <h4>CITY</h4>
