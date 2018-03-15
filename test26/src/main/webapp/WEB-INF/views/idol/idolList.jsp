@@ -20,19 +20,19 @@
 			<div class="col-lg-2 col-sm-4">			
 				<a class="homeicon" href="${pageContext.request.contextPath}/"><img alt="home" src="${pageContext.request.contextPath}/resources/img/home.png"></a>
 			</div>
-			<div class="col-lg-7 col-sm-6">
-				<a href="${pageContext.request.contextPath}/idolAdd" class="btn btn-info"><i class="fas fa-plus-square"></i></a>
-			</div>		
-			<div class="col-lg-4 col-sm-6 form-inline">
+			<div class="col-lg-2 col-sm-2">
+				<a href="${pageContext.request.contextPath}/idolAdd" class="btn btn-info">ADD</a>
+			</div>	
+			<div class="col-lg-8 col-sm-6 form-inline">
 				<form action="${pageContext.request.contextPath}/idol/idolList?" method="POST">
 				<select name="searchOption" class="form-control">
 				<option value="all"<c:out value="${searchOption == 'all'?'selected':''}"/>>전체보기</option>
 				</select>
-				<input name="keyword" value="${keyword}" class="form-control" placeholder="Search">
-				<button class="btn btn-success" type="submit" value="검색"><i class="glyphicon glyphicon-search"></i></button>
+						<input name="keyword" value="${keyword}" class="form-control" placeholder="Search">
+						<button class="btn btn-success" type="submit" value="검색"><i class="glyphicon glyphicon-search">Search</i></button>
 				</form>
-				</div>
-					</div>
+			</div>
+		</div>
 					<div class="row">
 			<div class="col-lg-2">
 				<jsp:include page="/WEB-INF/views/inc/left.jsp"></jsp:include>

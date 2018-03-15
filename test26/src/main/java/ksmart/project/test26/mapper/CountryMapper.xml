@@ -10,7 +10,7 @@
 		SELECT
 			country_id as countryId
 			,country_name as countryName
-		FROM test.country
+		FROM country
 		<include refid="search"></include>
 		ORDER BY countryId DESC
 		LIMIT #{beginRow}, #{pagePerRow}
@@ -21,7 +21,7 @@
 	<select id="getCountryCount"
 			resultType="int"
 			parameterType="java.util.Map">
-		SELECT COUNT(*) FROM test.country
+		SELECT COUNT(*) FROM country
 		<include refid="search"></include>
 		<!-- WHERE절을 include 태그로 삽입 -->
 	</select>
@@ -88,7 +88,7 @@
 	
 	<!-- insert file -->
 	<insert id="insertCountryFile" parameterType="ksmart.project.test26.service.country.CountryFile">
-		INSERT INTO test.country_file(
+		INSERT INTO country_file(
 			country_id
 			, file_name
 			, file_ext

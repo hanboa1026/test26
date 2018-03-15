@@ -9,7 +9,7 @@
 		SELECT 
         	 idol_id as idolId
          	,idol_name as idolName
-		FROM test.idol
+		FROM idol
       <include refid="search"></include>
 		LIMIT #{startRow}, #{pagePerRow}
 		<!-- WHERE절을 include 태그로 삽입 -->
@@ -19,7 +19,7 @@
    <select id="getIdolCount"
          resultType="int"
          parameterType="java.util.Map">
-		SELECT COUNT(*) FROM test.idol
+		SELECT COUNT(*) FROM idol
 		<include refid="search"></include>
 		<!-- WHERE절을 include 태그로 삽입 -->
    </select>
